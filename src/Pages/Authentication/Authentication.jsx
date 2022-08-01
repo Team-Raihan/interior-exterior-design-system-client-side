@@ -28,7 +28,7 @@ const Authentication = () => {
         borderWidth="1px"
       >
         <Text fontSize="4xl" fontFamily="Work Sans" color="black">
-         Dream Interior Design
+         Dream Interior
         </Text>
       </Box>
       <Box
