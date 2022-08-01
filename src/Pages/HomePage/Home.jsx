@@ -4,7 +4,7 @@ import HomeBanner from "../../Components/HomeBanner/HomeBanner";
 const Home = () => {
   return (
     <>
-      <div className="min-h-[85vh]">
+      <div>
         <HomeBanner />
       </div>
     </>
