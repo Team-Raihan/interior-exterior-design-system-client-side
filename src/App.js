@@ -8,7 +8,9 @@ const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
-      <RoutesPath />
+      <div className="min-h-[85vh]">
+        <RoutesPath />
+      </div>
       <Footer />
     </BrowserRouter>
   );

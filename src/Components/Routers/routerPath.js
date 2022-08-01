@@ -1,7 +1,7 @@
 const paths = {
   home: "/",
-  login: "/login",
-  signup: "/signup",
+  authentication: "/authentication/user",
+  
 };
 
 module.exports = paths;
