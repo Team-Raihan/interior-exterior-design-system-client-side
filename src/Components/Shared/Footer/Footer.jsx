@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div className="bg-neutral">
       <div className="container mx-auto">
-        <footer className="footer px-4 py-10 text-white">
+        <footer className="footer px-4 py-10 text-white border-b">
           <div>
             <div className="items-center grid-flow-col">
               <h1 className="text-3xl mb-4">Logo</h1>
@@ -85,7 +85,7 @@ const Footer = () => {
             </div>
           </div>
         </footer>
-        <footer className="footer px-4 py-4 bg-neutral text-white">
+        <footer className="footer px-4 py-8 bg-neutral text-white">
           <div className="items-center grid-flow-col">
             <p>Copyright © 2022 - All right reserved</p>
           </div>
