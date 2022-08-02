@@ -12,7 +12,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { secondary } from "daisyui/src/colors";
 import { useNavigate } from "react-router-dom";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "../../Firebase/Firebase.init";
 const Login = () => {
+  const [signInWithEmailAndPassword, user, firebaseLoading, error] =
+    useSignInWithEmailAndPassword(auth);
   const [loading, setLoading] = useState(false);
   const [passShow, setPassShow] = useState(false);
 
@@ -26,7 +30,8 @@ const Login = () => {
     setPassShow(!passShow);
   };
 
-  const submitLoginHandler = async () => {
+  const submitLoginHandler = async (e) => {
+    e.preventDefault();
     setLoading(true);
     if (!email || !password) {
       toast({
@@ -62,9 +67,11 @@ const Login = () => {
         isClosable: true,
         position: "bottom",
       });
-      localStorage.setItem("userInfo", JSON.stringify(data));
+      const accessToken = data.token;
+      localStorage.setItem("accessToken", accessToken);
+      await signInWithEmailAndPassword(email, password);
       setLoading(false);
-      navigate("/chats");
+      return navigate("/");
     } catch (error) {
       toast({
         title: "Error Occurred!",

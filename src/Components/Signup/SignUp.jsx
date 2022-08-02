@@ -11,10 +11,20 @@ import {
 import axios from "axios";
 import { secondary } from "daisyui/src/colors";
 import { neutral } from "daisyui/src/colors/colorNames";
+import { updateProfile } from "firebase/auth";
 import React, { useState } from "react";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import auth from "../../Firebase/Firebase.init";
 
 const SignUp = () => {
+  const [createUserWithEmailAndPassword, user, firebaseLoading, error] =
+    useCreateUserWithEmailAndPassword(auth, {
+      sendEmailVerification: true,
+    });
   const [loading, setLoading] = useState(false);
   const [passShow, setPassShow] = useState(false);
   const [confirmPassShow, setConfirmPassShow] = useState(false);
@@ -174,10 +184,12 @@ const SignUp = () => {
           isClosable: true,
           position: "bottom",
         });
-        localStorage.setItem("userInfo", JSON.stringify(data));
-
+        const accessToken = data.token;
+        localStorage.setItem("accessToken", accessToken);
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name, photoURL: pic });
         setLoading(false);
-        return navigate("/chat");
+        return navigate("/")
       } catch (error) {
         toast({
           title: "Error! Failed to Registration.",
