@@ -184,12 +184,12 @@ const SignUp = () => {
           isClosable: true,
           position: "bottom",
         });
-        const accessToken = data.token;
+        const accessToken = await data.token;
         localStorage.setItem("accessToken", accessToken);
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name, photoURL: pic });
         setLoading(false);
-        return navigate("/")
+        return navigate("/");
       } catch (error) {
         toast({
           title: "Error! Failed to Registration.",
