@@ -14,7 +14,7 @@ const WeDo = () => {
   }, []);
   return (
     <div className="container mx-auto px-4">
-      <div className="lg:min-h-[85vh]">
+      <div className="lg:min-h-fit">
         <div className="text-center  my-16 block">
           <h2 className="text-secondary lg:text-5xl text-2xl font-bold mb-2 uppercase">
             What We Do

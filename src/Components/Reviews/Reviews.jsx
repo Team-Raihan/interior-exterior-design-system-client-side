@@ -3,12 +3,31 @@ import "./Reviews.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useQuery } from "@tanstack/react-query";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
 
+  /*   const {
+    data: reviews,
+    isLoading,
+    refetch,
+    error,
+  } = useQuery("review", () =>
+    fetch("http://localhost:5000/api/review", {
+      method: "GET",
+    }).then((res) => res.json())
+  );
+  console.log(reviews);
+  if (isLoading) {
+    return <p>Loading........</p>;
+  }
+  if (error) {
+    console.log(error);
+  } */
+
   useEffect(() => {
-    fetch("/reviews.json")
+    fetch("http://localhost:5000/api/review")
       .then((res) => res.json())
       .then((data) => {
         const reversedData = data.reverse();
@@ -27,21 +46,21 @@ const Reviews = () => {
     pauseOnHover: true,
   };
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto px-4 my-16">
       <div className="">
-        <div className="text-center  my-16 block">
+        <div className="text-center block">
           <h2 className="text-secondary lg:text-5xl text-2xl font-bold mb-2 uppercase">
             Happy Customers
           </h2>
         </div>
-        <div className="my-16">
+        <div className=" p-16">
           <Slider {...settings}>
-            {reviews?.slice(0, 3).map((review) => (
+            {reviews?.map((review) => (
               <div
                 className="card bg-base-100 overflow-hidden rounded-xl relative"
                 key={review._id}
               >
-                <div className=" items-center p-16 border rounded-xl ma">
+                <div className=" items-center py-16 border rounded-xl ma">
                   <div className="review-slider">
                     <figure className="gap-5">
                       <div className="avatar">

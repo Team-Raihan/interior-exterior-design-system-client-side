@@ -13,9 +13,9 @@ const News = () => {
       });
   }, []);
   return (
-    <div className="container mx-auto px-4">
-      <div className="lg:min-h-[85vh]">
-        <div className="text-center  my-16 block">
+    <div className="container mx-auto px-4 my-16">
+      <div className="">
+        <div className="text-center  mb-16 block">
           <h2 className="text-secondary lg:text-5xl text-2xl font-bold mb-2 uppercase">
             Company News
           </h2>
@@ -56,14 +56,17 @@ const News = () => {
                       {report.date}
                     </strong>
                     <p>{report.news}</p>
-                    <button className="btn btn-secondary w-full">
-                      Read More
-                    </button>
+                    <button className="btn btn-secondary ">Read More</button>
                   </div>
                 </div>
               ))}
             </div>
           </div>
+        </div>
+        <div className="mt-16 ">
+          <button className="btn btn-secondary md:w-1/3 w-full  mx-auto block text-white font-bold">
+            View All News
+          </button>
         </div>
       </div>
     </div>
