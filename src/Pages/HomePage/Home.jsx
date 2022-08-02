@@ -1,6 +1,7 @@
 import React from "react";
 import FeaturesSection from "../../Components/FeaturedSection/FeaturesSection";
 import HomeBanner from "../../Components/HomeBanner/HomeBanner";
+import WeDo from "../../Components/WeDo/WeDo";
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
       <div>
         <HomeBanner />
         <FeaturesSection />
+        <WeDo />
       </div>
     </>
   );

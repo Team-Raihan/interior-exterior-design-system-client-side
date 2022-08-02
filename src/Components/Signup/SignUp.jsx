@@ -10,7 +10,6 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { secondary } from "daisyui/src/colors";
-import { neutral } from "daisyui/src/colors/colorNames";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
