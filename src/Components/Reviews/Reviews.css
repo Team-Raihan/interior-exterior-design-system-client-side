@@ -1,0 +1,14 @@
+.review-slider:before,
+.review-slider:after {
+  position: absolute;
+  display: inline-block;
+  /* top: 50%; */
+}
+.review-slider:before {
+  content: url(../../assets/banner/quoteLeft.png);
+  left: 20px;
+}
+.review-slider:after {
+  content: url(../../assets/banner/quoteRight.png);
+  right: 20px;
+}
