@@ -9,6 +9,8 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import axios from "axios";
+import { secondary } from "daisyui/src/colors";
+import { neutral } from "daisyui/src/colors/colorNames";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -22,7 +24,7 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [pic, setPic] = useState();
   const toast = useToast();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleShowHide = () => {
     setPassShow(!passShow);
@@ -63,7 +65,6 @@ const SignUp = () => {
             body: data,
           }
         ).catch((error) => {
-       
           if (error.response) {
             toast({
               title: "Failed to upload! Please try again.",
@@ -100,11 +101,10 @@ const SignUp = () => {
               position: "bottom",
             });
             // Something happened in setting up the request that triggered an Error
-            console.log('Error', error.message);
-         setLoading(false);
+            console.log("Error", error.message);
+            setLoading(false);
           }
           console.log(error.config);
-  
         });
         const getData = await response?.json();
         setPic(await getData?.url?.toString());
@@ -133,8 +133,8 @@ const SignUp = () => {
     }
   };
   const submitSignUpHandler = async () => {
-    setLoading(true)
-    if(!name ||!email||!password||!confirmPassword||!pic){
+    setLoading(true);
+    if (!name || !email || !password || !confirmPassword || !pic) {
       toast({
         title: "Please Fill all the Fields",
         status: "warning",
@@ -142,10 +142,10 @@ const SignUp = () => {
         isClosable: true,
         position: "bottom",
       });
-      setLoading(false)
-      return
+      setLoading(false);
+      return;
     }
-    if(password!==confirmPassword){
+    if (password !== confirmPassword) {
       toast({
         title: "Passwords Did Not Match",
         status: "warning",
@@ -153,17 +153,20 @@ const SignUp = () => {
         isClosable: true,
         position: "bottom",
       });
-      setLoading(false)
-      return 
-    }
-    else{
+      setLoading(false);
+      return;
+    } else {
       try {
-        const config= {
-          headers:{
-            "Content-type":"application/json"
-          }
-        }
-        const {data}= await axios.post("http://localhost:5000/api/user",{name,email,password,pic},config)
+        const config = {
+          headers: {
+            "Content-type": "application/json",
+          },
+        };
+        const { data } = await axios.post(
+          "http://localhost:5000/api/user",
+          { name, email, password, pic },
+          config
+        );
         toast({
           title: "Registration Successful",
           status: "success",
@@ -171,22 +174,21 @@ const SignUp = () => {
           isClosable: true,
           position: "bottom",
         });
-        localStorage.setItem('userInfo',JSON.stringify(data))
+        localStorage.setItem("userInfo", JSON.stringify(data));
 
-        setLoading(false)
-       return navigate('/chat')
-
+        setLoading(false);
+        return navigate("/chat");
       } catch (error) {
         toast({
           title: "Error! Failed to Registration.",
-          description:error.response.data.message,
+          description: error.response.data.message,
           status: "error",
           duration: 5000,
           isClosable: true,
           position: "bottom",
         });
-        setLoading(false)
-        return
+        setLoading(false);
+        return;
       }
     }
   };
@@ -247,11 +249,15 @@ const SignUp = () => {
           />
         </FormControl>
         <Button
-          colorScheme="blue"
+          backgroundColor={secondary}
+          color="white"
           width="100%"
           style={{ marginTop: 15 }}
           onClick={submitSignUpHandler}
           isLoading={loading}
+          _hover={{
+            backgroundColor: "#021431",
+          }}
         >
           Sign Up
         </Button>

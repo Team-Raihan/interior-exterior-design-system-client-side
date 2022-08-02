@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useState } from "react";
+import { secondary } from "daisyui/src/colors";
 import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -63,7 +64,7 @@ const Login = () => {
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
-     navigate("/chats");
+      navigate("/chats");
     } catch (error) {
       toast({
         title: "Error Occurred!",
@@ -103,9 +104,13 @@ const Login = () => {
         </FormControl>
 
         <Button
-          colorScheme="blue"
+          backgroundColor={secondary}
+          color="white"
           width="100%"
           style={{ marginTop: 15 }}
+          _hover={{
+            backgroundColor: "#021431",
+          }}
           onClick={submitLoginHandler}
           isLoading={loading}
         >
