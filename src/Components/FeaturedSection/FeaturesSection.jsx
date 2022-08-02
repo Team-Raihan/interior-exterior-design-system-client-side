@@ -25,7 +25,7 @@ const FeaturesSection = () => {
         </div>
         <div className="  bg-base-100 mb-16">
           <div className="text-center p-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2  gap-10">
               {features?.slice(0, 6).map((feature) => (
                 <FeatureSection key={feature?._id} feature={feature} />
               ))}
