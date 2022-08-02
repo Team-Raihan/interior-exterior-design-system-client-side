@@ -23,7 +23,7 @@ const Reviews = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
     pauseOnHover: true,
   };
   return (
@@ -41,7 +41,7 @@ const Reviews = () => {
                 className="card bg-base-100 overflow-hidden rounded-xl relative"
                 key={review._id}
               >
-                <div className=" items-center p-16 border rounded-xl">
+                <div className=" items-center p-16 border rounded-xl ma">
                   <div className="review-slider">
                     <figure className="gap-5">
                       <div className="avatar">
