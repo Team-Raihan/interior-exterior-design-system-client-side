@@ -11,7 +11,6 @@ import {
 import axios from "axios";
 import { secondary } from "daisyui/src/colors";
 import { neutral } from "daisyui/src/colors/colorNames";
-import { updateProfile } from "firebase/auth";
 import React, { useState } from "react";
 import {
   useCreateUserWithEmailAndPassword,
@@ -25,6 +24,7 @@ const SignUp = () => {
     useCreateUserWithEmailAndPassword(auth, {
       sendEmailVerification: true,
     });
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const [loading, setLoading] = useState(false);
   const [passShow, setPassShow] = useState(false);
   const [confirmPassShow, setConfirmPassShow] = useState(false);
@@ -189,21 +189,27 @@ const SignUp = () => {
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name, photoURL: pic });
         setLoading(false);
-        return navigate("/")
+        return navigate("/");
       } catch (error) {
-        toast({
-          title: "Error! Failed to Registration.",
-          description: error.response.data.message,
-          status: "error",
-          duration: 5000,
-          isClosable: true,
-          position: "bottom",
-        });
+        if (error) {
+          console.log(error);
+          toast({
+            title: "Error! Failed to Registration.",
+            description: error?.response?.data?.message
+              ? error.response.data?.message
+              : "something went wrong",
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+            position: "bottom",
+          });
+        }
         setLoading(false);
         return;
       }
     }
   };
+  console.log(user);
   return (
     <>
       <VStack spacing="5px" color="black">

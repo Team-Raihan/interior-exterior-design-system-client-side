@@ -11,7 +11,7 @@ const firebaseConfig = {
   projectId: "tekno-interior",
   storageBucket: "tekno-interior.appspot.com",
   messagingSenderId: "152596767967",
-  appId: "1:152596767967:web:7d14d02a5b623427eff56a"
+  appId: "1:152596767967:web:7d14d02a5b623427eff56a",
 };
 
 // Initialize Firebase

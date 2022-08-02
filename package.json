@@ -20,12 +20,9 @@
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-<<<<<<< HEAD
     "react-toastify": "^9.0.7",
-=======
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
->>>>>>> 41de4ebca1ccb17a11c4da885712bfa1a2e50080
     "web-vitals": "^2.1.4",
     "yarn": "^1.22.19"
   },
