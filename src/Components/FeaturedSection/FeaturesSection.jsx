@@ -11,7 +11,6 @@ const FeaturesSection = () => {
       .then((data) => {
         const reversedData = data.reverse();
         setFeatures(reversedData);
-        console.log(data);
       });
   }, []);
 

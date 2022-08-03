@@ -24,7 +24,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const toast = useToast();
   const navigate = useNavigate();
-  console.log(email, password);
 
   const handleShowHide = () => {
     setPassShow(!passShow);
@@ -45,7 +44,6 @@ const Login = () => {
       return;
     }
 
-    // console.log(email, password);
     try {
       const config = {
         headers: {
@@ -58,8 +56,6 @@ const Login = () => {
         { email, password },
         config
       );
-
-      console.log(JSON.stringify(data));
       toast({
         title: "Login Successful",
         status: "success",

@@ -9,7 +9,6 @@ const News = () => {
       .then((data) => {
         const reversedData = data.reverse();
         setNews(reversedData);
-        console.log(data);
       });
   }, []);
   return (
