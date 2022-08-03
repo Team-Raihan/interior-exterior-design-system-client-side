@@ -16,7 +16,7 @@ const Reviews = () => {
     isLoading,
     refetch,
     error,
-  } = useQuery({ queryKey: ["post", 1], queryFn: getData });
+  } = useQuery({ queryKey: ["storeAllReviews", 1], queryFn: getData });
 
   if (isLoading) {
     return <p>Loading........</p>;
@@ -24,7 +24,6 @@ const Reviews = () => {
   if (error) {
     console.log(error);
   }
-  console.log(allReviews?.data);
 
   // useEffect(() => {
   //   fetch("http://localhost:5000/api/review")
