@@ -5,9 +5,10 @@ import { useParams } from "react-router-dom";
 const FeatureWorkDetails = () => {
   const { id } = useParams();
   const [feature, setFeature] = useState({});
+  console.log(feature);
 
   useEffect(() => {
-    const url = `http://localhost:5000/api/feature-work-details/${id}`;
+    const url = `http://localhost:5000/api/featured-item/${id}`;
 
     fetch(url)
       .then((res) => res.json())
@@ -17,6 +18,7 @@ const FeatureWorkDetails = () => {
   return (
     <div>
       <img src={feature.img} alt="" />
+      <h2>Details Page</h2>
     </div>
   );
 };

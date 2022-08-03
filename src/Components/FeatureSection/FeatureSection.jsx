@@ -6,7 +6,7 @@ const FeatureSection = ({ feature }) => {
   const navigate = useNavigate();
 
   const navigateToCarDetail = (id) => {
-    navigate(`/feature-work-details/${id}`);
+    navigate(`/featured-item/${id}`);
   };
 
   return (
