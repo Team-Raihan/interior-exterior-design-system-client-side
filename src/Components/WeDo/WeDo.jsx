@@ -9,7 +9,6 @@ const WeDo = () => {
       .then((data) => {
         const reversedData = data.reverse();
         setWorks(reversedData);
-        console.log(data);
       });
   }, []);
   return (

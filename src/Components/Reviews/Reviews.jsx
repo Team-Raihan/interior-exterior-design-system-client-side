@@ -3,38 +3,37 @@ import "./Reviews.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "react-query";
+import axios from "axios";
 
 const Reviews = () => {
-  const [reviews, setReviews] = useState([]);
-
-  /*   const {
-    data: reviews,
+  // const [reviews, setReviews] = useState([]);
+  const getData = async () => {
+    return await axios.get("http://localhost:5000/api/review");
+  };
+  const {
+    data: allReviews,
     isLoading,
     refetch,
     error,
-  } = useQuery("review", () =>
-    fetch("http://localhost:5000/api/review", {
-      method: "GET",
-    }).then((res) => res.json())
-  );
-  console.log(reviews);
+  } = useQuery({ queryKey: ["storeAllReviews", 1], queryFn: getData });
+
   if (isLoading) {
     return <p>Loading........</p>;
   }
   if (error) {
     console.log(error);
-  } */
+  }
 
-  useEffect(() => {
-    fetch("http://localhost:5000/api/review")
-      .then((res) => res.json())
-      .then((data) => {
-        const reversedData = data.reverse();
-        setReviews(reversedData);
-        console.log(data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/api/review")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       const reversedData = data.reverse();
+  //       setReviews(reversedData);
+  //       console.log(data);
+  //     });
+  // }, []);
 
   const settings = {
     dots: true,
@@ -55,7 +54,7 @@ const Reviews = () => {
         </div>
         <div className=" p-16">
           <Slider {...settings}>
-            {reviews?.map((review) => (
+            {allReviews?.data?.map((review) => (
               <div
                 className="card bg-base-100 overflow-hidden rounded-xl relative"
                 key={review._id}
