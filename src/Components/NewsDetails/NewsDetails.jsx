@@ -16,33 +16,37 @@ const NewsDetails = () => {
   }, [id]);
 
   return (
-    <div>
+    <div className="mix-h-[85vh]">
       <div className="mt-16">
         <img className="w-fit mx-auto" src={news?.img} alt="" />
       </div>
       <div className="container mx-auto px-4 my-16">
         <div className="divider before:bg-secondary after:bg-secondary">
-          <h2 className="lg:text-4xl text-xl font-bold text-secondary ">
-            {news?.category}
-          </h2>
+          <div className="flex flex-col justify-center items-center gap-4">
+            <h2 className="lg:text-4xl text-xl font-bold text-secondary ">
+              {news?.title}
+            </h2>
+            <strong className="flex items-center gap-2 md:text-2xl">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+              {news?.date}
+            </strong>
+          </div>
         </div>
-        {/* <p>{feature.description}</p> */}
-        <div className="py-4">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum ea
-            perferendis inventore debitis repudiandae. Perspiciatis, magni? Nisi
-            architecto maxime, esse alias modi sed molestias! Voluptatum quo
-            placeat in rem dicta iusto amet fugiat aspernatur delectus
-            veritatis! Sunt saepe minus perspiciatis maxime omnis obcaecati
-            repudiandae quam. Aut explicabo corporis quas distinctio deserunt.
-            Numquam, maiores debitis. Harum voluptas eveniet vitae, error
-            quibusdam nulla autem necessitatibus architecto neque corporis
-            molestias nam facilis voluptatibus eligendi reiciendis, ipsam
-            temporibus est deleniti? Quidem expedita quibusdam officia
-            reprehenderit minima quisquam harum explicabo in, iure maxime culpa
-            eaque ipsa eius dolore dolor. Corporis facilis provident veniam
-            mollitia autem.
-          </p>
+        <div className="py-16 text-center">
+          <p>{news?.news}</p>
         </div>
       </div>
     </div>

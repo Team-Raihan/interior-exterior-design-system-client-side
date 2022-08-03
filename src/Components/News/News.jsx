@@ -1,22 +1,43 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import "./News.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useQuery } from "react-query";
 
 const News = () => {
-  const [news, setNews] = useState([]);
+  // const [reports, setReports] = useState([]);
   const navigate = useNavigate();
 
   const navigateToCarDetail = (id) => {
     navigate(`/news/${id}`);
   };
 
-  useEffect(() => {
+  /*   useEffect(() => {
     fetch("/news.json")
       .then((res) => res.json())
       .then((data) => {
         const reversedData = data.reverse();
-        setNews(reversedData);
+        setReports(reversedData);
       });
-  }, []);
+  }, []); */
+
+  const getData = async () => {
+    return await axios.get("http://localhost:5000/api/news");
+  };
+  const {
+    data: news,
+    isLoading,
+    refetch,
+    error,
+  } = useQuery({ queryKey: ["storeAllNews", 1], queryFn: getData });
+  if (isLoading) {
+    return <p>Loading........</p>;
+  }
+  if (error) {
+    console.log(error);
+  }
+  console.log("news:", news);
+
   return (
     <div className="container mx-auto px-4 my-16">
       <div className="">
@@ -28,7 +49,7 @@ const News = () => {
         <div className="  bg-base-100 mb-16">
           <div className="text-center p-0">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-10">
-              {news?.slice(0, 3).map((report) => (
+              {news?.data?.slice(0, 3).map((report) => (
                 <div
                   className="card bg-base-100 shadow-2xl overflow-hidden rounded-none p-0 m-0"
                   key={report._id}
@@ -62,7 +83,7 @@ const News = () => {
                     </strong>
                     <p>{report.news}</p>
                     <button
-                      className="btn btn-secondary  "
+                      className="btn btn-secondary "
                       onClick={() => navigateToCarDetail(report?._id)}
                     >
                       Read More
