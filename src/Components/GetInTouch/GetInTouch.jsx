@@ -1,11 +1,11 @@
 import React from "react";
 import { useRef } from "react";
-import emailjs from "@emailjs/browser";
+// import emailjs from "@emailjs/browser";
 
 const GetInTouch = () => {
   const form = useRef();
 
-  const sendEmail = (e) => {
+  /*   const sendEmail = (e) => {
     e.preventDefault();
 
     emailjs
@@ -25,7 +25,7 @@ const GetInTouch = () => {
         }
       );
     form.current.reset();
-  };
+  }; */
 
   return (
     <div className="container mx-auto px-4 mb-16">
@@ -36,7 +36,8 @@ const GetInTouch = () => {
           </h2>
         </div>
         <div className="lg:p-10 p-5  w-full bg-base-100 shadow rounded-2xl">
-          <form ref={form} onSubmit={sendEmail}>
+          {/* <form ref={form} onSubmit={sendEmail}> */}
+          <form>
             <div className="flex lg:flex-row flex-col  gap-5">
               <div className="form-control lg:mt-3 w-full">
                 <label className="label">

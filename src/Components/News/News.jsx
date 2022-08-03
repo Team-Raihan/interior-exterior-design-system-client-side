@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const News = () => {
   const [news, setNews] = useState([]);
+  const navigate = useNavigate();
+
+  const navigateToCarDetail = (id) => {
+    navigate(`/news/${id}`);
+  };
 
   useEffect(() => {
     fetch("/news.json")
@@ -55,7 +61,12 @@ const News = () => {
                       {report.date}
                     </strong>
                     <p>{report.news}</p>
-                    <button className="btn btn-secondary ">Read More</button>
+                    <button
+                      className="btn btn-secondary  "
+                      onClick={() => navigateToCarDetail(report?._id)}
+                    >
+                      Read More
+                    </button>
                   </div>
                 </div>
               ))}
