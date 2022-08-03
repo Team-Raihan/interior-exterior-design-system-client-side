@@ -1,5 +1,6 @@
 import React from "react";
 import FeaturesSection from "../../Components/FeaturedSection/FeaturesSection";
+import GetInTouch from "../../Components/GetInTouch/GetInTouch";
 import HomeBanner from "../../Components/HomeBanner/HomeBanner";
 import News from "../../Components/Reviews/News/News";
 import Reviews from "../../Components/Reviews/Reviews";
@@ -14,6 +15,7 @@ const Home = () => {
         <WeDo />
         <Reviews />
         <News />
+        <GetInTouch />
       </div>
     </>
   );
