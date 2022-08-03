@@ -8,7 +8,7 @@ const HomeBanner = () => {
         <div className="relative">
           <div className="search-input">
             <div className="form-control">
-              <label className="label md:text-5xl text-2xl text-center uppercase font-bold text-secondary mx-auto">
+              <label className="label md:text-5xl  text-center uppercase font-bold text-secondary mx-auto">
                 Modern Contemporary House Idea
               </label>
               <div className="input-group mt-4">

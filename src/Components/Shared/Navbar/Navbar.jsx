@@ -1,7 +1,17 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link as NavLink } from "react-router-dom";
+import auth from "../../../Firebase/Firebase.init";
 
 const Navbar = () => {
+  const [user] = useAuthState(auth);
+  console.log(user);
+
+  const logout = () => {
+    signOut(auth);
+  };
+
   const menuItems = (
     <>
       <li>
@@ -17,10 +27,46 @@ const Navbar = () => {
         <NavLink to="/blog">Blogs</NavLink>
       </li>
       <li>
-        <NavLink to="/portfolio">Portfolio</NavLink>
-      </li>
-      <li>
-        <NavLink to="/authentication/user">Login</NavLink>
+        {user ? (
+          <NavLink to="">
+            {" "}
+            <div class="dropdown dropdown-end">
+              <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                <div class="w-10 rounded-full  ring-white ring-2">
+                  <img
+                    src={
+                      user?.photoURL
+                        ? user?.photoURL
+                        : "https://foxdogconsultants.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png"
+                    }
+                    alt="user img"
+                  />
+                </div>
+              </label>
+              <ul
+                tabindex="0"
+                class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-secondary rounded-box w-52"
+              >
+                <li>
+                  <NavLink to="" class="justify-between">
+                    Profile
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="">Dashboard</NavLink>
+                </li>
+                <li>
+                  {/* <a>Logout</a> */}
+                  <NavLink to="" onClick={logout}>
+                    Logout
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
+          </NavLink>
+        ) : (
+          <NavLink to="/authentication/user">Login</NavLink>
+        )}
       </li>
     </>
   );
