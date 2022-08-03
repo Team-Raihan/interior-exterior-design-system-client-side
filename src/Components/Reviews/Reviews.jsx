@@ -52,15 +52,15 @@ const Reviews = () => {
             Happy Customers
           </h2>
         </div>
-        <div className=" p-16">
+        <div className=" md:p-16">
           <Slider {...settings}>
             {allReviews?.data?.map((review) => (
               <div
                 className="card bg-base-100 overflow-hidden rounded-xl relative"
                 key={review._id}
               >
-                <div className=" items-center py-16 border rounded-xl ma">
-                  <div className="review-slider">
+                <div className=" items-center py-16 border rounded-xl">
+                  <div className="review-slider ">
                     <figure className="gap-5">
                       <div className="avatar">
                         <div className="w-20 rounded-full ring ring-secondary ring-offset-base-100 shadow-xl">

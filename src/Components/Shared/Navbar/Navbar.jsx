@@ -52,7 +52,7 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="">Dashboard</NavLink>
+                  <NavLink to="/dashboard">Dashboard</NavLink>
                 </li>
                 <li>
                   <NavLink to="" onClick={logout}>
@@ -113,93 +113,45 @@ const Navbar = () => {
               <li>
                 <NavLink to="/blog">Blogs</NavLink>
               </li>
-              <li>
-                {user ? (
-                  /*    <Link to="">
-                       <div class="dropdown dropdown-end">
-                      <ul
-                        tabindex="0"
-                        class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-secondary rounded-box w-52"
-                      ></ul>
+              {user && (
+                <div
+                  tabindex="0"
+                  class="collapse collapse-plus  bg-secondary text-white rounded-box w-full"
+                >
+                  <label class="btn btn-ghost btn-circle avatar">
+                    <div class="w-6 rounded-full  ring-white ring-2">
+                      <img
+                        src={
+                          user?.photoURL
+                            ? user?.photoURL
+                            : "https://foxdogconsultants.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png"
+                        }
+                        alt="user img"
+                      />
                     </div>
-                    <div
-                      tabIndex="0"
-                      className="collapse collapse-arrow bg-secondary text-white rounded-box"
-                    >
-                      <label
-                        tabindex="0"
-                        class="btn btn-ghost btn-circle avatar"
-                      >
-                        <div class="w-10 rounded-full  ring-white ring-2">
-                          <img
-                            src={
-                              user?.photoURL
-                                ? user?.photoURL
-                                : "https://foxdogconsultants.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png"
-                            }
-                            alt="user img"
-                          />
-                        </div>
-                      </label>
-                      <ui className="collapse-content">
-                        <li>
-                          <Link to="" class="">
-                            Profile
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="" class="">
-                          Dashboard
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="" onClick={logout}>
-                            Logout
-                          </Link>
-                        </li>
-                      </ui>
-                    </div>
-                  </Link> */
-                  <NavLink className="" to="">
-                    <div
-                      tabindex="0"
-                      class="collapse collapse-plus  bg-secondary text-white rounded-box w-full"
-                    >
-                      <label class="btn btn-ghost btn-circle avatar">
-                        <div class="w-6 rounded-full  ring-white ring-2">
-                          <img
-                            src={
-                              user?.photoURL
-                                ? user?.photoURL
-                                : "https://foxdogconsultants.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png"
-                            }
-                            alt="user img"
-                          />
-                        </div>
-                      </label>
-                      <div class="collapse-content">
-                        <li>
-                          <Link to="" class="">
-                            Profile
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="" class="">
-                            Dashboard
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="" onClick={logout}>
-                            Logout
-                          </Link>
-                        </li>
-                      </div>
-                    </div>
-                  </NavLink>
-                ) : (
+                  </label>
+                  <div class="collapse-content">
+                    <li>
+                      <Link to="" class="">
+                        Profile
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/dashboard">Dashboard</Link>
+                    </li>
+                    <li>
+                      <Link to="" onClick={logout}>
+                        Logout
+                      </Link>
+                    </li>
+                  </div>
+                </div>
+              )}
+              {!user && (
+                <li>
                   <NavLink to="/authentication/user">Login</NavLink>
-                )}
-              </li>
+                </li>
+              )}
             </>
           </ul>
         </div>
