@@ -17,28 +17,26 @@ const RoutesPath = () => {
       <Route path={paths.authentication} element={<Authentication />} />
       <Route path={paths.featureWorkDetails} element={<FeatureWorkDetails />} />
       <Route path={paths.newsDetails} element={<NewsDetails />} />
-      <Route path={paths.dashboard} element={<Dashboard />} > 
-      
+      <Route path={paths.dashboard} element={<Dashboard />}>
+        <Route
+          index
+          element={
+            <RequireAuth>
+              <MyProfile/>
+            </RequireAuth>
+          }
+        />
 
-                            <Route
-                                index
-                                element={
-                                    <RequireAuth>
-                                       <MyProfile></MyProfile>
-                                    </RequireAuth>
-                                }
-                            />
-
-                            <Route
-                                path="add-review"
-                                element={
-                                    <RequireAuth>
-                                      <AddReview/>
-                                    </RequireAuth>
-                                }
-                            />
+        <Route
+          path="add-review"
+          element={
+            <RequireAuth>
+              <AddReview />
+            </RequireAuth>
+          }
+        />
       </Route>
-     
+
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
