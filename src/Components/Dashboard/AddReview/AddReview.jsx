@@ -36,40 +36,71 @@ const AddReview = () => {
 
   return (
     <>
-      <div className=" my-4 px-4  lg:px-12 text-charcoal min-h-screen leading-normal overflow-x-hidden lg:overflow-auto">
-        <div className="flex-1 md:p-0 lg:pt-8 lg:pb-8  mx-auto flex flex-col">
-          <section className="bg-slate-100 p-4 shadow">
-            <div className="md:flex">
-              <h2 className="md:w-1/3 uppercase tracking-wide text-sm sm:text-lg mb-6">
+      <div className="min-h-fit m-16">
+        <div className="flex-1  flex flex-col">
+          <section className=" p-6 rounded-2xl  shadow">
+            <div className="divider before:bg-secondary after:bg-secondary">
+              <h2 className="md:w-2/3 uppercase md:text-4xl text-secondary font-bold mb-4">
                 Add A New Review
               </h2>
             </div>
             <form onSubmit={handleSubmit(onFormSubmit)} autoComplete="off">
-              <div className="mb-8">
-                <div className="md:flex-1 mt-2 mb:mt-0 ">
-                  <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
-                    Who gave the review
-                  </label>
-                  <input
-                    className="w-full shadow-inner p-4 border-0"
-                    placeholder="Enter the name"
-                    name="name"
-                    {...register("name", {
-                      required: true,
-                    })}
-                  ></input>
-                  {errors.name && (
-                    <span className="text-red-500">
-                      Minimum 10 character Review is required
-                    </span>
-                  )}
+              <div className="mb-8 ">
+                <div className="flex flex-col lg:flex-row gap-4">
+                  <div className="md:flex-1 mt-2 mb:mt-0 ">
+                    <label className="label font-bold">Your Name</label>
+                    <input
+                      className="input border-2 input-bordered w-full shadow-inner"
+                      placeholder="Enter the name"
+                      name="name"
+                      {...register("name", {
+                        required: true,
+                      })}
+                    ></input>
+                    {errors.name && (
+                      <span className="text-red-500">
+                        Minimum 10 character Review is required
+                      </span>
+                    )}
+                  </div>
+                  <div className="md:flex-1 mt-2 mb:mt-0 ">
+                    <label className="label font-bold">Your Profession</label>
+                    <input
+                      className="input border-2 input-bordered w-full shadow-inner"
+                      placeholder="Enter the name"
+                      name="name"
+                      {...register("name", {
+                        required: true,
+                      })}
+                    ></input>
+                    {errors.name && (
+                      <span className="text-red-500">
+                        Minimum 10 character Review is required
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex flex-col justify-end">
+                    <label className="label font-bold">Review Rating</label>
+
+                    <select
+                      name="rate"
+                      {...register("rate", {
+                        required: true,
+                      })}
+                      className="select  border-2 input-bordered w-full "
+                    >
+                      <option>5</option>
+                      <option>4</option>
+                      <option>3</option>
+                      <option>2</option>
+                      <option>1</option>
+                    </select>
+                  </div>
                 </div>
                 <div className="md:flex-1 mt-2 mb:mt-0 ">
-                  <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
-                    New Review
-                  </label>
+                  <label className="label font-bold">New Review</label>
                   <textarea
-                    className="w-full shadow-inner p-4 border-0"
+                    className="input  border-2 input-bordered w-full shadow-inner pt-3"
                     placeholder="Enter your review here..."
                     rows="6"
                     name="review"
@@ -84,40 +115,15 @@ const AddReview = () => {
                     </span>
                   )}
                 </div>
-                <div className="flex justify-end mt-2 mb:mt-0 md:px-3">
-                  <div className="md:flex w-full mb-4">
-                    <div className="md:flex-1 md:pr-3 mb-4 md:mb-0">
-                      <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
-                        Review Rating
-                      </label>
-
-                      <select
-                        name="rate"
-                        {...register("rate", {
-                          required: true,
-                        })}
-                        className="select  w-full max-w-xs"
-                      >
-                        <option>5</option>
-                        <option>4</option>
-                        <option>3</option>
-                        <option>2</option>
-                        <option>1</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
               </div>
 
-              <div className="md:flex mb-6 border border-t-1 border-b-0 border-x-0 border-cream-dark">
-                <div className="md:flex-1 px-3 text-center md:text-right">
-                  <button
-                    type="submit"
-                    className="button mt-1 bg-teal-500 hover:bg-teal-600 text-white border-2 border-teal-500 hover:border-teal-600 px-3 py-2 rounded uppercase font-poppins font-medium"
-                  >
-                    ADD
-                  </button>
-                </div>
+              <div className="divider before:bg-secondary after:bg-secondary">
+                <button
+                  type="submit"
+                  className="btn btn-secondary md:px-10 text-white font-bold"
+                >
+                  Submit Review
+                </button>
               </div>
             </form>
           </section>

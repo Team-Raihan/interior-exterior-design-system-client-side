@@ -17,12 +17,13 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
-        {adminLoading && (
-          <p className="mt-10 text-xl font-semibold text-blue-500">
-            Loading...
-          </p>
-        )}
+
         <ul className=" flex flex-col gap-5 shadow-md  bg-[rgb(0,7,61)] p-4 overflow-y-auto w-80 font-semibold  text-white">
+          {adminLoading && (
+            <p className="mt-10 text-xl font-semibold text-blue-500">
+              Loading...
+            </p>
+          )}
           {/* <!-- Sidebar content here --> */}
           <li>
             <NavLink
@@ -30,7 +31,7 @@ const Dashboard = () => {
               end
               className={({ isActive }) =>
                 `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
-                  isActive ? " bg-[#021431]" : undefined
+                  isActive ? " bg-primary" : undefined
                 }`
               }
             >
@@ -44,7 +45,7 @@ const Dashboard = () => {
                 to="/dashboard/add-review"
                 className={({ isActive }) =>
                   `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
-                    isActive ? " bg-[#021431]" : undefined
+                    isActive ? " bg-primary" : undefined
                   }`
                 }
               >
@@ -59,7 +60,7 @@ const Dashboard = () => {
                 <NavLink
                   className={({ isActive }) =>
                     `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
-                      isActive ? " bg-[#021431]" : undefined
+                      isActive ? " bg-primary" : undefined
                     }`
                   }
                   to="/dashboard/users"
@@ -71,7 +72,7 @@ const Dashboard = () => {
                 <NavLink
                   className={({ isActive }) =>
                     `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
-                      isActive ? " bg-[#021431]" : undefined
+                      isActive ? " bg-primary" : undefined
                     }`
                   }
                   to="/dashboard/add-feature-work"
@@ -83,7 +84,7 @@ const Dashboard = () => {
                 <NavLink
                   className={({ isActive }) =>
                     `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
-                      isActive ? " bg-[#021431]" : undefined
+                      isActive ? " bg-primary" : undefined
                     }`
                   }
                   to="/dashboard/manage-feature-works"
@@ -95,7 +96,7 @@ const Dashboard = () => {
                 <NavLink
                   className={({ isActive }) =>
                     `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
-                      isActive ? " bg-[#021431]" : undefined
+                      isActive ? " bg-primary" : undefined
                     }`
                   }
                   to="/dashboard/manage-booking"
@@ -105,12 +106,6 @@ const Dashboard = () => {
               </li>
             </>
           )}
-          <li className="mt-10 cursor-pointer text-center text-warning">
-            Logout
-          </li>
-          <li className="mt-10 mb-5">
-            <NavLink to="/">GoBack</NavLink>
-          </li>
         </ul>
       </div>
     </div>

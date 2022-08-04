@@ -6,7 +6,7 @@ import auth from "../../../Firebase/Firebase.init";
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
-  // console.log(user);
+  console.log(user);
 
   const logout = () => {
     signOut(auth);
@@ -15,7 +15,16 @@ const Navbar = () => {
   const menuItems = (
     <>
       <li>
-        <NavLink  to="/">Home</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
+              isActive ? " bg-[#021431]" : undefined
+            }`
+          }
+          to="/"
+        >
+          Home
+        </NavLink>
       </li>
       <li>
         <NavLink to="/products">Products</NavLink>
