@@ -1,8 +1,13 @@
 import axios from "axios";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import auth from "../../../Firebase/Firebase.init";
 
 const AddReview = () => {
+  const [user] = useAuthState(auth);
+  // console.log(user);
+
   const {
     register,
     handleSubmit,
@@ -13,12 +18,14 @@ const AddReview = () => {
 
   const onFormSubmit = async (data) => {
     const review = {
-      name: data.name,
-      review: data.review,
-      rate: data.rate,
+      img: data?.photoURL,
+      name: data?.name,
+      review: data?.review,
+      rate: data?.rate,
+      occupation: data?.occupation,
     };
 
-    axios.post("https://5000/api/reviews", review).then((res) => {
+    axios.post("http://localhost:5000/api/review", review).then((res) => {
       const data = res.data;
       if (data.success) {
         toast.success("New Review Added", {
@@ -36,11 +43,11 @@ const AddReview = () => {
 
   return (
     <>
-      <div className="min-h-fit m-16">
+      <div className="min-h-fit md:m-16 m-4">
         <div className="flex-1  flex flex-col">
           <section className=" p-6 rounded-2xl  shadow">
             <div className="divider before:bg-secondary after:bg-secondary">
-              <h2 className="md:w-2/3 uppercase md:text-4xl text-secondary font-bold mb-4">
+              <h2 className=" uppercase md:text-4xl text-secondary font-bold mb-4">
                 Add A New Review
               </h2>
             </div>
@@ -51,8 +58,9 @@ const AddReview = () => {
                     <label className="label font-bold">Your Name</label>
                     <input
                       className="input border-2 input-bordered w-full shadow-inner"
-                      placeholder="Enter the name"
                       name="name"
+                      value={user?.displayName}
+                      readOnly
                       {...register("name", {
                         required: true,
                       })}
@@ -67,9 +75,9 @@ const AddReview = () => {
                     <label className="label font-bold">Your Profession</label>
                     <input
                       className="input border-2 input-bordered w-full shadow-inner"
-                      placeholder="Enter the name"
-                      name="name"
-                      {...register("name", {
+                      placeholder="Enter your profession"
+                      name="occupation"
+                      {...register("occupation", {
                         required: true,
                       })}
                     ></input>
@@ -100,7 +108,7 @@ const AddReview = () => {
                 <div className="md:flex-1 mt-2 mb:mt-0 ">
                   <label className="label font-bold">New Review</label>
                   <textarea
-                    className="input  border-2 input-bordered w-full shadow-inner pt-3"
+                    className="input  border-2 input-bordered w-full shadow-inner lg:h-[180px] h-[90px] pt-3"
                     placeholder="Enter your review here..."
                     rows="6"
                     name="review"
