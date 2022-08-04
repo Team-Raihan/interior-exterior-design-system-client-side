@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../Firebase/Firebase.init";
+import UpdateProfileModal from "./UpdateProfileModal";
 const MyProfile = () => {
   const [user] = useAuthState(auth);
   console.log(user);
@@ -43,14 +44,15 @@ const MyProfile = () => {
                 </div>
               </div>
               <div className="divider before:bg-secondary after:bg-secondary">
-                <button
-                  type="submit"
-                  className="btn btn-secondary md:px-10 text-white font-bold"
+                <label
+                  for="update-profile"
+                  class="btn modal-button btn-secondary md:px-10 text-white font-bold"
                 >
                   Update Profile
-                </button>
+                </label>
               </div>
             </form>
+            <UpdateProfileModal />
           </section>
         </div>
       </div>
