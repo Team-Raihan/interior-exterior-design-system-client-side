@@ -22,7 +22,7 @@ const RoutesPath = () => {
           index
           element={
             <RequireAuth>
-              <MyProfile/>
+              <MyProfile />
             </RequireAuth>
           }
         />

@@ -22,15 +22,15 @@ const Dashboard = () => {
             Loading...
           </p>
         )}
-        <ul className=" flex flex-col gap-5 shadow-md bg-[rgb(0,7,61)] p-4 overflow-y-auto w-48 font-semibold  text-white">
+        <ul className=" flex flex-col gap-5 shadow-md  bg-[rgb(0,7,61)] p-4 overflow-y-auto w-80 font-semibold  text-white">
           {/* <!-- Sidebar content here --> */}
           <li>
             <NavLink
               to="/dashboard"
               end
               className={({ isActive }) =>
-                `p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
-                  isActive ? " bg-yellow-500" : undefined
+                `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
+                  isActive ? " bg-[#057AFF]" : undefined
                 }`
               }
             >
@@ -43,10 +43,10 @@ const Dashboard = () => {
               <NavLink
                 to="/dashboard/add-review"
                 className={({ isActive }) =>
-                `p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
-                  isActive ? " bg-yellow-500" : undefined
-                }`
-              }
+                  `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
+                    isActive ? " bg-[#057AFF]" : undefined
+                  }`
+                }
               >
                 Add Review
               </NavLink>
@@ -56,20 +56,52 @@ const Dashboard = () => {
           {admin && (
             <>
               <li>
-                <NavLink to="/dashboard/users">All Users</NavLink>
+                <NavLink
+                  className={({ isActive }) =>
+                    `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
+                      isActive ? " bg-[#057AFF]" : undefined
+                    }`
+                  }
+                  to="/dashboard/users"
+                >
+                  All Users
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/add-feature-work">
+                <NavLink
+                  className={({ isActive }) =>
+                    `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
+                      isActive ? " bg-[#057AFF]" : undefined
+                    }`
+                  }
+                  to="/dashboard/add-feature-work"
+                >
                   Add Feature Work
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/manage-feature-work">
+                <NavLink
+                  className={({ isActive }) =>
+                    `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
+                      isActive ? " bg-[#057AFF]" : undefined
+                    }`
+                  }
+                  to="/dashboard/manage-feature-work"
+                >
                   Manage Products
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/manage-booking">Manage Orders</NavLink>
+                <NavLink
+                  className={({ isActive }) =>
+                    `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
+                      isActive ? " bg-[#057AFF]" : undefined
+                    }`
+                  }
+                  to="/dashboard/manage-booking"
+                >
+                  Manage Orders
+                </NavLink>
               </li>
             </>
           )}

@@ -1,7 +1,7 @@
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, Link as NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import auth from "../../../Firebase/Firebase.init";
 
 const Navbar = () => {
@@ -15,7 +15,7 @@ const Navbar = () => {
   const menuItems = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink  to="/">Home</NavLink>
       </li>
       <li>
         <NavLink to="/products">Products</NavLink>
@@ -46,24 +46,24 @@ const Navbar = () => {
             className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-secondary rounded-box w-52"
           >
             <li>
-              <NavLink to="" className="justify-between">
+              <Link to="" className="justify-between">
                 Profile
-              </NavLink>
+              </Link>
             </li>
             <li>
-              <NavLink to="/dashboard">Dashboard</NavLink>
+              <Link to="/dashboard">Dashboard</Link>
             </li>
             <li>
-              <NavLink to="" onClick={logout}>
+              <Link to="" onClick={logout}>
                 Logout
-              </NavLink>
+              </Link>
             </li>
           </ul>
         </div>
       )}
       {!user && (
         <li>
-          <NavLink to="/authentication/user">Login</NavLink>
+          <Link to="/authentication/user">Login</Link>
         </li>
       )}
     </>
@@ -156,7 +156,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end hidden lg:flex min-w-fit">
-          <ul className="menu menu-horizontal  p-0">{menuItems}</ul>
+          <ul className="menu menu-horizontal  p-0 gap-2">{menuItems}</ul>
         </div>
       </div>
     </div>
