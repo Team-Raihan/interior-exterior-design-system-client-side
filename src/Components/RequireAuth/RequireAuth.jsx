@@ -6,9 +6,10 @@ import {
 import { Navigate, useLocation } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import auth from "../../Firebase-Setup/firebase.init";
+import auth from "../../Firebase/Firebase.init";
 
-import Loading from "../../Pages/SharedPages/Loading/Loading";
+
+
 
 const RequireAuth = ({ children }) => {
     const location = useLocation();
@@ -16,7 +17,7 @@ const RequireAuth = ({ children }) => {
     const [sendEmailVerification, sending, error] =
         useSendEmailVerification(auth);
     if (loading) {
-        return <Loading></Loading>;
+        return ;
     }
 
     if (!user) {

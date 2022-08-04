@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 
-const useAdmin = (user) => {
+const useAdmin = (email) => {
     const [admin, setAdmin] = useState(false);
     const [adminLoading, setAdminLoading] = useState(true);
     useEffect(() => {
-        const email = user?.email;
         if (email) {
-            fetch(`https://elctrofy.herokuapp.com/admin/${email}`, {
+            fetch(`http://localhost:5000/api/user/admin/${email}`, {
                 method: "GET",
                 headers: {
                     "content-type": "application/json",
@@ -21,7 +20,7 @@ const useAdmin = (user) => {
                     setAdminLoading(false);
                 });
         }
-    }, [user]);
+    }, [email]);
 
     return [admin, adminLoading];
 };
