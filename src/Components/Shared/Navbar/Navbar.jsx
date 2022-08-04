@@ -6,7 +6,7 @@ import auth from "../../../Firebase/Firebase.init";
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
-  console.log(user);
+  // console.log(user);
 
   const logout = () => {
     signOut(auth);
@@ -28,9 +28,9 @@ const Navbar = () => {
       </li>
 
       {user && (
-        <div class="dropdown dropdown-end">
-          <label tabindex="0" class="btn btn-ghost  btn-circle avatar">
-            <div class="w-10 rounded-full  ring-white ring-2">
+        <div className="dropdown dropdown-end">
+          <label tabIndex="0" className="btn btn-ghost  btn-circle avatar">
+            <div className="w-10 rounded-full  ring-white ring-2">
               <img
                 src={
                   user?.photoURL
@@ -42,11 +42,11 @@ const Navbar = () => {
             </div>
           </label>
           <ul
-            tabindex="0"
-            class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-secondary rounded-box w-52"
+            tabIndex="0"
+            className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-secondary rounded-box w-52"
           >
             <li>
-              <NavLink to="" class="justify-between">
+              <NavLink to="" className="justify-between">
                 Profile
               </NavLink>
             </li>
@@ -115,11 +115,11 @@ const Navbar = () => {
               </li>
               {user && (
                 <div
-                  tabindex="0"
-                  class="collapse collapse-plus  bg-secondary text-white rounded-box w-full"
+                  tabIndex="0"
+                  className="collapse collapse-plus  bg-secondary text-white rounded-box w-full"
                 >
-                  <label class="btn btn-ghost btn-circle avatar">
-                    <div class="w-6 rounded-full  ring-white ring-2">
+                  <label className="btn btn-ghost btn-circle avatar">
+                    <div className="w-6 rounded-full  ring-white ring-2">
                       <img
                         src={
                           user?.photoURL
@@ -130,9 +130,9 @@ const Navbar = () => {
                       />
                     </div>
                   </label>
-                  <div class="collapse-content">
+                  <div className="collapse-content">
                     <li>
-                      <Link to="" class="">
+                      <Link to="" className="">
                         Profile
                       </Link>
                     </li>

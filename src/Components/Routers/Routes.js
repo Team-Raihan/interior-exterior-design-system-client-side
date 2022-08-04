@@ -4,6 +4,7 @@ import Authentication from "../../Pages/Authentication/Authentication";
 import Dashboard from "../../Pages/Dashboard/Dashboard";
 import Home from "../../Pages/HomePage/Home";
 import FeatureWorkDetails from "../FeatureWorkDetails/FeatureWorkDetails";
+import NewsDetails from "../NewsDetails/NewsDetails";
 import NotFound from "../Shared/NotFound/NotFound";
 import paths from "./routerPath";
 const RoutesPath = () => {
@@ -12,6 +13,7 @@ const RoutesPath = () => {
       <Route path={paths.home} element={<Home />} />
       <Route path={paths.authentication} element={<Authentication />} />
       <Route path={paths.featureWorkDetails} element={<FeatureWorkDetails />} />
+      <Route path={paths.newsDetails} element={<NewsDetails />} />
       <Route path={paths.dashboard} element={<Dashboard />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
