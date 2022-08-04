@@ -30,7 +30,7 @@ const Dashboard = () => {
               end
               className={({ isActive }) =>
                 `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
-                  isActive ? " bg-[#057AFF]" : undefined
+                  isActive ? " bg-[#021431]" : undefined
                 }`
               }
             >
@@ -44,7 +44,7 @@ const Dashboard = () => {
                 to="/dashboard/add-review"
                 className={({ isActive }) =>
                   `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
-                    isActive ? " bg-[#057AFF]" : undefined
+                    isActive ? " bg-[#021431]" : undefined
                   }`
                 }
               >
@@ -59,7 +59,7 @@ const Dashboard = () => {
                 <NavLink
                   className={({ isActive }) =>
                     `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
-                      isActive ? " bg-[#057AFF]" : undefined
+                      isActive ? " bg-[#021431]" : undefined
                     }`
                   }
                   to="/dashboard/users"
@@ -71,7 +71,7 @@ const Dashboard = () => {
                 <NavLink
                   className={({ isActive }) =>
                     `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
-                      isActive ? " bg-[#057AFF]" : undefined
+                      isActive ? " bg-[#021431]" : undefined
                     }`
                   }
                   to="/dashboard/add-feature-work"
@@ -83,7 +83,7 @@ const Dashboard = () => {
                 <NavLink
                   className={({ isActive }) =>
                     `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
-                      isActive ? " bg-[#057AFF]" : undefined
+                      isActive ? " bg-[#021431]" : undefined
                     }`
                   }
                   to="/dashboard/manage-feature-work"
@@ -95,7 +95,7 @@ const Dashboard = () => {
                 <NavLink
                   className={({ isActive }) =>
                     `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
-                      isActive ? " bg-[#057AFF]" : undefined
+                      isActive ? " bg-[#021431]" : undefined
                     }`
                   }
                   to="/dashboard/manage-booking"

@@ -19,10 +19,10 @@ const RoutesPath = () => {
       <Route path={paths.newsDetails} element={<NewsDetails />} />
       <Route path={paths.dashboard} element={<Dashboard />}>
         <Route
-          index
+          path="my-profile"
           element={
             <RequireAuth>
-              <MyProfile></MyProfile>
+              <MyProfile />
             </RequireAuth>
           }
         />
