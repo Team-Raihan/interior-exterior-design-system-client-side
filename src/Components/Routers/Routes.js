@@ -10,6 +10,11 @@ import MyProfile from "../Dashboard/Profile/MyProfile";
 import NotFound from "../Shared/NotFound/NotFound";
 import paths from "./routerPath";
 import AddReview from "../Dashboard/AddReview/AddReview";
+import Welcome from "../Dashboard/Welcome/Welcome";
+import Users from "../Dashboard/Users/Users";
+import AddFeatureWork from "../Dashboard/AddFeatureWork/AddFeatureWork";
+import ManageFeatureWorks from "../Dashboard/ManageFeatureWorks/ManageFeatureWorks";
+import ManageBooking from "../Dashboard/ManageBooking/ManageBooking";
 const RoutesPath = () => {
   return (
     <Routes>
@@ -18,6 +23,14 @@ const RoutesPath = () => {
       <Route path={paths.featureWorkDetails} element={<FeatureWorkDetails />} />
       <Route path={paths.newsDetails} element={<NewsDetails />} />
       <Route path={paths.dashboard} element={<Dashboard />}>
+        <Route
+          index
+          element={
+            <RequireAuth>
+              <Welcome />
+            </RequireAuth>
+          }
+        ></Route>
         <Route
           path="my-profile"
           element={
@@ -32,6 +45,39 @@ const RoutesPath = () => {
           element={
             <RequireAuth>
               <AddReview />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="users"
+          element={
+            <RequireAuth>
+              <Users />
+            </RequireAuth>
+          }
+        />
+
+        <Route
+          path="add-feature-work"
+          element={
+            <RequireAuth>
+              <AddFeatureWork />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="manage-feature-works"
+          element={
+            <RequireAuth>
+              <ManageFeatureWorks />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="manage-booking"
+          element={
+            <RequireAuth>
+              <ManageBooking />
             </RequireAuth>
           }
         />

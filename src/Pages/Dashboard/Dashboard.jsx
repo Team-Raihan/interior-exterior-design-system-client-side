@@ -26,7 +26,7 @@ const Dashboard = () => {
           {/* <!-- Sidebar content here --> */}
           <li>
             <NavLink
-              to="/dashboard"
+              to="/dashboard/my-profile"
               end
               className={({ isActive }) =>
                 `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
@@ -64,7 +64,7 @@ const Dashboard = () => {
                   }
                   to="/dashboard/users"
                 >
-                  All Users
+                  Users
                 </NavLink>
               </li>
               <li>
@@ -86,9 +86,9 @@ const Dashboard = () => {
                       isActive ? " bg-[#021431]" : undefined
                     }`
                   }
-                  to="/dashboard/manage-feature-work"
+                  to="/dashboard/manage-feature-works"
                 >
-                  Manage Products
+                  Manage Feature Works
                 </NavLink>
               </li>
               <li>
@@ -100,7 +100,7 @@ const Dashboard = () => {
                   }
                   to="/dashboard/manage-booking"
                 >
-                  Manage Orders
+                  Manage Booking
                 </NavLink>
               </li>
             </>
