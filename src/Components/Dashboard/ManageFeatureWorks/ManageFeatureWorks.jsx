@@ -25,7 +25,7 @@ const ManageFeatureWorks = () => {
   const deleteItem = async (id) => {
     const sure = window.confirm("Are you sure? You want to delete!");
     if (sure) {
-      const url = `https://elctrofy.herokuapp.com/tools/${id}`;
+      const url = `http://localhost:5000/api/featured-item/${id}`;
 
       axios
         .delete(url, {
@@ -77,7 +77,7 @@ const ManageFeatureWorks = () => {
                     </tr>
                     <tr className="bg-gray-50 border-b border-gray-200 text-xs leading-4 text-gray-500 uppercase tracking-wider">
                       <th className="px-6 py-3 text-left font-medium">
-                       Product Image
+                        Product Image
                       </th>
                       <th className="px-6 py-3 text-center font-medium">
                         Product Name
@@ -109,12 +109,10 @@ const ManageFeatureWorks = () => {
                             </div>
                           </div>
                         </td>
-             
-                                      
+
                         <td className="px-6 text-center py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
                           <div className="flex flex-col items-center">
                             <p>$ {product.price} USD</p>
-                         
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
@@ -141,7 +139,7 @@ const ManageFeatureWorks = () => {
           <div className="flex flex-col">
             <div className="flex justify-end   items-center py-5">
               <NavLink
-                to="/dashboard/add-inventory-item"
+                to="/dashboard/add-feature-work"
                 className="inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline"
               >
                 Create new Items
@@ -154,16 +152,16 @@ const ManageFeatureWorks = () => {
                   <thead>
                     <tr className="border-b border-gray-200 font-thin bg-white leading-4 tracking-wider text-base text-gray-500">
                       <th className="px-6 py-5 text-left" colSpan="100%">
-                        <p>Manage Inventory</p>
+                        <p>Manage Product</p>
                       </th>
                     </tr>
                     <tr className="bg-gray-50 border-b border-gray-200 text-xs leading-4 text-gray-500 uppercase tracking-wider">
                       <th className="px-6 py-3 text-center font-medium">
-                        Product
+                        Product Info
                       </th>
 
                       <th className="px-6 py-3 text-center font-medium">
-                        Update
+                        Delete
                       </th>
                     </tr>
                   </thead>
@@ -181,7 +179,11 @@ const ManageFeatureWorks = () => {
                                   alt="product"
                                 />
                               </div>
-                              <div>{item.name}</div>
+                              <div>
+                                {item.category.length > 10
+                                  ? `${item.category.slice(0, 10)}..`
+                                  : item.category}
+                              </div>
                             </div>
                           </div>
                         </td>
@@ -205,15 +207,9 @@ const ManageFeatureWorks = () => {
           </div>
         </div>
         {products?.data?.length === 0 ? (
-          <div className=" w-full my-10 z-50 overflow-hidden  opacity-75 flex flex-col items-center justify-center">
-            <div
-              className="spinner-border animate-spin inline-block text-teal-600 mb-10 w-14 h-14 border-6 rounded-full"
-              role="status"
-            ></div>
-            <h2 className="text-center text-blue-500 text-xl font-semibold">
-              Loading...
-            </h2>
-          </div>
+          <h2 className="text-center mt-10 text-blue-500 text-xl font-semibold">
+            No Item Found
+          </h2>
         ) : (
           ""
         )}
