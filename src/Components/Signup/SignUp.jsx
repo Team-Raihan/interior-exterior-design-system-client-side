@@ -25,7 +25,7 @@ const SignUp = () => {
       sendEmailVerification: true,
     });
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-  const [loading, setLoading] = useState(false);
+  const [postLoading, setPostLoading] = useState(false);
   const [passShow, setPassShow] = useState(false);
   const [confirmPassShow, setConfirmPassShow] = useState(false);
   const [name, setName] = useState("");
@@ -42,8 +42,8 @@ const SignUp = () => {
   const handleConfirmShowHide = () => {
     setConfirmPassShow(!confirmPassShow);
   };
-  const postDetails = async (pics) => {
-    setLoading(true);
+  const postPhoto = async (pics) => {
+    setPostLoading(true);
     if (pics === undefined) {
       toast({
         title: "Please Select an Image",
@@ -54,7 +54,7 @@ const SignUp = () => {
         isClosable: true,
         position: "bottom",
       });
-      return setLoading(false);
+      return setPostLoading(false);
     }
     if (
       pics.type === "image/jpeg" ||
@@ -85,10 +85,8 @@ const SignUp = () => {
             });
             // The request was made and the server responded with a status code
             // that falls out of the range of 2xx
-            console.log(error.response.data);
             console.log(error.response.status);
-            console.log(error.response.headers);
-            return setLoading(false);
+            return setPostLoading(false);
           } else if (error.request) {
             toast({
               title: "Failed to upload! Please try again.",
@@ -101,7 +99,7 @@ const SignUp = () => {
             // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
             // http.ClientRequest in node.js
             console.log(error.request);
-            return setLoading(false);
+            return setPostLoading(false);
           } else {
             toast({
               title: "Failed to upload! Please try again.",
@@ -112,13 +110,13 @@ const SignUp = () => {
             });
             // Something happened in setting up the request that triggered an Error
             console.log("Error", error.message);
-            setLoading(false);
+            setPostLoading(false);
           }
           console.log(error.config);
         });
         const getData = await response?.json();
         setPic(await getData?.url?.toString());
-        return setLoading(false);
+        return setPostLoading(false);
       } catch (error) {
         console.log(error);
         toast({
@@ -128,7 +126,7 @@ const SignUp = () => {
           isClosable: true,
           position: "bottom",
         });
-        return setLoading(false);
+        return setPostLoading(false);
       }
     } else {
       toast({
@@ -138,12 +136,12 @@ const SignUp = () => {
         isClosable: true,
         position: "bottom",
       });
-      setLoading(false);
+      setPostLoading(false);
       return;
     }
   };
   const submitSignUpHandler = async () => {
-    setLoading(true);
+    setPostLoading(true);
     if (!name || !email || !password || !confirmPassword || !pic) {
       toast({
         title: "Please Fill all the Fields",
@@ -152,7 +150,7 @@ const SignUp = () => {
         isClosable: true,
         position: "bottom",
       });
-      setLoading(false);
+      setPostLoading(false);
       return;
     }
     if (password !== confirmPassword) {
@@ -163,7 +161,7 @@ const SignUp = () => {
         isClosable: true,
         position: "bottom",
       });
-      setLoading(false);
+      setPostLoading(false);
       return;
     } else {
       try {
@@ -177,6 +175,11 @@ const SignUp = () => {
           { name, email, password, pic },
           config
         );
+
+        const accessToken = await data.token;
+        localStorage.setItem("accessToken", accessToken);
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name, photoURL: pic });
         toast({
           title: "Registration Successful",
           status: "success",
@@ -184,11 +187,7 @@ const SignUp = () => {
           isClosable: true,
           position: "bottom",
         });
-        const accessToken = await data.token;
-        localStorage.setItem("accessToken", accessToken);
-        await createUserWithEmailAndPassword(email, password);
-        await updateProfile({ displayName: name, photoURL: pic });
-        setLoading(false);
+        setPostLoading(false);
         return navigate("/");
       } catch (error) {
         if (error) {
@@ -204,7 +203,7 @@ const SignUp = () => {
             position: "bottom",
           });
         }
-        setLoading(false);
+        setPostLoading(false);
         return;
       }
     }
@@ -263,7 +262,7 @@ const SignUp = () => {
             type="file"
             p={1.5}
             accept="image/*"
-            onChange={(e) => postDetails(e.target.files[0])}
+            onChange={(e) => postPhoto(e.target.files[0])}
           />
         </FormControl>
         <Button
@@ -272,7 +271,7 @@ const SignUp = () => {
           width="100%"
           style={{ marginTop: 15 }}
           onClick={submitSignUpHandler}
-          isLoading={loading}
+          isLoading={postLoading}
           _hover={{
             backgroundColor: "#021431",
           }}
