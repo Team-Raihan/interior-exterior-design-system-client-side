@@ -28,7 +28,7 @@ const FeatureWorkDetails = () => {
               {feature?.category}
             </h2>
             <strong className="md:text-2xl">
-              Remuneration: ${feature?.price ? feature?.price : 3000}
+              Remuneration: ${feature?.price ? feature?.price : "Negotiable"}
             </strong>
           </div>
         </div>
