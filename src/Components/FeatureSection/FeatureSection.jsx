@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import "./FeatureSection.css";
 import { useNavigate } from "react-router-dom";
-import BookingModal from "../FeatureWorkDetails/BookingModal";
 
 const FeatureSection = ({ feature }) => {
-  const [booking, setBooking] = useState();
-
   const navigate = useNavigate();
 
   const navigateToCarDetail = (id) => {
@@ -28,7 +25,6 @@ const FeatureSection = ({ feature }) => {
       >
         <h2 className="card-title font-bold">{feature.category}</h2>
       </div>
-      {booking && <BookingModal booking={booking} setBooking={setBooking} />}
     </div>
   );
 };
