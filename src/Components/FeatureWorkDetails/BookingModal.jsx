@@ -18,11 +18,13 @@ const BookingModal = ({ booking, setBooking }) => {
 
   const onFormSubmit = async (data) => {
     const bookingInfo = {
-      img: data?.img,
-      name: user?.name,
-      review: data?.review,
-      rate: data?.rate,
-      occupation: data?.occupation,
+      buyerName: user?.displayName,
+      buyerEmail: user?.email,
+      productImg: booking?.img,
+      productName: booking?.category,
+      productPrice: booking?.price,
+      buyerAddress: data?.address,
+      buyerNumber: data?.number,
     };
 
     try {
@@ -30,7 +32,7 @@ const BookingModal = ({ booking, setBooking }) => {
         "http://localhost:5000/api/order",
         bookingInfo
       );
-
+      console.log("newBooking: ", newBooking);
       if (newBooking.status === 201) {
         toast({
           title: "Thanks For Your Review.",
@@ -200,8 +202,14 @@ const BookingModal = ({ booking, setBooking }) => {
                 for="booking-modal"
                 class=" btn btn-sm  btn-secondary  text-white font-bold"
               >
-                Proceed
+                Cancel
               </label>
+              <button
+                type="submit"
+                class=" btn btn-sm  btn-secondary  text-white font-bold"
+              >
+                Proceed
+              </button>
             </div>
           </form>
         </div>
