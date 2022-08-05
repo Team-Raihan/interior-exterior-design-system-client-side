@@ -18,6 +18,7 @@ import ManageBooking from "../Dashboard/ManageBooking/ManageBooking";
 import FeatureWorks from "../FeatureWorks/FeatureWorks";
 import AllNews from "../AllNews/AllNews";
 import AddNews from "../Dashboard/AddNews/AddNews";
+import MyBookings from "../Dashboard/MyBooking/MyBookings";
 
 const RoutesPath = () => {
   return (
@@ -51,6 +52,14 @@ const RoutesPath = () => {
           element={
             <RequireAuth>
               <AddReview />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="my-booking"
+          element={
+            <RequireAuth>
+              <MyBookings />
             </RequireAuth>
           }
         />

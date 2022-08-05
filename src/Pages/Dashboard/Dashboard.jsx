@@ -43,18 +43,32 @@ const Dashboard = () => {
           </li>
 
           {!admin && (
-            <li>
-              <NavLink
-                to="/dashboard/add-review"
-                className={({ isActive }) =>
-                  `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
-                    isActive ? " bg-primary" : undefined
-                  }`
-                }
-              >
-                Add Review
-              </NavLink>
-            </li>
+            <>
+              <li>
+                <NavLink
+                  to="/dashboard/add-review"
+                  className={({ isActive }) =>
+                    `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
+                      isActive ? " bg-primary" : undefined
+                    }`
+                  }
+                >
+                  Add Review
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/my-booking"
+                  className={({ isActive }) =>
+                    `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
+                      isActive ? " bg-primary" : undefined
+                    }`
+                  }
+                >
+                  My Booking
+                </NavLink>
+              </li>
+            </>
           )}
 
           {admin && (
