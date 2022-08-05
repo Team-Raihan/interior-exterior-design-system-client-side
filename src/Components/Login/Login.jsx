@@ -56,6 +56,10 @@ const Login = () => {
         { email, password },
         config
       );
+
+      const accessToken = data.token;
+      localStorage.setItem("accessToken", accessToken);
+      await signInWithEmailAndPassword(email, password);
       toast({
         title: "Login Successful",
         status: "success",
@@ -63,9 +67,6 @@ const Login = () => {
         isClosable: true,
         position: "bottom",
       });
-      const accessToken = data.token;
-      localStorage.setItem("accessToken", accessToken);
-      await signInWithEmailAndPassword(email, password);
       setLoading(false);
       return navigate("/");
     } catch (error) {
