@@ -64,9 +64,9 @@ const BookingModal = ({ booking, setBooking }) => {
 
   return (
     <>
-      <input type="checkbox" id="booking-modal" class="modal-toggle" />
-      <div class="modal">
-        <div class="modal-box">
+      <input type="checkbox" id="booking-modal" className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box">
           <div className="divider before:bg-secondary after:bg-secondary">
             <h2 className=" uppercase md:text-4xl text-xl text-secondary font-bold">
               Booking Info
@@ -199,14 +199,14 @@ const BookingModal = ({ booking, setBooking }) => {
             </div>
             <div className="divider before:bg-secondary after:bg-secondary">
               <label
-                for="booking-modal"
-                class=" btn btn-sm  btn-secondary  text-white font-bold"
+                htmlFor="booking-modal"
+                className=" btn btn-sm  btn-secondary  text-white font-bold"
               >
                 Cancel
               </label>
               <button
                 type="submit"
-                class=" btn btn-sm  btn-secondary  text-white font-bold"
+                className=" btn btn-sm  btn-secondary  text-white font-bold"
               >
                 Proceed
               </button>
