@@ -23,7 +23,7 @@ const UpdateProfileModal = () => {
                 Yay!
               </label>
               <label
-              htmlFor="update-profile"
+                htmlFor="update-profile"
                 className=" btn btn-sm  btn-secondary  text-white font-bold"
               >
                 Yay!

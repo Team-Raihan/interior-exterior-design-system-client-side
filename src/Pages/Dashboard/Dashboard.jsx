@@ -16,7 +16,10 @@ const Dashboard = () => {
         <Outlet />
       </div>
       <div className="drawer-side">
-        <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
+        <label
+          htmlhtmlFor="dashboard-sidebar"
+          className="drawer-overlay"
+        ></label>
 
         <ul className=" flex flex-col gap-5 shadow-md  bg-[rgb(0,7,61)] p-4 overflow-y-auto w-80 font-semibold  text-white">
           {adminLoading && (
@@ -40,18 +43,32 @@ const Dashboard = () => {
           </li>
 
           {!admin && (
-            <li>
-              <NavLink
-                to="/dashboard/add-review"
-                className={({ isActive }) =>
-                  `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
-                    isActive ? " bg-primary" : undefined
-                  }`
-                }
-              >
-                Add Review
-              </NavLink>
-            </li>
+            <>
+              <li>
+                <NavLink
+                  to="/dashboard/add-review"
+                  className={({ isActive }) =>
+                    `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
+                      isActive ? " bg-primary" : undefined
+                    }`
+                  }
+                >
+                  Add Review
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/my-booking"
+                  className={({ isActive }) =>
+                    `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
+                      isActive ? " bg-primary" : undefined
+                    }`
+                  }
+                >
+                  My Booking
+                </NavLink>
+              </li>
+            </>
           )}
 
           {admin && (

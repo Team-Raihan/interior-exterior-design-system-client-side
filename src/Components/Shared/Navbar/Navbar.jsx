@@ -103,7 +103,7 @@ const Navbar = () => {
         {/*   <div className="lg:navbar-start lg:hidden">
           <label
             tabIndex="1"
-            htmlFor="dashboard-sidebar"
+            htmlhtmlFor="dashboard-sidebar"
             className="btn btn-ghost lg:hidden"
           >
             <svg
@@ -127,7 +127,7 @@ const Navbar = () => {
           <div className="lg:navbar-start lg:hidden">
             <label
               tabIndex="1"
-              htmlFor="dashboard-sidebar"
+              htmlhtmlFor="dashboard-sidebar"
               className="btn btn-ghost lg:hidden"
             >
               <svg

@@ -7,7 +7,7 @@ const FeatureWorkDetails = () => {
   const [booking, setBooking] = useState(null);
   const { id } = useParams();
   const [feature, setFeature] = useState({});
-
+  // console.log(feature);
 
   useEffect(() => {
     const url = `http://localhost:5000/api/featured-item/${id}`;
@@ -43,7 +43,7 @@ const FeatureWorkDetails = () => {
             onClick={() => {
               setBooking(feature);
             }}
-            className="btn modal-button btn-secondary md:w-1/3 w-full  text-white font-bold"
+            className="btn modal-button btn-secondary md:w-1/3 px-10  text-white font-bold"
           >
             Book Now
           </label>
