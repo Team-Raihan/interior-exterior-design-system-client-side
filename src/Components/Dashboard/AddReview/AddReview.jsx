@@ -1,13 +1,13 @@
+import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
 import auth from "../../../Firebase/Firebase.init";
 
 const AddReview = () => {
   const [user] = useAuthState(auth);
   // console.log(user);
-
+  const toast = useToast();
   const {
     register,
     handleSubmit,
@@ -18,25 +18,45 @@ const AddReview = () => {
 
   const onFormSubmit = async (data) => {
     const review = {
-      img: data?.photoURL,
+      img: user?.photoURL,
       name: data?.name,
       review: data?.review,
       rate: data?.rate,
       occupation: data?.occupation,
     };
 
-    axios.post("http://localhost:5000/api/review", review).then((res) => {
-      const data = res.data;
-      if (data.success) {
-        toast.success("New Review Added", {
-          toastId: "addReview",
+    try {
+      const newReview = await axios.post(
+        "http://localhost:5000/api/review",
+        review
+      );
+
+      if (newReview.status === 201) {
+        toast({
+          title: "Thanks For Your Review.",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+          position: "bottom",
         });
       } else {
-        toast.error("Failed to add this review!", {
-          toastId: "failedToReview",
+        toast({
+          title: "Something Went Wrong!",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+          position: "bottom",
         });
       }
-    });
+    } catch (error) {
+      toast({
+        title: "Something Went Wrong!",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "bottom",
+      });
+    }
 
     reset();
   };

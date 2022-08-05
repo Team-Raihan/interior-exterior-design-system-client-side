@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 const useAdmin = (email) => {
     const [admin, setAdmin] = useState(false);
     const [adminLoading, setAdminLoading] = useState(true);
-    useEffect(() => {
+
+    const getAdmin = async ()=>{
         if (email) {
-            fetch(`http://localhost:5000/api/user/admin/${email}`, {
+           await fetch(`http://localhost:5000/api/user/admin/${email}`, {
                 method: "GET",
                 headers: {
                     "content-type": "application/json",
@@ -20,6 +21,9 @@ const useAdmin = (email) => {
                     setAdminLoading(false);
                 });
         }
+    }
+    useEffect(() => {
+       getAdmin()
     }, [email]);
 
     return [admin, adminLoading];
