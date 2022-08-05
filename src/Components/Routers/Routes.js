@@ -15,13 +15,18 @@ import Users from "../Dashboard/Users/Users";
 import AddFeatureWork from "../Dashboard/AddFeatureWork/AddFeatureWork";
 import ManageFeatureWorks from "../Dashboard/ManageFeatureWorks/ManageFeatureWorks";
 import ManageBooking from "../Dashboard/ManageBooking/ManageBooking";
+import FeatureWorks from "../FeatureWorks/FeatureWorks";
+import AllNews from "../AllNews/AllNews";
+
 const RoutesPath = () => {
   return (
     <Routes>
       <Route path={paths.home} element={<Home />} />
       <Route path={paths.authentication} element={<Authentication />} />
       <Route path={paths.featureWorkDetails} element={<FeatureWorkDetails />} />
+      <Route path={paths.featureWorks} element={<FeatureWorks />} />
       <Route path={paths.newsDetails} element={<NewsDetails />} />
+      <Route path={paths.allNews} element={<AllNews />} />
       <Route path={paths.dashboard} element={<Dashboard />}>
         <Route
           index

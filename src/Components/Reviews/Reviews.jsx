@@ -54,7 +54,7 @@ const Reviews = () => {
         </div>
         <div className=" md:p-16">
           <Slider {...settings}>
-            {allReviews?.data?.map((review) => (
+            {allReviews?.data?.slice(0, 6).map((review) => (
               <div
                 className="card bg-base-100 overflow-hidden rounded-xl relative"
                 key={review._id}

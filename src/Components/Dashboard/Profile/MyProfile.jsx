@@ -9,7 +9,7 @@ const MyProfile = () => {
     <>
       <div className="min-h-fit md:m-16 m-4">
         <div className="flex-1  flex flex-col">
-          <section className=" p-6 rounded-2xl  shadow">
+          <div className=" p-6 rounded-2xl  shadow">
             <div className="divider before:bg-secondary after:bg-secondary">
               <h2 className=" uppercase md:text-4xl text-secondary font-bold mb-4">
                 My Profile
@@ -53,7 +53,7 @@ const MyProfile = () => {
               </div>
             </form>
             <UpdateProfileModal />
-          </section>
+          </div>
         </div>
       </div>
     </>

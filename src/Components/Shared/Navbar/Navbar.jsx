@@ -1,12 +1,13 @@
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import auth from "../../../Firebase/Firebase.init";
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
   // console.log(user);
+  const { pathname } = useLocation();
 
   const logout = () => {
     signOut(auth);
@@ -17,7 +18,7 @@ const Navbar = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
+            `py-2 px-4  text-white rounded hover:bg-gray-200 hover:text-gray-500  ${
               isActive ? " bg-[#021431]" : undefined
             }`
           }
@@ -27,13 +28,28 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/products">Products</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            `py-2 px-4  text-white rounded hover:bg-gray-200 hover:text-gray-500  ${
+              isActive ? " bg-[#021431]" : undefined
+            }`
+          }
+          to="/feature-works"
+        >
+          Feature Works
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/reviews">Reviews</NavLink>
-      </li>
-      <li>
-        <NavLink to="/blog">Blogs</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            `py-2 px-4  text-white rounded hover:bg-gray-200 hover:text-gray-500  ${
+              isActive ? " bg-[#021431]" : undefined
+            }`
+          }
+          to="/all-news"
+        >
+          Blogs
+        </NavLink>
       </li>
 
       {user && (
@@ -55,11 +71,6 @@ const Navbar = () => {
             className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-secondary rounded-box w-52"
           >
             <li>
-              <Link to="" className="justify-between">
-                Profile
-              </Link>
-            </li>
-            <li>
               <Link to="/dashboard">Dashboard</Link>
             </li>
             <li>
@@ -72,7 +83,16 @@ const Navbar = () => {
       )}
       {!user && (
         <li>
-          <Link to="/authentication/user">Login</Link>
+          <NavLink
+            className={({ isActive }) =>
+              `py-2 px-4  text-white rounded hover:bg-gray-200 hover:text-gray-500  ${
+                isActive ? " bg-[#021431]" : undefined
+              }`
+            }
+            to="/authentication/user"
+          >
+            Login
+          </NavLink>
         </li>
       )}
     </>
@@ -80,7 +100,55 @@ const Navbar = () => {
   return (
     <div className="sticky top-0 bg-secondary text-white font-bold  z-40 drop-shadow-xl ">
       <div className="container navbar md:min-h-[96px] justify-between mx-auto px-4">
-        <div className="navbar-start">
+        {/*   <div className="lg:navbar-start lg:hidden">
+          <label
+            tabIndex="1"
+            htmlFor="dashboard-sidebar"
+            className="btn btn-ghost lg:hidden"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </label>
+        </div> */}
+        {/* ------------------ */}
+        {pathname?.includes("dashboard") && (
+          <div className="lg:navbar-start lg:hidden">
+            <label
+              tabIndex="1"
+              htmlFor="dashboard-sidebar"
+              className="btn btn-ghost lg:hidden"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </label>
+          </div>
+        )}
+        {/* ------------------ */}
+        <div className="lg:navbar-start">
           <NavLink
             to="/"
             className="btn btn-ghost normal-case text-2xl font-bold"
@@ -88,6 +156,7 @@ const Navbar = () => {
             Logo
           </NavLink>
         </div>
+        {/* mobile menu */}
         <div className="dropdown dropdown-end">
           <label tabIndex="0" className="btn btn-ghost lg:hidden">
             <svg
@@ -111,16 +180,40 @@ const Navbar = () => {
           >
             <>
               <li>
-                <NavLink to="/">Home</NavLink>
+                <NavLink
+                  className={({ isActive }) =>
+                    `py-2 px-4  text-white rounded hover:bg-gray-200 hover:text-gray-500  ${
+                      isActive ? " bg-[#021431]" : undefined
+                    }`
+                  }
+                  to="/"
+                >
+                  Home
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/products">Products</NavLink>
+                <NavLink
+                  className={({ isActive }) =>
+                    `py-2 px-4  text-white rounded hover:bg-gray-200 hover:text-gray-500  ${
+                      isActive ? " bg-[#021431]" : undefined
+                    }`
+                  }
+                  to="/feature-works"
+                >
+                  Feature Works
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/reviews">Reviews</NavLink>
-              </li>
-              <li>
-                <NavLink to="/blog">Blogs</NavLink>
+                <NavLink
+                  className={({ isActive }) =>
+                    `py-2 px-4  text-white rounded hover:bg-gray-200 hover:text-gray-500  ${
+                      isActive ? " bg-[#021431]" : undefined
+                    }`
+                  }
+                  to="/all-news"
+                >
+                  Blogs
+                </NavLink>
               </li>
               {user && (
                 <div
@@ -139,12 +232,9 @@ const Navbar = () => {
                       />
                     </div>
                   </label>
+
+                  {/* mobile menu collapse content*/}
                   <div className="collapse-content">
-                    <li>
-                      <Link to="" className="">
-                        Profile
-                      </Link>
-                    </li>
                     <li>
                       <Link to="/dashboard">Dashboard</Link>
                     </li>
@@ -158,7 +248,16 @@ const Navbar = () => {
               )}
               {!user && (
                 <li>
-                  <NavLink to="/authentication/user">Login</NavLink>
+                  <NavLink
+                    className={({ isActive }) =>
+                      `py-2 px-4  text-white rounded hover:bg-gray-200 hover:text-gray-500  ${
+                        isActive ? " bg-[#021431]" : undefined
+                      }`
+                    }
+                    to="/authentication/user"
+                  >
+                    Login
+                  </NavLink>
                 </li>
               )}
             </>

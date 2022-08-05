@@ -1,25 +1,15 @@
 import React from "react";
 import "./News.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { useQuery } from "react-query";
 
 const News = () => {
-  // const [reports, setReports] = useState([]);
   const navigate = useNavigate();
 
   const navigateToCarDetail = (id) => {
     navigate(`/news/${id}`);
   };
-
-  /*   useEffect(() => {
-    fetch("/news.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const reversedData = data.reverse();
-        setReports(reversedData);
-      });
-  }, []); */
 
   const getData = async () => {
     return await axios.get("http://localhost:5000/api/news");
@@ -27,7 +17,7 @@ const News = () => {
   const {
     data: news,
     isLoading,
-    refetch,
+    // refetch,
     error,
   } = useQuery({ queryKey: ["storeAllNews", 1], queryFn: getData });
   if (isLoading) {
@@ -94,10 +84,13 @@ const News = () => {
             </div>
           </div>
         </div>
-        <div className="mt-16 ">
-          <button className="btn btn-secondary md:w-1/3 w-full  mx-auto block text-white font-bold">
+        <div className="mt-16 text-center">
+          <Link
+            to="/all-news"
+            className="btn btn-secondary md:w-1/3 w-full  mx-auto  text-white font-bold"
+          >
             View All News
-          </button>
+          </Link>
         </div>
       </div>
     </div>
