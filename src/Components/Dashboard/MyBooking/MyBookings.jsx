@@ -59,10 +59,10 @@ const MyBookings = () => {
               </div>
               <div className="flex items-center py-2">
                 <NavLink
-                  to="/dashboard/add-feature-work"
-                  className="inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline"
+                  to="/dashboard/add-review"
+                  className="btn btn-secondary text-white font-bold px-10 h-[40px] min-h-[40px]"
                 >
-                  Add new Product
+                  Add A Review
                 </NavLink>
               </div>
             </div>
@@ -159,7 +159,7 @@ const MyBookings = () => {
                 to="/dashboard/add-review"
                 className="btn btn-sm px-10 btn-secondary text-white mx-auto"
               >
-                Create new Items
+                Add A Review
               </NavLink>
             </div>
 
