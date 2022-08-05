@@ -27,7 +27,7 @@ const BookingModal = ({ booking, setBooking }) => {
 
     try {
       const newBooking = await axios.post(
-        "http://localhost:5000/api/booking",
+        "http://localhost:5000/api/order",
         bookingInfo
       );
 
@@ -66,7 +66,7 @@ const BookingModal = ({ booking, setBooking }) => {
       <div class="modal">
         <div class="modal-box">
           <div className="divider before:bg-secondary after:bg-secondary">
-            <h2 className=" uppercase md:text-4xl text-secondary font-bold mb-4">
+            <h2 className=" uppercase md:text-4xl text-xl text-secondary font-bold">
               Booking Info
             </h2>
           </div>
@@ -87,9 +87,7 @@ const BookingModal = ({ booking, setBooking }) => {
                         })}
                       />
                       {errors.name && (
-                        <span className="text-red-500">
-                          Minimum 10 character Review is required
-                        </span>
+                        <span className="text-red-500">Name is required</span>
                       )}
                     </div>
                     <div className="md:flex-1 mt-2 mb:mt-0 ">
@@ -103,10 +101,8 @@ const BookingModal = ({ booking, setBooking }) => {
                           required: true,
                         })}
                       />
-                      {errors.name && (
-                        <span className="text-red-500">
-                          Minimum 10 character Review is required
-                        </span>
+                      {errors.email && (
+                        <span className="text-red-500">Email is required</span>
                       )}
                     </div>
                   </div>
@@ -122,9 +118,9 @@ const BookingModal = ({ booking, setBooking }) => {
                           required: true,
                         })}
                       />
-                      {errors.name && (
+                      {errors.category && (
                         <span className="text-red-500">
-                          Minimum 10 character Review is required
+                          Category is required
                         </span>
                       )}
                     </div>
@@ -139,7 +135,7 @@ const BookingModal = ({ booking, setBooking }) => {
                           required: true,
                         })}
                       />
-                      {errors.name && (
+                      {errors.price && (
                         <span className="text-red-500">
                           Minimum 10 character Review is required
                         </span>
@@ -157,9 +153,9 @@ const BookingModal = ({ booking, setBooking }) => {
                           required: true,
                         })}
                       />
-                      {errors.name && (
+                      {errors.address && (
                         <span className="text-red-500">
-                          Minimum 10 character Review is required
+                          Address is required
                         </span>
                       )}
                     </div>
@@ -173,13 +169,27 @@ const BookingModal = ({ booking, setBooking }) => {
                         minLength="11"
                         {...register("number", {
                           required: true,
+                          /*    minLength: {
+                            value: 11,
+                            message: "Number must be 11 characters",
+                          },
+                          maxLength: {
+                            value: 11,
+                            message: "Number must be 11 characters",
+                          }, */
                         })}
                       />
-                      {errors.name && (
+                      {errors.number && (
                         <span className="text-red-500">
-                          Minimum 10 character Review is required
+                          Contact number is required
                         </span>
                       )}
+                      {/*     {errors.number?.type === "minLength" ||
+                        (errors.number?.type === "minLength" && (
+                          <span className="label-text-alt text-red-500">
+                            {errors.number.message}
+                          </span>
+                        ))} */}
                     </div>
                   </div>
                 </div>
@@ -190,7 +200,7 @@ const BookingModal = ({ booking, setBooking }) => {
                 for="booking-modal"
                 class=" btn btn-sm  btn-secondary  text-white font-bold"
               >
-                Yay!
+                Proceed
               </label>
             </div>
           </form>

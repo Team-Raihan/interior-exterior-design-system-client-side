@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import BookingModal from "./BookingModal";
 
 const FeatureWorkDetails = () => {
+  const [booking, setBooking] = useState(null);
   const { id } = useParams();
   const [feature, setFeature] = useState({});
   console.log(feature);
@@ -39,13 +40,16 @@ const FeatureWorkDetails = () => {
         <div className="divider before:bg-secondary after:bg-secondary">
           <label
             for="booking-modal"
+            onClick={() => {
+              setBooking(feature);
+            }}
             class="btn modal-button btn-secondary md:w-1/3 w-full  text-white font-bold"
           >
             Book Now
           </label>
-          <BookingModal />
         </div>
       </div>
+      {booking && <BookingModal booking={booking} setBooking={setBooking} />}
     </div>
   );
 };
