@@ -3,9 +3,9 @@ import React from "react";
 const UpdateProfileModal = () => {
   return (
     <>
-      <input type="checkbox" id="update-profile" class="modal-toggle" />
-      <div class="modal">
-        <div class="modal-box">
+      <input type="checkbox" id="update-profile" className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box">
           <div className="divider before:bg-secondary after:bg-secondary">
             <h2 className=" uppercase md:text-4xl text-secondary font-bold mb-4">
               My Profile
@@ -17,14 +17,14 @@ const UpdateProfileModal = () => {
             </div>
             <div className="divider before:bg-secondary after:bg-secondary">
               <label
-                for="update-profile"
-                class=" btn btn-sm  btn-secondary  text-white font-bold"
+                htmlFor="update-profile"
+                className=" btn btn-sm  btn-secondary  text-white font-bold"
               >
                 Yay!
               </label>
               <label
-                for="update-profile"
-                class=" btn btn-sm  btn-secondary  text-white font-bold"
+              htmlFor="update-profile"
+                className=" btn btn-sm  btn-secondary  text-white font-bold"
               >
                 Yay!
               </label>

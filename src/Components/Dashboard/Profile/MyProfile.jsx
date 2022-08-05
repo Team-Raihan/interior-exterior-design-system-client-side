@@ -18,8 +18,8 @@ const MyProfile = () => {
             <form autoComplete="off">
               <div className="my-12 ">
                 <div className="flex lg:flex-row flex-col  items-center justify-center gap-10">
-                  <div class="avatar">
-                    <div class="lg:w-80 md:w-56 w-32 ring-2 ring-secondary ring-offset-base-100 ring-offset-2 rounded">
+                  <div className="avatar">
+                    <div className="lg:w-80 md:w-56 w-32 ring-2 ring-secondary ring-offset-base-100 ring-offset-2 rounded">
                       <img src={user?.photoURL} alt="user img" />
                     </div>
                   </div>
@@ -45,8 +45,8 @@ const MyProfile = () => {
               </div>
               <div className="divider before:bg-secondary after:bg-secondary">
                 <label
-                  for="update-profile"
-                  class="btn modal-button btn-secondary md:px-10 text-white font-bold"
+                  htmlFor="update-profile"
+                  className="btn modal-button btn-secondary md:px-10 text-white font-bold"
                 >
                   Update Profile
                 </label>
