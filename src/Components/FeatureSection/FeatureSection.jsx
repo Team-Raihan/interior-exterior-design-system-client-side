@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./FeatureSection.css";
 import { useNavigate } from "react-router-dom";
+import BookingModal from "../FeatureWorkDetails/BookingModal";
 
 const FeatureSection = ({ feature }) => {
+  const [booking, setBooking] = useState();
+
   const navigate = useNavigate();
 
   const navigateToCarDetail = (id) => {
@@ -11,8 +14,12 @@ const FeatureSection = ({ feature }) => {
 
   return (
     <div className="bg-base-100 shadow-2xl overflow-hidden rounded-[16px]">
-      <figure className="">
-        <img src={feature?.img} alt="feature" className="rounded-none" />
+      <figure className=" ">
+        <img
+          src={feature?.img}
+          alt="feature"
+          className="rounded-none min-h-[260px] mx-auto"
+        />
       </figure>
 
       <div
@@ -21,6 +28,7 @@ const FeatureSection = ({ feature }) => {
       >
         <h2 className="card-title font-bold">{feature.category}</h2>
       </div>
+      {booking && <BookingModal booking={booking} setBooking={setBooking} />}
     </div>
   );
 };
