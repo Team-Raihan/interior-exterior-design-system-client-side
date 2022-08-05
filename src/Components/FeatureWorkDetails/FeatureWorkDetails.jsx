@@ -34,21 +34,7 @@ const FeatureWorkDetails = () => {
         </div>
         {/* <p>{feature.description}</p> */}
         <div className="md:py-8 py-4 ">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum ea
-            perferendis inventore debitis repudiandae. Perspiciatis, magni? Nisi
-            architecto maxime, esse alias modi sed molestias! Voluptatum quo
-            placeat in rem dicta iusto amet fugiat aspernatur delectus
-            veritatis! Sunt saepe minus perspiciatis maxime omnis obcaecati
-            repudiandae quam. Aut explicabo corporis quas distinctio deserunt.
-            Numquam, maiores debitis. Harum voluptas eveniet vitae, error
-            quibusdam nulla autem necessitatibus architecto neque corporis
-            molestias nam facilis voluptatibus eligendi reiciendis, ipsam
-            temporibus est deleniti? Quidem expedita quibusdam officia
-            reprehenderit minima quisquam harum explicabo in, iure maxime culpa
-            eaque ipsa eius dolore dolor. Corporis facilis provident veniam
-            mollitia autem.
-          </p>
+          <p>{feature.description}</p>
         </div>
         <div className="divider before:bg-secondary after:bg-secondary">
           <label
