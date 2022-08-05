@@ -1,14 +1,14 @@
 import React from "react";
 
-const UpdateProfileModal = () => {
+const BookingModal = () => {
   return (
     <>
-      <input type="checkbox" id="update-profile" class="modal-toggle" />
+      <input type="checkbox" id="booking-modal" class="modal-toggle" />
       <div class="modal">
         <div class="modal-box">
           <div className="divider before:bg-secondary after:bg-secondary">
             <h2 className=" uppercase md:text-4xl text-secondary font-bold mb-4">
-              My Profile
+              Booking Info
             </h2>
           </div>
           <form autoComplete="off">
@@ -17,7 +17,7 @@ const UpdateProfileModal = () => {
             </div>
             <div className="divider before:bg-secondary after:bg-secondary">
               <label
-                for="update-profile"
+                for="booking-modal"
                 class=" btn btn-sm  btn-secondary  text-white font-bold"
               >
                 Yay!
@@ -36,4 +36,4 @@ const UpdateProfileModal = () => {
   );
 };
 
-export default UpdateProfileModal;
+export default BookingModal;
