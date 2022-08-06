@@ -23,7 +23,7 @@ const Users = () => {
   console.log(allUser);
 
   const deleteItem = async (id) => {
-    const sure = window.confirm("Are you sure? You want to cancel booking!");
+    const sure = window.confirm("Are you sure? You want to remove this user!");
     if (sure) {
       const url = `http://localhost:5000/api/user/${id}`;
 
@@ -96,14 +96,14 @@ const Users = () => {
                   </thead>
 
                   <tbody className="bg-white">
-                    {allUser?.data?.map((product) => (
-                      <tr key={product?._id}>
+                    {allUser?.data?.map((user) => (
+                      <tr key={user?._id}>
                         <td className="flex justify-center px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                           <div className="avatar">
                             <div className="w-12 rounded-full ring-2 ring-secondary ring-offset-base-100 ring-offset-2">
                               <img
                                 className=" "
-                                src={product?.productImg}
+                                src={user?.pic}
                                 alt="product"
                               />
                             </div>
@@ -112,33 +112,33 @@ const Users = () => {
                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                           <div className="text-sm leading-5 text-gray-900">
                             <div className="flex flex-col items-center  justify-center">
-                              <div>{product?.productName}</div>
+                              <div>{user?.name}</div>
                             </div>
                           </div>
                         </td>
 
                         <td className="px-6 text-center py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
                           <div className="flex flex-col items-center">
-                            <p>$ {product?.orderTotal} USD</p>
+                            <p>{user?.email}</p>
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                           <div className="flex justify-center items-center">
                             <button
-                              onClick={() => deleteItem(product?._id)}
+                              onClick={() => deleteItem(user?._id)}
                               className="btn btn-sm btn-error  text-white font-semibold"
                             >
-                              Cancel
+                              Remove
                             </button>
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                           <div className="flex justify-center items-center">
                             <button
-                              onClick={() => product?._id}
+                              onClick={() => user?._id}
                               className="btn btn-sm btn-warning  text-white font-semibold"
                             >
-                              Pay
+                              Make Admin
                             </button>
                           </div>
                         </td>
@@ -156,10 +156,10 @@ const Users = () => {
           <div className="flex flex-col">
             <div className="flex justify-end   items-center py-5">
               <NavLink
-                to="/dashboard/add-review"
+                to="/dashboard/manage-booking"
                 className="btn btn-sm px-10 btn-secondary text-white mx-auto"
               >
-                Add A Review
+                Manage Booking
               </NavLink>
             </div>
 
@@ -169,16 +169,16 @@ const Users = () => {
                   <thead>
                     <tr className="border-b border-gray-200 font-thin bg-white leading-4 tracking-wider text-base text-gray-500">
                       <th className="px-6 py-5 text-left" colSpan="100%">
-                        <p>Manage Booking</p>
+                        <p>All User</p>
                       </th>
                     </tr>
                     <tr className="bg-gray-50 border-b border-gray-200 text-xs leading-4 text-gray-500 uppercase tracking-wider">
-                      <th className=" py-3 text-center font-normal">P. Info</th>
+                      <th className=" py-3 text-center font-normal">U. Info</th>
 
-                      <th className="py-3 text-center font-normal">
-                        B. Cancel
+                      <th className="py-3 text-center font-normal">R. User</th>
+                      <th className=" py-3 text-center font-normal">
+                        M. Admin
                       </th>
-                      <th className=" py-3 text-center font-normal">Payment</th>
                     </tr>
                   </thead>
 
@@ -193,16 +193,16 @@ const Users = () => {
                                   <div className="w-10 rounded-full ring-2 ring-secondary">
                                     <img
                                       className=" "
-                                      src={item?.productImg}
+                                      src={item?.pic}
                                       alt="product"
                                     />
                                   </div>
                                 </div>
                               </td>
                               <div>
-                                {item?.productName?.length > 10
-                                  ? `${item?.productName?.slice(0, 10)}..`
-                                  : item?.productName}
+                                {item?.name?.length > 10
+                                  ? `${item?.name?.slice(0, 10)}..`
+                                  : item?.name}
                               </div>
                             </div>
                           </div>
@@ -214,7 +214,7 @@ const Users = () => {
                               onClick={() => deleteItem(item?._id)}
                               className="btn btn-xs btn-error  text-white font-normal"
                             >
-                              Cancel
+                              Remove
                             </button>
                           </div>
                         </td>
@@ -224,7 +224,7 @@ const Users = () => {
                               onClick={() => item?._id}
                               className="btn btn-xs btn-warning  text-white font-normal"
                             >
-                              Pay
+                              Admin
                             </button>
                           </div>
                         </td>
@@ -237,7 +237,7 @@ const Users = () => {
           </div>
         </div>
         {allUser?.data?.length === 0 ? (
-          <h2 className="text-center mt-10 text-blue-500 text-xl font-semibold">
+          <h2 className="text-center mt-10 text-primary text-xl font-semibold">
             No Item Found
           </h2>
         ) : (
