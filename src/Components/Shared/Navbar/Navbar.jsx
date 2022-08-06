@@ -3,10 +3,20 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import auth from "../../../Firebase/Firebase.init";
-
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  Button,
+} from "@chakra-ui/react";
 const Navbar = () => {
   const [user] = useAuthState(auth);
-  // console.log(user);
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const { pathname } = useLocation();
 
   const logout = () => {
@@ -50,6 +60,10 @@ const Navbar = () => {
         >
           Blogs
         </NavLink>
+      </li>
+
+      <li>
+        <button onClick={onOpen}>Live Support</button>
       </li>
 
       {user && (
@@ -100,29 +114,6 @@ const Navbar = () => {
   return (
     <div className="sticky top-0 bg-secondary text-white font-bold  z-40 drop-shadow-xl ">
       <div className="container navbar md:min-h-[96px] justify-between mx-auto px-4">
-        {/*   <div className="lg:navbar-start lg:hidden">
-          <label
-            tabIndex="1"
-            htmlFor="dashboard-sidebar"
-            className="btn btn-ghost lg:hidden"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </label>
-        </div> */}
-        {/* ------------------ */}
         {pathname?.includes("dashboard") && (
           <div className="lg:navbar-start lg:hidden">
             <label
@@ -267,6 +258,34 @@ const Navbar = () => {
           <ul className="menu menu-horizontal  p-0 gap-2">{menuItems}</ul>
         </div>
       </div>
+
+      {/* support modal  */}
+      <Modal
+        closeOnOverlayClick={false}
+        isOpen={isOpen}
+        onClose={onClose}
+        isCentered
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalCloseButton />
+          <ModalHeader mt={10}>Live Support Available.</ModalHeader>
+          <ModalBody pb={6}>
+            <h1>Join now for Live Support with our customer care team.</h1>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button mr={3} onClick={onClose}>
+              Cancel
+            </Button>
+            <Button colorScheme="blue">
+              <a href="https://meet.google.com/" target="__blank">
+                Join
+              </a>
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </div>
   );
 };

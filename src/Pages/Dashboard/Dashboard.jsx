@@ -18,6 +18,8 @@ const Dashboard = () => {
       <div className="drawer-side">
         <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
 
+        <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
+
         <ul className=" flex flex-col gap-5 shadow-md  bg-[rgb(0,7,61)] p-4 overflow-y-auto w-80 font-semibold  text-white">
           {adminLoading && (
             <p className="mt-10 text-xl font-semibold text-blue-500">
@@ -130,16 +132,29 @@ const Dashboard = () => {
                   Add News
                 </NavLink>
               </li>
+
               <li>
                 <NavLink
+                  to="/dashboard/manage-news"
                   className={({ isActive }) =>
                     `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
                       isActive ? " bg-primary" : undefined
                     }`
                   }
-                  to="/dashboard/manage-news"
                 >
                   Manage News
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/admin-live-support"
+                  className={({ isActive }) =>
+                    `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
+                      isActive ? " bg-primary" : undefined
+                    }`
+                  }
+                >
+                  Live Support
                 </NavLink>
               </li>
             </>
