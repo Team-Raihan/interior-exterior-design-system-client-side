@@ -1,11 +1,14 @@
 import axios from "axios";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { NavLink } from "react-router-dom";
+import auth from "../../../Firebase/Firebase.init";
 import LoadingData from "../../Loading/LoadingData";
 
 const MyBookings = () => {
+  const [user] = useAuthState(auth);
   const getData = async () => {
-    return await axios.get("http://localhost:5000/api/order");
+    return await axios.get(`http://localhost:5000/api/order/${user?.email}`);
   };
   const {
     data: myBooking,

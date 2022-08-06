@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import { NavLink } from "react-router-dom";
 import LoadingData from "../../Loading/LoadingData";
@@ -134,12 +135,12 @@ const ManageBooking = () => {
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                           <div className="flex justify-center items-center">
-                            <button
-                              onClick={() => product?._id}
+                            <Link
+                              to={`/dashboard/payment/${product?._id}`}
                               className="btn btn-sm btn-warning  text-white font-semibold"
                             >
                               Pay
-                            </button>
+                            </Link>
                           </div>
                         </td>
                       </tr>
@@ -221,7 +222,7 @@ const ManageBooking = () => {
                         <td className="py-4">
                           <div className="flex justify-center items-center">
                             <button
-                              onClick={() => item?._id}
+                              to={`/dashboard/payment/${item?._id}`}
                               className="btn btn-xs btn-warning  text-white font-normal"
                             >
                               Pay
