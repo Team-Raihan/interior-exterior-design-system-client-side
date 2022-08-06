@@ -130,6 +130,18 @@ const Dashboard = () => {
                   Add News
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
+                      isActive ? " bg-primary" : undefined
+                    }`
+                  }
+                  to="/dashboard/manage-news"
+                >
+                  Manage News
+                </NavLink>
+              </li>
             </>
           )}
         </ul>
