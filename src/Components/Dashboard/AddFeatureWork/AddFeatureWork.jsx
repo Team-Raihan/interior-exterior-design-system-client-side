@@ -151,7 +151,7 @@ const AddFeatureWork = () => {
           },
         }
       );
-      console.log(newItem);
+      // console.log(newItem);
       if (newItem.status === 201) {
         toast({
           title: "New Item Added",

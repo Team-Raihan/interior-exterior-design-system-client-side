@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 const NewsDetails = () => {
   const { id } = useParams();
   const [news, setNews] = useState({});
-  console.log(news);
+  // console.log(news);
 
   useEffect(() => {
     const url = `http://localhost:5000/api/news/${id}`;

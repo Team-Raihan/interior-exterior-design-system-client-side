@@ -144,7 +144,7 @@ const AddNews = () => {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
       });
-      console.log(newItem);
+      // console.log(newItem);
       if (newItem.status === 201) {
         toast({
           title: "New Item Added",
