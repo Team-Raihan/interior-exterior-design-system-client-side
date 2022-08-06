@@ -135,7 +135,7 @@ const AddNews = () => {
       title: data.title,
       img: pic,
       news: data.news,
-      date: "20 July 2022",
+      date: formattedDate,
     };
     // send to your database
 
@@ -175,7 +175,7 @@ const AddNews = () => {
       });
     }
 
-    // reset();
+    reset();
   };
 
   return (

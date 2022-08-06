@@ -71,7 +71,7 @@ const News = () => {
                       </svg>
                       {report.date}
                     </strong>
-                    <p>{report.news}</p>
+                    <p>{report.news.slice(0,112)}...</p>
                     <button
                       className="btn btn-secondary "
                       onClick={() => navigateToCarDetail(report?._id)}
