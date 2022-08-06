@@ -120,7 +120,7 @@ const AddNews = () => {
   };
 
   const onFormSubmit = async (data) => {
-    if (!data.name || !data.description || !pic) {
+    if (!data.title || !data.news || !pic) {
       return toast({
         title: "Fill out all field!",
         status: "warning",
@@ -130,27 +130,20 @@ const AddNews = () => {
       });
     }
     const News = {
-      category: data.name,
-      price: data.price,
+      title: data.title,
       img: pic,
-      description: data.description,
-      // admin info
-      adminName: user.displayName,
-      adminEmail: user.email,
+      news: data.news,
+      date: "20 July 2022",
     };
     // send to your database
 
     try {
-      const newItem = await axios.post(
-        "http://localhost:5000/api/featured-item",
-        News,
-        {
-          headers: {
-            "content-type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
-      );
+      const newItem = await axios.post("http://localhost:5000/api/news", News, {
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      });
       console.log(newItem);
       if (newItem.status === 201) {
         toast({
@@ -218,9 +211,9 @@ const AddNews = () => {
                           required: true,
                         })}
                       />
-                      {errors.name && (
+                      {errors.title && (
                         <span className="text-red-500">
-                          News Name is required
+                          News title is required
                         </span>
                       )}
                     </div>
@@ -235,12 +228,7 @@ const AddNews = () => {
                           (good quality*)
                         </span>
                       </label>
-                      {/* <Input
-            type="file"
-            p={1.5}
-            accept="image/*"
-            onChange={(e) => postPicture(e.target.files[0])}
-          /> */}
+
                       <input
                         className="w-full bg-white shadow-inner p-4 border-0"
                         type="file"
@@ -264,53 +252,21 @@ const AddNews = () => {
                         required: true,
                       })}
                     />
-                    {errors.description && (
+                    {errors.news && (
                       <span className="text-red-500">
-                        Minimum 50 chracter Description is required
+                        Minimum 50 character is required
                       </span>
                     )}
                   </div>
                 </div>
               </div>
-
-              <div className="md:flex mb-8">
-                <div className="md:w-1/3">
-                  <legend className="uppercase tracking-wide text-sm">
-                    Admin Information
-                  </legend>
-                  <p className="text-xs font-light text-red">
-                    Who is adding new News?
-                  </p>
-                </div>
-                <div className="md:flex-1 mt-2 mb:mt-0 md:px-3">
-                  <div className="mb-4">
-                    <label className="block uppercase tracking-wide text-xs font-bold">
-                      Admin Name
-                    </label>
-                    <input
-                      className="w-full shadow-inner bg-gray-300 p-4 border-0"
-                      type="text"
-                      name="adminName"
-                      disabled
-                      readOnly
-                      value={user.displayName}
-                    />
-                  </div>
-
-                  <div className="mb-4">
-                    <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
-                      Admin Email
-                    </label>
-                    <input
-                      readOnly
-                      disabled
-                      className="w-full shadow-inner bg-gray-300 p-4 border-0"
-                      type="email"
-                      name="adminEmail"
-                      value={user.email}
-                    />
-                  </div>
-                </div>
+              <div className="divider before:bg-secondary after:bg-secondary">
+                <button
+                  type="submit"
+                  className="btn btn-secondary  text-white font-bold"
+                >
+                  Add News
+                </button>
               </div>
             </form>
           </section>
