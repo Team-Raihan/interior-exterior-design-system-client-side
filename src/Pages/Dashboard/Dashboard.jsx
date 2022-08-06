@@ -136,7 +136,7 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink
-                  to="/dashboard/live-support"
+                  to="/dashboard/admin-live-support"
                   className={({ isActive }) =>
                     `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
                       isActive ? " bg-primary" : undefined
