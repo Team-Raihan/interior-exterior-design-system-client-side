@@ -19,7 +19,6 @@ import FeatureWorks from "../FeatureWorks/FeatureWorks";
 import AllNews from "../AllNews/AllNews";
 import AddNews from "../Dashboard/AddNews/AddNews";
 import MyBookings from "../Dashboard/MyBooking/MyBookings";
-import LiveSupport from "../Dashboard/LiveSupport/LiveSupport";
 import LiveSupportAdmin from "../Dashboard/LiveSupport/LiveSupportAdmin";
 
 const RoutesPath = () => {

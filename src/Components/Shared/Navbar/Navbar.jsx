@@ -1,7 +1,7 @@
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link as button, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import auth from "../../../Firebase/Firebase.init";
 import {
   Modal,
@@ -16,7 +16,6 @@ import {
 } from "@chakra-ui/react";
 const Navbar = () => {
   const [user] = useAuthState(auth);
-  // console.log(user);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { pathname } = useLocation();
 
@@ -86,12 +85,12 @@ const Navbar = () => {
             className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-secondary rounded-box w-52"
           >
             <li>
-              <button to="/dashboard">Dashboard</button>
+              <Link to="/dashboard">Dashboard</Link>
             </li>
             <li>
-              <button to="" onClick={logout}>
+              <Link to="" onClick={logout}>
                 Logout
-              </button>
+              </Link>
             </li>
           </ul>
         </div>
@@ -115,29 +114,6 @@ const Navbar = () => {
   return (
     <div className="sticky top-0 bg-secondary text-white font-bold  z-40 drop-shadow-xl ">
       <div className="container navbar md:min-h-[96px] justify-between mx-auto px-4">
-        {/*   <div className="lg:navbar-start lg:hidden">
-          <label
-            tabIndex="1"
-            htmlFor="dashboard-sidebar"
-            className="btn btn-ghost lg:hidden"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </label>
-        </div> */}
-        {/* ------------------ */}
         {pathname?.includes("dashboard") && (
           <div className="lg:navbar-start lg:hidden">
             <label
@@ -251,12 +227,12 @@ const Navbar = () => {
                   {/* mobile menu collapse content*/}
                   <div className="collapse-content">
                     <li>
-                      <button to="/dashboard">Dashboard</button>
+                      <Link to="/dashboard">Dashboard</Link>
                     </li>
                     <li>
-                      <button to="" onClick={logout}>
+                      <Link to="" onClick={logout}>
                         Logout
-                      </button>
+                      </Link>
                     </li>
                   </div>
                 </div>
