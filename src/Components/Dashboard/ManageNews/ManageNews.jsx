@@ -20,13 +20,13 @@ const ManageNews = () => {
       </div>
     );
   }
-  console.log(allNews);
+
 
   const deleteItem = async (id) => {
     const sure = window.confirm("Are you sure? You want to cancel booking!");
     if (sure) {
+    try {
       const url = `http://localhost:5000/api/news/${id}`;
-
       axios
         .delete(url, {
           headers: {
@@ -40,6 +40,9 @@ const ManageNews = () => {
             refetch();
           }
         });
+    } catch (error) {
+      console.log(error)
+    }
     }
   };
 
