@@ -1,11 +1,14 @@
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
+import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import auth from "../../Firebase/Firebase.init";
 
 const BookingModal = ({ booking, setBooking }) => {
   const [user] = useAuthState(auth);
+  const [buyerAddress,setBuyerAddress]=useState("")
+  const [phoneNubmer,setPhoneNumber]=useState("")
   //   console.log(booking);
   const toast = useToast();
   const {
@@ -16,15 +19,16 @@ const BookingModal = ({ booking, setBooking }) => {
     reset,
   } = useForm();
 
-  const onFormSubmit = async (data) => {
+  const onFormSubmit = async (data,e) => {
+    e.preventDefault();
     const bookingInfo = {
       buyerName: user?.displayName,
       buyerEmail: user?.email,
-      productImg: booking?.img,
       productName: booking?.category,
-      productPrice: booking?.price,
-      buyerAddress: data?.address,
-      buyerNumber: data?.number,
+      productImg: booking?.img,
+      orderTotal: booking?.price,
+      billingInfo: data?.address,
+      buyerPhone: data?.number,
     };
 
     try {
@@ -35,7 +39,7 @@ const BookingModal = ({ booking, setBooking }) => {
       console.log("newBooking: ", newBooking);
       if (newBooking.status === 201) {
         toast({
-          title: "Thanks For Your Review.",
+          title: "Successfully Booked.",
           status: "success",
           duration: 3000,
           isClosable: true,
@@ -72,9 +76,9 @@ const BookingModal = ({ booking, setBooking }) => {
               Booking Info
             </h2>
           </div>
-          <form autoComplete="off">
+          <form onSubmit={handleSubmit(onFormSubmit)} autoComplete="off">
             <div className="flex-1  flex flex-col">
-              <form onSubmit={handleSubmit(onFormSubmit)} autoComplete="off">
+             
                 <div className="mb-8 ">
                   <div className="flex flex-col lg:flex-row gap-4">
                     <div className="md:flex-1 mt-2 mb:mt-0 ">
@@ -171,14 +175,6 @@ const BookingModal = ({ booking, setBooking }) => {
                         minLength="11"
                         {...register("number", {
                           required: true,
-                          /*    minLength: {
-                            value: 11,
-                            message: "Number must be 11 characters",
-                          },
-                          maxLength: {
-                            value: 11,
-                            message: "Number must be 11 characters",
-                          }, */
                         })}
                       />
                       {errors.number && (
@@ -186,16 +182,11 @@ const BookingModal = ({ booking, setBooking }) => {
                           Contact number is required
                         </span>
                       )}
-                      {/*     {errors.number?.type === "minLength" ||
-                        (errors.number?.type === "minLength" && (
-                          <span className="label-text-alt text-red-500">
-                            {errors.number.message}
-                          </span>
-                        ))} */}
+        
                     </div>
                   </div>
                 </div>
-              </form>
+        
             </div>
             <div className="divider before:bg-secondary after:bg-secondary">
               <label
