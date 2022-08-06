@@ -1,15 +1,17 @@
 import axios from "axios";
 import { useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
+
 import { useForm } from "react-hook-form";
 import { Button, useToast } from "@chakra-ui/react";
 
-import { secondary } from "daisyui/src/colors";
+import { format } from "date-fns";
 
-import auth from "../../../Firebase/Firebase.init";
+
 
 const AddNews = () => {
-  const [user] = useAuthState(auth);
+  const date = new Date();
+
+  const formattedDate = date && format(date, "PP");
   const [postLoading, setPostLoading] = useState(false);
   const [pic, setPic] = useState();
   const toast = useToast();
@@ -126,14 +128,14 @@ const AddNews = () => {
         status: "warning",
         duration: 3000,
         isClosable: true,
-        position: "bottom",
+        position: formattedDate,
       });
     }
     const News = {
       title: data.title,
       img: pic,
       news: data.news,
-      date: "20 July 2022",
+      date: formattedDate,
     };
     // send to your database
 
@@ -163,6 +165,7 @@ const AddNews = () => {
         });
       }
     } catch (error) {
+      console.log(error);
       toast({
         title: "Something Went Wrong!",
         status: "error",
@@ -261,12 +264,18 @@ const AddNews = () => {
                 </div>
               </div>
               <div className="divider before:bg-secondary after:bg-secondary">
-                <button
+                <Button
+                  backgroundColor="#463AA1"
+                  color="white"
+                  isLoading={postLoading}
                   type="submit"
-                  className="btn btn-secondary  text-white font-bold"
+                  _hover={{
+                    backgroundColor: "#021431",
+                  }}
+                  className="btn"
                 >
                   Add News
-                </button>
+                </Button>
               </div>
             </form>
           </section>
