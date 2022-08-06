@@ -16,10 +16,7 @@ const Dashboard = () => {
         <Outlet />
       </div>
       <div className="drawer-side">
-        <label
-          htmlhtmlFor="dashboard-sidebar"
-          className="drawer-overlay"
-        ></label>
+        <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
 
         <ul className=" flex flex-col gap-5 shadow-md  bg-[rgb(0,7,61)] p-4 overflow-y-auto w-80 font-semibold  text-white">
           {adminLoading && (
