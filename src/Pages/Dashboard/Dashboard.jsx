@@ -17,7 +17,7 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label
-          htmlhtmlFor="dashboard-sidebar"
+          htmlFor="dashboard-sidebar"
           className="drawer-overlay"
         ></label>
 
@@ -68,6 +68,7 @@ const Dashboard = () => {
                   My Booking
                 </NavLink>
               </li>
+       
             </>
           )}
 
@@ -131,6 +132,18 @@ const Dashboard = () => {
                   to="/dashboard/add-news"
                 >
                   Add News
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/live-support"
+                  className={({ isActive }) =>
+                    `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
+                      isActive ? " bg-primary" : undefined
+                    }`
+                  }
+                >
+                  Live Support
                 </NavLink>
               </li>
             </>

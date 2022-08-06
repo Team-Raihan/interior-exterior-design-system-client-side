@@ -1,12 +1,23 @@
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link as button, NavLink, useLocation } from "react-router-dom";
 import auth from "../../../Firebase/Firebase.init";
-
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  Button,
+} from "@chakra-ui/react";
 const Navbar = () => {
   const [user] = useAuthState(auth);
   // console.log(user);
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const { pathname } = useLocation();
 
   const logout = () => {
@@ -52,6 +63,10 @@ const Navbar = () => {
         </NavLink>
       </li>
 
+      <li>
+        <button onClick={onOpen}>Live Support</button>
+      </li>
+
       {user && (
         <div className="dropdown dropdown-end">
           <label tabIndex="0" className="btn btn-ghost  btn-circle avatar">
@@ -71,12 +86,12 @@ const Navbar = () => {
             className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-secondary rounded-box w-52"
           >
             <li>
-              <Link to="/dashboard">Dashboard</Link>
+              <button to="/dashboard">Dashboard</button>
             </li>
             <li>
-              <Link to="" onClick={logout}>
+              <button to="" onClick={logout}>
                 Logout
-              </Link>
+              </button>
             </li>
           </ul>
         </div>
@@ -103,7 +118,7 @@ const Navbar = () => {
         {/*   <div className="lg:navbar-start lg:hidden">
           <label
             tabIndex="1"
-            htmlhtmlFor="dashboard-sidebar"
+            htmlFor="dashboard-sidebar"
             className="btn btn-ghost lg:hidden"
           >
             <svg
@@ -127,7 +142,7 @@ const Navbar = () => {
           <div className="lg:navbar-start lg:hidden">
             <label
               tabIndex="1"
-              htmlhtmlFor="dashboard-sidebar"
+              htmlFor="dashboard-sidebar"
               className="btn btn-ghost lg:hidden"
             >
               <svg
@@ -236,12 +251,12 @@ const Navbar = () => {
                   {/* mobile menu collapse content*/}
                   <div className="collapse-content">
                     <li>
-                      <Link to="/dashboard">Dashboard</Link>
+                      <button to="/dashboard">Dashboard</button>
                     </li>
                     <li>
-                      <Link to="" onClick={logout}>
+                      <button to="" onClick={logout}>
                         Logout
-                      </Link>
+                      </button>
                     </li>
                   </div>
                 </div>
@@ -267,6 +282,34 @@ const Navbar = () => {
           <ul className="menu menu-horizontal  p-0 gap-2">{menuItems}</ul>
         </div>
       </div>
+
+      {/* support modal  */}
+      <Modal
+        closeOnOverlayClick={false}
+        isOpen={isOpen}
+        onClose={onClose}
+        isCentered
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalCloseButton />
+          <ModalHeader mt={10}>Live Support Available.</ModalHeader>
+          <ModalBody pb={6}>
+            <h1>Join now for Live Support with our customer care team.</h1>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button mr={3} onClick={onClose}>
+              Cancel
+            </Button>
+            <Button colorScheme="blue">
+              <a href="https://meet.google.com/" target="__blank">
+                Join
+              </a>
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </div>
   );
 };
