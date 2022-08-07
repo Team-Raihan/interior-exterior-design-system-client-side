@@ -16,11 +16,11 @@ const NewsDetails = () => {
   }, [id]);
 
   return (
-    <div className="mix-h-[85vh]">
-      <div className="mt-16">
+    <div className="container mx-auto px-4 ">
+      <div className="lg:py-16 md:py-8 py-4">
         <img className="w-fit mx-auto" src={news?.img} alt="" />
       </div>
-      <div className="container mx-auto px-4 my-16">
+      <div className="lg:pb-16 md:pb-8 pb-4">
         <div className="divider before:bg-secondary after:bg-secondary">
           <div className="flex flex-col justify-center items-center gap-4">
             <h2 className="lg:text-4xl text-xl font-bold text-secondary ">
@@ -45,7 +45,7 @@ const NewsDetails = () => {
             </strong>
           </div>
         </div>
-        <div className="py-16 text-center">
+        <div className="lg:py-16 md:py-8 py-4 text-center">
           <p>{news?.news}</p>
         </div>
       </div>

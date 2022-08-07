@@ -29,16 +29,16 @@ const News = () => {
   // console.log("news:", news);
 
   return (
-    <div className="container mx-auto px-4 my-16">
+    <div className="container mx-auto px-4 lg:my-16 md:my-8 my-4">
       <div className="">
-        <div className="text-center  mb-16 block">
+        <div className="text-center  lg:md-16 md:mb-8 mb-4 block">
           <h2 className="text-secondary lg:text-5xl text-2xl font-bold mb-2 uppercase">
             Company News
           </h2>
         </div>
-        <div className="  bg-base-100 mb-16">
+        <div className="  bg-base-100 lg:md-16 md:mb-8 mb-4">
           <div className="text-center p-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  lg:gap-10 md:gap-6 gap-4">
               {news?.data?.slice(0, 3).map((report) => (
                 <div
                   className="card bg-base-100 shadow-2xl overflow-hidden rounded-none p-0 m-0"
@@ -71,9 +71,9 @@ const News = () => {
                       </svg>
                       {report.date}
                     </strong>
-                    <p>{report.news.slice(0,112)}...</p>
+                    <p>{report.news.slice(0, 112)}...</p>
                     <button
-                      className="btn btn-secondary "
+                      className="btn md:btn-md btn-sm  btn-secondary "
                       onClick={() => navigateToCarDetail(report?._id)}
                     >
                       Read More
@@ -84,10 +84,10 @@ const News = () => {
             </div>
           </div>
         </div>
-        <div className="mt-16 text-center">
+        <div className="lg:mt-16 md:mt-8 mt-4 text-center">
           <Link
             to="/all-news"
-            className="btn btn-secondary md:w-1/3 w-full  mx-auto  text-white font-bold"
+            className="btn md:btn-md btn-sm  btn-secondary md:w-1/3 w-full  mx-auto  text-white font-bold"
           >
             View All News
           </Link>

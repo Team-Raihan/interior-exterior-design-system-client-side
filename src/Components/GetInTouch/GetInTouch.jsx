@@ -1,6 +1,6 @@
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 
 const GetInTouch = () => {
@@ -58,15 +58,14 @@ const GetInTouch = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 mb-16">
+    <div className="container mx-auto px-4 lg:md-16 md:mb-8 mb-4">
       <div className="">
-        <div className="text-center  lg:mb-16 my-5 block">
+        <div className="text-center  lg:lg:md-16 md:mb-8 mb-4 my-5 block">
           <h2 className="text-secondary lg:text-5xl text-2xl font-bold mb-2 uppercase">
             Get In Touch
           </h2>
         </div>
         <div className="lg:p-10 p-5  w-full bg-base-100 shadow rounded-2xl">
-          {/* <form ref={form} onSubmit={sendEmail}> */}
           <form onSubmit={handleSubmit(onFormSubmit)} autoComplete="off">
             <div className="flex lg:flex-row flex-col  gap-5">
               <div className="form-control lg:mt-3 w-full">
@@ -182,7 +181,7 @@ const GetInTouch = () => {
               <div className="lg:mt-10 mt-6 text-center">
                 <button
                   type="submit"
-                  className="btn btn-secondary text-white font-bold px-10"
+                  className="btn md:btn-md btn-sm  btn-secondary text-white font-bold px-10"
                 >
                   GET IN TOUCH
                 </button>

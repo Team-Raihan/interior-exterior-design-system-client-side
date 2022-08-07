@@ -7,7 +7,6 @@ import { useQuery } from "react-query";
 import axios from "axios";
 
 const Reviews = () => {
-
   const getData = async () => {
     return await axios.get("http://localhost:5000/api/review");
   };
@@ -25,7 +24,6 @@ const Reviews = () => {
     return <p>Loading........</p>;
   }
 
-
   const settings = {
     dots: true,
     infinite: true,
@@ -36,51 +34,51 @@ const Reviews = () => {
     pauseOnHover: true,
   };
   return (
-    <div className="container mx-auto px-4 my-16">
+    <div className="container mx-auto px-4 lg:my-16 md:my-8 my-4">
       <div className="">
         <div className="text-center block">
           <h2 className="text-secondary lg:text-5xl text-2xl font-bold mb-2 uppercase">
             Happy Customers
           </h2>
         </div>
-        <div className=" md:p-16">
-        {allReviews?.data&& 
-          <Slider {...settings}>
-            {allReviews?.data?.slice(0, 6)?.map((review) => (
-              <div
-                className="card bg-base-100 overflow-hidden rounded-xl relative"
-                key={review._id}
-              >
-                <div className=" items-center py-16 border rounded-xl">
-                  <div className="review-slider ">
-                    <figure className="gap-5">
-                      <div className="avatar">
-                        <div className="w-20 rounded-full ring ring-secondary ring-offset-base-100 shadow-xl">
-                          <img
-                            src={
-                              review?.img
-                                ? review?.img
-                                : "https://foxdogconsultants.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png"
-                            }
-                            alt="user"
-                          />
+        <div className="lg:p-16 md:p-8 p-4">
+          {allReviews?.data && (
+            <Slider {...settings}>
+              {allReviews?.data?.slice(0, 6)?.map((review) => (
+                <div
+                  className="card bg-base-100 overflow-hidden rounded-xl relative"
+                  key={review._id}
+                >
+                  <div className=" items-center py-16 border rounded-xl">
+                    <div className="review-slider ">
+                      <figure className="gap-5">
+                        <div className="avatar">
+                          <div className="w-20 rounded-full ring ring-secondary ring-offset-base-100 shadow-xl">
+                            <img
+                              src={
+                                review?.img
+                                  ? review?.img
+                                  : "https://foxdogconsultants.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png"
+                              }
+                              alt="user"
+                            />
+                          </div>
                         </div>
-                      </div>
-                      <div>
-                        <h2 className=" font-bold py-1 text-xl text-secondary">
-                          {review.name}
-                        </h2>
-                        <strong className=" ">{review.occupation}</strong>
-                      </div>
-                    </figure>
+                        <div>
+                          <h2 className=" font-bold py-1 text-xl text-secondary">
+                            {review.name}
+                          </h2>
+                          <strong className=" ">{review.occupation}</strong>
+                        </div>
+                      </figure>
 
-                    <p className="text-center mt-8">{review.review}</p>
+                      <p className="text-center mt-8">{review.review}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </Slider>
-        }
+              ))}
+            </Slider>
+          )}
         </div>
       </div>
     </div>

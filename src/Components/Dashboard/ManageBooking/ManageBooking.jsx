@@ -49,24 +49,6 @@ const ManageBooking = () => {
       <div className="w-full min-h-screen px-1 bg-gray-100 py-5 md:py-10">
         <div className=" hidden md:block mx-auto sm:px-6 lg:px-12">
           <div className="flex flex-col">
-            <div className="-mb-2 py-4 flex flex-wrap flex-grow justify-between">
-              <div className="flex items-center py-2">
-                <span
-                  className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                  id="inline-search"
-                  type="text"
-                  placeholder="Search"
-                />
-              </div>
-              <div className="flex items-center py-2">
-                <NavLink
-                  to="/dashboard/add-review"
-                  className="btn btn-secondary text-white font-bold px-10 h-[40px] min-h-[40px]"
-                >
-                  Add A Review
-                </NavLink>
-              </div>
-            </div>
             <div className="-my-2 py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
               <div className="align-middle inline-block w-full shadow overflow-x-auto sm:rounded-lg border-b border-gray-200">
                 <table className="min-w-full table-auto">
@@ -128,7 +110,7 @@ const ManageBooking = () => {
                             <button
                               disabled={product?.paid}
                               onClick={() => deleteItem(product?._id)}
-                              className="btn btn-sm btn-error  text-white font-semibold"
+                              className="btn md:btn-md btn-sm btn-error  text-white font-semibold"
                             >
                               Cancel
                             </button>
@@ -139,14 +121,14 @@ const ManageBooking = () => {
                             {product?.paid ? (
                               <button
                                 disabled={true}
-                                className="btn btn-sm btn-success  text-white font-semibold"
+                                className="btn md:btn-md btn-sm btn-success  text-white font-semibold"
                               >
                                 Paid
                               </button>
                             ) : (
                               <Link
                                 to={`/dashboard/payment/${product?._id}`}
-                                className="btn btn-sm btn-warning  text-white font-semibold"
+                                className="btn md:btn-md btn-sm btn-warning  text-white font-semibold"
                               >
                                 Pay
                               </Link>
@@ -165,15 +147,6 @@ const ManageBooking = () => {
         {/* mobile device  */}
         <div className="md:hidden w-full  lg:px-8">
           <div className="flex flex-col">
-            <div className="flex justify-end   items-center py-5">
-              <NavLink
-                to="/dashboard/add-review"
-                className="btn btn-sm px-10 btn-secondary text-white mx-auto"
-              >
-                Add A Review
-              </NavLink>
-            </div>
-
             <div className="-my-2 py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
               <div className="align-middle inline-block w-full shadow overflow-x-auto sm:rounded-lg border-b border-gray-200">
                 <table className="min-w-full table-auto">
@@ -224,7 +197,7 @@ const ManageBooking = () => {
                             <button
                               disabled={item?.paid}
                               onClick={() => deleteItem(item?._id)}
-                              className="btn btn-sm btn-error  text-white font-normal"
+                              className="btn md:btn-md btn-sm  btn-error  text-white font-normal"
                             >
                               Cancel
                             </button>
@@ -235,14 +208,14 @@ const ManageBooking = () => {
                             {item?.paid ? (
                               <button
                                 disabled={true}
-                                className="btn btn-sm btn-success  text-white font-semibold"
+                                className="btn md:btn-md btn-sm  btn-success  text-white font-semibold"
                               >
                                 Paid
                               </button>
                             ) : (
                               <Link
                                 to={`/dashboard/payment/${item?._id}`}
-                                className="btn btn-sm btn-warning  text-white font-semibold"
+                                className="btn md:btn-md btn-sm  btn-warning  text-white font-semibold"
                               >
                                 Pay
                               </Link>

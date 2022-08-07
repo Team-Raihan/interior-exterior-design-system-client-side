@@ -35,13 +35,13 @@ const MyProfile = () => {
         <div className="flex-1  flex flex-col">
           <div className=" p-6 rounded-2xl  shadow">
             <div className="divider before:bg-secondary after:bg-secondary">
-              <h2 className=" uppercase md:text-4xl text-secondary font-bold mb-4">
+              <h2 className=" uppercase md:text-4xl text-secondary font-bold">
                 My Profile
               </h2>
             </div>
             <form autoComplete="off">
-              <div className="my-12 ">
-                <div className="flex lg:flex-row flex-col  items-center justify-center gap-10">
+              <div className="lg:my-16 md:my-8 my-4 ">
+                <div className="flex lg:flex-row flex-col  items-center justify-center lg:gap-10 md:gap-6 gap-4">
                   <div className="avatar">
                     <div className="lg:w-80 md:w-56 w-32 ring-2 ring-secondary ring-offset-base-100 ring-offset-2 rounded">
                       <img src={user?.photoURL} alt="user img" />
@@ -70,7 +70,7 @@ const MyProfile = () => {
                 <label
                   htmlFor="update-profile"
                   onClick={() => setOpenUpdateModal({ email: user?.email })}
-                  className="btn modal-button btn-secondary md:px-10 text-white font-bold"
+                  className="btn  md:btn-md btn-sm modal-button btn-secondary md:px-10 text-white font-bold"
                 >
                   Update Profile
                 </label>

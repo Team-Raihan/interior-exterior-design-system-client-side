@@ -81,7 +81,7 @@ const UpdateProfileModal = ({
           </div>
           <form onSubmit={handleSubmit(onFormSubmit)} autoComplete="off">
             <div className="flex-1  flex flex-col">
-              <div className="flex flex-col lg:flex-row lg:first-letter:gap-4">
+              <div className="flex flex-col lg:flex-row lg:first-letter gap-4">
                 <div className="md:flex-1 mt-2 mb:mt-0 ">
                   <label className="label font-bold">Your Profession</label>
                   <input

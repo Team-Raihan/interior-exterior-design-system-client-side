@@ -21,28 +21,27 @@ const ManageNews = () => {
     );
   }
 
-
   const deleteItem = async (id) => {
     const sure = window.confirm("Are you sure? You want to cancel booking!");
     if (sure) {
-    try {
-      const url = `http://localhost:5000/api/news/${id}`;
-      axios
-        .delete(url, {
-          headers: {
-            "content-type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        })
-        .then((response) => {
-          const { data } = response;
-          if (data) {
-            refetch();
-          }
-        });
-    } catch (error) {
-      console.log(error)
-    }
+      try {
+        const url = `http://localhost:5000/api/news/${id}`;
+        axios
+          .delete(url, {
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          })
+          .then((response) => {
+            const { data } = response;
+            if (data) {
+              refetch();
+            }
+          });
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -51,24 +50,6 @@ const ManageNews = () => {
       <div className="w-full min-h-screen px-1 bg-gray-100 py-5 md:py-10">
         <div className=" hidden md:block mx-auto sm:px-6 lg:px-12">
           <div className="flex flex-col">
-            <div className="-mb-2 py-4 flex flex-wrap flex-grow justify-between">
-              <div className="flex items-center py-2">
-                <input
-                  className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                  id="inline-search"
-                  type="text"
-                  placeholder="Search"
-                />
-              </div>
-              <div className="flex items-center py-2">
-                <NavLink
-                  to="/dashboard/add-news"
-                  className="btn btn-secondary text-white font-bold px-10 h-[40px] min-h-[40px]"
-                >
-                  Add News
-                </NavLink>
-              </div>
-            </div>
             <div className="-my-2 py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
               <div className="align-middle inline-block w-full shadow overflow-x-auto sm:rounded-lg border-b border-gray-200">
                 <table className="min-w-full table-auto">
@@ -129,7 +110,7 @@ const ManageNews = () => {
                           <div className="flex justify-center items-center">
                             <button
                               onClick={() => deleteItem(product?._id)}
-                              className="btn btn-sm btn-error  text-white font-semibold"
+                              className="btn md:btn-md btn-sm  btn-error  text-white font-semibold"
                             >
                               Delete
                             </button>
@@ -147,15 +128,6 @@ const ManageNews = () => {
         {/* mobile device  */}
         <div className="md:hidden w-full  lg:px-8">
           <div className="flex flex-col">
-            <div className="flex justify-end   items-center py-5">
-              <NavLink
-                to="/dashboard/add-news"
-                className="btn btn-sm px-10 btn-secondary text-white mx-auto"
-              >
-                Add News
-              </NavLink>
-            </div>
-
             <div className="-my-2 py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
               <div className="align-middle inline-block w-full shadow overflow-x-auto sm:rounded-lg border-b border-gray-200">
                 <table className="min-w-full table-auto">
@@ -180,7 +152,7 @@ const ManageNews = () => {
                         <td className=" py-4  border-b border-gray-200">
                           <div className="text-sm leading-5 text-secondary">
                             <div className="flex flex-col items-center  justify-center">
-                              <td className="flex justify-center px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                              <td className="flex flex-col items-center justify-center px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                 <div className="avatar">
                                   <div className="w-10 rounded-full ring-2 ring-secondary">
                                     <img
@@ -190,6 +162,7 @@ const ManageNews = () => {
                                     />
                                   </div>
                                 </div>
+                                <div className="my-2">{item?.title}</div>
                               </td>
                               <div>
                                 {item?.productName?.length > 10
@@ -200,11 +173,11 @@ const ManageNews = () => {
                           </div>
                         </td>
 
-                        <td className="py-4">
+                        <td className="py-4 border-b">
                           <div className="flex justify-center items-center">
                             <button
                               onClick={() => deleteItem(item?._id)}
-                              className="btn btn-xs btn-error  text-white font-normal"
+                              className="btn  md:btn-md btn-sm  btn-error  text-white font-normal"
                             >
                               Delete
                             </button>
@@ -219,7 +192,7 @@ const ManageNews = () => {
           </div>
         </div>
         {allNews?.data?.length === 0 ? (
-          <h2 className="text-center mt-10 text-blue-500 text-xl font-semibold">
+          <h2 className="text-center mt-10 text-secondary text-xl font-semibold">
             No Item Found
           </h2>
         ) : (

@@ -153,7 +153,7 @@ const CheckoutForm = ({ order }) => {
         <button
           type="submit"
           disabled={!stripe || !clientSecret || orderSuccess}
-          className="btn mt-8 h-16 w-full rounded-sm bg-indigo-600 tracking-wide font-semibold text-white"
+          className="btn md:btn-md btn-sm  mt-8 h-16 w-full rounded-sm bg-secondary tracking-wide font-semibold text-white"
         >
           Pay
         </button>

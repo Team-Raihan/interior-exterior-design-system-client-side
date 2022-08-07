@@ -63,7 +63,7 @@ const MyBookings = () => {
               <div className="flex items-center py-2">
                 <NavLink
                   to="/dashboard/add-review"
-                  className="btn btn-secondary text-white font-bold px-10 h-[40px] min-h-[40px]"
+                  className="btn md:btn-md btn-sm  btn-secondary text-white font-bold px-10 h-[40px] min-h-[40px]"
                 >
                   Add A Review
                 </NavLink>
@@ -130,14 +130,14 @@ const MyBookings = () => {
                             {product?.orderTotal && !product.paid && (
                               <button
                                 onClick={() => deleteItem(product?._id)}
-                                className="btn btn-sm btn-error  text-white font-semibold"
+                                className="btn md:btn-md btn-sm  btn-error  text-white font-semibold"
                               >
                                 Cancel
                               </button>
                             )}
                             {product?.orderTotal && product.paid && (
                               <div>
-                                <button className="btn btn-sm text-white btn-success">
+                                <button className="btn md:btn-md  btn-sm text-white btn-success">
                                   Paid
                                 </button>
                               </div>
@@ -148,18 +148,15 @@ const MyBookings = () => {
                           <div className="flex justify-center items-center">
                             {!product.paid && (
                               <Link to={`/dashboard/payment/${product?._id}`}>
-                                <button className="btn btn-sm btn-warning  text-white font-semibold">
+                                <button className="btn md:btn-md btn-sm  btn-warning  text-white font-semibold">
                                   pay
                                 </button>
                               </Link>
                             )}
                             {product.paid && (
                               <div className="border border-success p-2 rounded">
-                                <p>
-                                  Transaction id: <br />
-                                  <small className="text-success">
-                                    {product.transactionId}
-                                  </small>
+                                <p className="text-success">
+                                  Ready to shipping
                                 </p>
                               </div>
                             )}
@@ -180,7 +177,7 @@ const MyBookings = () => {
             <div className="flex justify-end   items-center py-5">
               <NavLink
                 to="/dashboard/add-review"
-                className="btn btn-sm px-10 btn-secondary text-white mx-auto"
+                className="btn md:btn-md btn-sm   px-10 btn-secondary text-white mx-auto"
               >
                 Add A Review
               </NavLink>
@@ -236,7 +233,7 @@ const MyBookings = () => {
                             <button
                               disabled={item?.paid}
                               onClick={() => deleteItem(item?._id)}
-                              className="btn btn-sm btn-error  text-white font-normal"
+                              className="btn md:btn-md btn-sm  btn-error  text-white font-normal"
                             >
                               Cancel
                             </button>
@@ -247,14 +244,14 @@ const MyBookings = () => {
                             {item?.paid ? (
                               <button
                                 disabled={true}
-                                className="btn btn-sm btn-warning  text-white font-semibold"
+                                className="btn md:btn-md btn-sm   btn-warning  text-white font-semibold"
                               >
                                 Paid
                               </button>
                             ) : (
                               <Link
                                 to={`/dashboard/payment/${item?._id}`}
-                                className="btn btn-sm btn-warning  text-white font-semibold"
+                                className="btn md:btn-md btn-sm  btn-warning  text-white font-semibold"
                               >
                                 Pay
                               </Link>
@@ -270,7 +267,7 @@ const MyBookings = () => {
           </div>
         </div>
         {myBooking?.data?.length === 0 ? (
-          <h2 className="text-center mt-10 text-blue-500 text-xl font-semibold">
+          <h2 className="text-center mt-10 text-secondary text-xl font-semibold">
             No Item Found
           </h2>
         ) : (

@@ -184,33 +184,25 @@ const AddFeatureWork = () => {
 
   return (
     <>
-      <div className=" my-5 px-4  lg:px-12 text-charcoal min-h-screen font-sans leading-normal overflow-x-hidden lg:overflow-auto">
+      <div className=" min-h-fit md:m-16 m-4">
         <div className="flex-1 md:p-0 lg:pt-8 lg:pb-8  mx-auto flex flex-col">
-          <section className="bg-slate-100 p-4 shadow">
-            <div className="md:flex">
-              <h2 className="md:w-1/3 uppercase tracking-wide text-sm sm:text-lg mb-6">
+          <section className="p-6 rounded-2xl  shadow">
+            <div className="divider before:bg-secondary after:bg-secondary">
+              <h2 className=" uppercase md:text-4xl text-secondary font-bold">
                 Add a new Product
               </h2>
             </div>
             <form onSubmit={handleSubmit(onFormSubmit)} autoComplete="off">
               <div className="md:flex mb-8">
-                <div className="md:w-1/3">
-                  <legend className="uppercase tracking-wide text-sm">
-                    Product Info
-                  </legend>
-                  <p className="text-xs font-light text-red">
-                    All input field is **required**
-                  </p>
-                </div>
                 <div className="md:flex-1 mt-2 mb:mt-0 md:px-3">
                   <div className="md:flex mb-4">
                     <div className="md:flex-1 md:pr-3 mb-4 md:mb-0">
-                      <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
+                      <label className="label block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
                         Product Name
                       </label>
 
                       <input
-                        className="w-full shadow-inner p-4 border-0"
+                        className="input border-2 input-bordered w-full shadow-inner"
                         type="text"
                         name="name"
                         placeholder="Your product name"
@@ -225,11 +217,11 @@ const AddFeatureWork = () => {
                       )}
                     </div>
                     <div className="md:flex-1 md:pr-3">
-                      <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
+                      <label className="label block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
                         Product Price
                       </label>
                       <input
-                        className="w-full shadow-inner p-4 border-0"
+                        className="input border-2 input-bordered w-full shadow-inner"
                         type="number"
                         name="price"
                         placeholder="000"
@@ -247,21 +239,16 @@ const AddFeatureWork = () => {
 
                   <div className="md:flex mb-4">
                     <div className="md:flex-1 md:pr-3">
-                      <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
+                      <label className="label block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
                         Product Image
                         <span className="text-xs lowercase text-gray-600">
                           {" "}
                           (good quality*)
                         </span>
                       </label>
-                      {/* <Input
-            type="file"
-            p={1.5}
-            accept="image/*"
-            onChange={(e) => postPicture(e.target.files[0])}
-          /> */}
+
                       <input
-                        className="w-full bg-white shadow-inner p-4 border-0"
+                        className="input border-2 input-bordered w-full shadow-inner py-1"
                         type="file"
                         name="img"
                         accept="image/*"
@@ -270,11 +257,11 @@ const AddFeatureWork = () => {
                     </div>
                   </div>
                   <div className="md:flex-1 mt-2 mb:mt-0">
-                    <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
+                    <label className="label block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
                       Product Description
                     </label>
                     <textarea
-                      className="w-full shadow-inner p-4 border-0"
+                      className="input  border-2 input-bordered w-full shadow-inner lg:h-[180px] h-[90px] pt-3"
                       placeholder="Enter Product Description here............."
                       rows="6"
                       name="description"
@@ -285,7 +272,7 @@ const AddFeatureWork = () => {
                     ></textarea>
                     {errors.description && (
                       <span className="text-red-500">
-                        Minimum 50 chracter Description is required
+                        Minimum 50 character Description is required
                       </span>
                     )}
                   </div>
@@ -293,21 +280,13 @@ const AddFeatureWork = () => {
               </div>
 
               <div className="md:flex mb-8">
-                <div className="md:w-1/3">
-                  <legend className="uppercase tracking-wide text-sm">
-                    Admin Information
-                  </legend>
-                  <p className="text-xs font-light text-red">
-                    Who is adding new products?
-                  </p>
-                </div>
                 <div className="md:flex-1 mt-2 mb:mt-0 md:px-3">
                   <div className="mb-4">
-                    <label className="block uppercase tracking-wide text-xs font-bold">
+                    <label className="label block uppercase tracking-wide text-xs font-bold">
                       Admin Name
                     </label>
                     <input
-                      className="w-full shadow-inner bg-gray-300 p-4 border-0"
+                      className="input border-2 input-bordered w-full shadow-inner"
                       type="text"
                       name="adminName"
                       disabled
@@ -317,13 +296,13 @@ const AddFeatureWork = () => {
                   </div>
 
                   <div className="mb-4">
-                    <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
+                    <label className="label block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
                       Admin Email
                     </label>
                     <input
                       readOnly
                       disabled
-                      className="w-full shadow-inner bg-gray-300 p-4 border-0"
+                      className="input border-2 input-bordered w-full shadow-inner"
                       type="email"
                       name="adminEmail"
                       value={user.email}
@@ -332,22 +311,14 @@ const AddFeatureWork = () => {
                 </div>
               </div>
 
-              <div className="md:flex mb-6 border border-t-1 border-b-0 border-x-0 border-cream-dark">
-                <div className="md:flex-1 px-3 text-center md:text-right">
-                  <Button
-                    type="submit"
-                    backgroundColor={secondary}
-                    color="white"
-                    style={{ marginTop: 15 }}
-                    //   onClick={submitSignUpHandler}
-                    isLoading={postLoading}
-                    _hover={{
-                      backgroundColor: "#021431",
-                    }}
-                  >
-                    Sign Up
-                  </Button>
-                </div>
+              <div className="divider before:bg-secondary after:bg-secondary">
+                <button
+                  type="submit"
+                  isLoading={postLoading}
+                  className="btn  md:btn-md btn-sm  btn-secondary md:px-10 text-white font-bold"
+                >
+                  Add Work
+                </button>
               </div>
             </form>
           </section>

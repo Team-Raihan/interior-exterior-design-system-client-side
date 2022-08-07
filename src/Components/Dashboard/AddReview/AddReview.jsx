@@ -67,7 +67,7 @@ const AddReview = () => {
         <div className="flex-1  flex flex-col">
           <section className=" p-6 rounded-2xl  shadow">
             <div className="divider before:bg-secondary after:bg-secondary">
-              <h2 className=" uppercase md:text-4xl text-secondary font-bold mb-4">
+              <h2 className=" uppercase md:text-4xl text-secondary font-bold">
                 Add A New Review
               </h2>
             </div>
@@ -148,7 +148,7 @@ const AddReview = () => {
               <div className="divider before:bg-secondary after:bg-secondary">
                 <button
                   type="submit"
-                  className="btn btn-secondary md:px-10 text-white font-bold"
+                  className="btn  md:btn-md btn-sm  btn-secondary md:px-10 text-white font-bold"
                 >
                   Submit Review
                 </button>

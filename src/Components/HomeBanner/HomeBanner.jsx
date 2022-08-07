@@ -2,28 +2,12 @@ import React, { useState } from "react";
 import "./HomeBanner.css";
 import homeBanner from "../../assets/banner/homeBanner.png";
 import { useNavigate } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
-// import axios from "axios";
-// import { useQuery } from "react-query";
 
 const HomeBanner = () => {
   const [searchValue, setSearchValue] = useState("");
   const navigate = useNavigate();
 
-  /* const onChange = (event) => {
-    setValue(event.target.value);
-    event.preventDefault();
-  };
-  const getData = async () => {
-    return await axios.get("http://localhost:5000/api/news");
-  };
-
-  const loadSearchData = async (id) => {
-    return await axios.get(`http://localhost:5000/api/news/${id}`);
-  };
-  */
   const onSearch = () => {
-    //here api to fetch the search result
     if (!searchValue) {
       return;
     } else {
@@ -34,14 +18,14 @@ const HomeBanner = () => {
 
   return (
     <>
-      <div className="container mx-auto px-4 my-16">
+      <div className="container mx-auto px-4 lg:my-16 md:my-8 my-4">
         <div className="relative">
           <div className="search-input">
             <form className="form-control">
-              <label className="label md:text-5xl  text-center uppercase font-bold text-secondary mx-auto">
+              <label className="label lg:text-5xl md:text-2xl text-normal text-center uppercase font-bold text-secondary mx-auto">
                 Modern Contemporary House Idea
               </label>
-              <div className="input-group lg:input-group-lg md:input-group-md input-group-xm mt-4">
+              <div className="input-group md:mt-4 mt-2">
                 <input
                   type="text"
                   // value={value}
@@ -49,14 +33,14 @@ const HomeBanner = () => {
                     setSearchValue(e.target.value);
                   }}
                   placeholder="Search…"
-                  className="input input-bordered lg:w-[600px] md:w-[400px]"
+                  className="input lg:input-lg md:input-md input-sm input-bordered w-full"
                 />
                 <button
                   type="button"
                   onClick={() => {
                     onSearch();
                   }}
-                  className="btn btn-natural "
+                  className="btn md:btn-md btn-sm  btn-natural "
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

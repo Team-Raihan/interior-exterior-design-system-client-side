@@ -19,21 +19,21 @@ const FeatureWorkDetails = () => {
 
   return (
     <div className="container mx-auto px-4">
-      <div className=" lg:mt-16 mt-4">
+      <div className=" lg:py-16 md:py-8 py-4">
         <img className="w-fit mx-auto" src={feature?.img} alt="" />
       </div>
-      <div className=" my-16">
+      <div className=" lg:pb-16 md:pb-8 pb-4">
         <div className="divider before:bg-secondary after:bg-secondary">
-          <div className="flex flex-col justify-center items-center gap-4">
-            <h2 className="lg:text-4xl text-xl font-bold text-secondary ">
+          <div className="flex flex-col justify-center items-center lg:gap-4 md:gap-2 gap-1">
+            <h2 className="lg:text-4xl text-2xl font-bold text-secondary ">
               {feature?.category}
             </h2>
-            <strong className="md:text-2xl">
+            <strong className="md:text-2xl text-lg">
               Remuneration: ${feature?.price ? feature?.price : "Negotiable"}
             </strong>
           </div>
         </div>
-        {/* <p>{feature.description}</p> */}
+
         <div className="md:py-8 py-4 ">
           <p>{feature.description}</p>
         </div>
@@ -43,7 +43,7 @@ const FeatureWorkDetails = () => {
             onClick={() => {
               setBooking(feature);
             }}
-            className="btn modal-button btn-secondary md:w-1/3 px-10  text-white font-bold"
+            className="btn md:btn-md btn-sm  modal-button btn-secondary md:w-1/3 px-10  text-white font-bold"
           >
             Book Now
           </label>

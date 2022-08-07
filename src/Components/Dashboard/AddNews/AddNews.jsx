@@ -6,8 +6,6 @@ import { Button, useToast } from "@chakra-ui/react";
 
 import { format } from "date-fns";
 
-
-
 const AddNews = () => {
   const date = new Date();
 
@@ -180,33 +178,25 @@ const AddNews = () => {
 
   return (
     <>
-      <div className=" my-5 px-4  lg:px-12 text-charcoal min-h-screen font-sans leading-normal overflow-x-hidden lg:overflow-auto">
+      <div className="min-h-fit md:m-16 m-4">
         <div className="flex-1 md:p-0 lg:pt-8 lg:pb-8  mx-auto flex flex-col">
-          <section className="bg-slate-100 p-4 shadow">
-            <div className="md:flex">
-              <h2 className="md:w-1/3 uppercase tracking-wide text-sm sm:text-lg mb-6">
-                Add a News
+          <section className="p-6 rounded-2xl  shadow">
+            <div className="divider before:bg-secondary after:bg-secondary">
+              <h2 className=" uppercase md:text-4xl text-secondary font-bold ">
+                Add a news
               </h2>
             </div>
             <form onSubmit={handleSubmit(onFormSubmit)} autoComplete="off">
               <div className="md:flex mb-8">
-                <div className="md:w-1/3">
-                  <legend className="uppercase tracking-wide text-sm">
-                    News Info
-                  </legend>
-                  <p className="text-xs font-light text-red">
-                    All input field is **required**
-                  </p>
-                </div>
                 <div className="md:flex-1 mt-2 mb:mt-0 md:px-3">
                   <div className="md:flex mb-4">
                     <div className="md:flex-1 md:pr-3 mb-4 md:mb-0">
-                      <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
+                      <label className="label block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
                         News Title
                       </label>
 
                       <input
-                        className="w-full shadow-inner p-4 border-0"
+                        className="input border-2 input-bordered w-full shadow-inner"
                         type="text"
                         name="title"
                         placeholder="Enter A News Title"
@@ -224,7 +214,7 @@ const AddNews = () => {
 
                   <div className="md:flex mb-4">
                     <div className="md:flex-1 md:pr-3">
-                      <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
+                      <label className="label block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
                         News Image
                         <span className="text-xs lowercase text-gray-600">
                           {" "}
@@ -233,7 +223,7 @@ const AddNews = () => {
                       </label>
 
                       <input
-                        className="w-full bg-white shadow-inner p-4 border-0"
+                        className="input border-2 input-bordered w-full shadow-inner py-1"
                         type="file"
                         name="img"
                         accept="image/*"
@@ -242,11 +232,11 @@ const AddNews = () => {
                     </div>
                   </div>
                   <div className="md:flex-1 mt-2 mb:mt-0">
-                    <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
+                    <label className="label block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
                       News Description
                     </label>
                     <textarea
-                      className="w-full shadow-inner p-4 border-0"
+                      className="input  border-2 input-bordered w-full shadow-inner lg:h-[180px] h-[90px] pt-3"
                       placeholder="Enter News Description here............."
                       rows="6"
                       name="news"
@@ -272,7 +262,7 @@ const AddNews = () => {
                   _hover={{
                     backgroundColor: "#021431",
                   }}
-                  className="btn"
+                  className="btn md:btn-md btn-sm "
                 >
                   Add News
                 </Button>

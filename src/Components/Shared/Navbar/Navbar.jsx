@@ -79,7 +79,7 @@ const Navbar = () => {
 
       {user && (
         <div className="dropdown dropdown-end">
-          <label tabIndex="0" className="btn btn-ghost  btn-circle avatar">
+          <label tabIndex="0" className="btn  btn-ghost  btn-circle avatar">
             <div className="w-10 rounded-full  ring-white ring-2">
               <img
                 src={
@@ -130,7 +130,7 @@ const Navbar = () => {
             <label
               tabIndex="1"
               htmlFor="dashboard-sidebar"
-              className="btn btn-ghost lg:hidden"
+              className="btn md:btn-md btn-sm  btn-ghost lg:hidden"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -152,14 +152,17 @@ const Navbar = () => {
         <div className="lg:navbar-start">
           <NavLink
             to="/"
-            className="btn btn-ghost normal-case text-2xl font-bold"
+            className="btn  btn-ghost normal-case text-2xl font-bold"
           >
             Logo
           </NavLink>
         </div>
         {/* mobile menu */}
         <div className="dropdown dropdown-end">
-          <label tabIndex="0" className="btn btn-ghost lg:hidden">
+          <label
+            tabIndex="0"
+            className="btn md:btn-md btn-sm  btn-ghost lg:hidden"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -221,7 +224,7 @@ const Navbar = () => {
                   tabIndex="0"
                   className="collapse collapse-plus  bg-secondary text-white rounded-box w-full"
                 >
-                  <label className="btn btn-ghost btn-circle avatar">
+                  <label className="btn  btn-ghost btn-circle avatar">
                     <div className="w-6 rounded-full  ring-white ring-2">
                       <img
                         src={
