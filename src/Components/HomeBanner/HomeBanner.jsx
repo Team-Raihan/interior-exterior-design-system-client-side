@@ -28,7 +28,6 @@ const HomeBanner = () => {
               <div className="input-group md:mt-4 mt-2">
                 <input
                   type="text"
-                  // value={value}
                   onChange={(e) => {
                     setSearchValue(e.target.value);
                   }}
@@ -40,7 +39,7 @@ const HomeBanner = () => {
                   onClick={() => {
                     onSearch();
                   }}
-                  className="btn md:btn-md btn-sm  btn-natural "
+                  className="btn lg:btn-lg md:btn-md btn-sm  btn-natural "
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

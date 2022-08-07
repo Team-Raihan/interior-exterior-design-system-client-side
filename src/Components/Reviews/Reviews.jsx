@@ -72,7 +72,9 @@ const Reviews = () => {
                         </div>
                       </figure>
 
-                      <p className="text-center mt-8">{review.review}</p>
+                      <p className="text-center mt-8 lg:mx-8 mx-4">
+                        {review.review}
+                      </p>
                     </div>
                   </div>
                 </div>
