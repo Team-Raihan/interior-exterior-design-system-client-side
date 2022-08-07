@@ -25,15 +25,6 @@ const FeaturesSection = () => {
     console.log(error);
   }
 
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/api/featured-item")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       const reversedData = data.reverse();
-  //       setFeatures(reversedData);
-  //     });
-  // }, []);
-
   return (
     <div className="container mx-auto px-4 my-16">
       <div className="">

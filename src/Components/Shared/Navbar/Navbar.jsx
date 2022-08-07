@@ -149,7 +149,6 @@ const Navbar = () => {
             </label>
           </div>
         )}
-        {/* ------------------ */}
         <div className="lg:navbar-start">
           <NavLink
             to="/"
@@ -287,7 +286,10 @@ const Navbar = () => {
             {support?.isOpen ? (
               <h1>Join now for Live Support with our customer care team.</h1>
             ) : (
-              <h1>Please try to contact on live chat. Our customer care team will give you instant reply.</h1>
+              <h1>
+                Please try to contact on live chat. Our customer care team will
+                give you instant reply.
+              </h1>
             )}
           </ModalBody>
 

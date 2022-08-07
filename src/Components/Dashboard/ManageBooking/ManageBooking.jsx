@@ -126,6 +126,7 @@ const ManageBooking = () => {
                         <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                           <div className="flex justify-center items-center">
                             <button
+                              disabled={product?.paid}
                               onClick={() => deleteItem(product?._id)}
                               className="btn btn-sm btn-error  text-white font-semibold"
                             >
@@ -135,12 +136,21 @@ const ManageBooking = () => {
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                           <div className="flex justify-center items-center">
-                            <Link
-                              to={`/dashboard/payment/${product?._id}`}
-                              className="btn btn-sm btn-warning  text-white font-semibold"
-                            >
-                              Pay
-                            </Link>
+                            {product?.paid ? (
+                              <button
+                                disabled={true}
+                                className="btn btn-sm btn-success  text-white font-semibold"
+                              >
+                                Paid
+                              </button>
+                            ) : (
+                              <Link
+                                to={`/dashboard/payment/${product?._id}`}
+                                className="btn btn-sm btn-warning  text-white font-semibold"
+                              >
+                                Pay
+                              </Link>
+                            )}
                           </div>
                         </td>
                       </tr>
@@ -189,7 +199,7 @@ const ManageBooking = () => {
                         <td className=" py-4  border-b border-gray-200">
                           <div className="text-sm leading-5 text-secondary">
                             <div className="flex flex-col items-center  justify-center">
-                              <td className="flex justify-center px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                              <td className="flex flex-col items-center justify-center px-6 py-4 whitespace-no-wrap border-b border-gray-200 gap-2">
                                 <div className="avatar">
                                   <div className="w-10 rounded-full ring-2 ring-secondary">
                                     <img
@@ -199,34 +209,44 @@ const ManageBooking = () => {
                                     />
                                   </div>
                                 </div>
+                                <div>
+                                  {item?.productName?.length > 10
+                                    ? `${item?.productName?.slice(0, 10)}..`
+                                    : item?.productName}
+                                </div>
                               </td>
-                              <div>
-                                {item?.productName?.length > 10
-                                  ? `${item?.productName?.slice(0, 10)}..`
-                                  : item?.productName}
-                              </div>
                             </div>
                           </div>
                         </td>
 
-                        <td className="py-4">
+                        <td className="py-4 border-b ">
                           <div className="flex justify-center items-center">
                             <button
+                              disabled={item?.paid}
                               onClick={() => deleteItem(item?._id)}
-                              className="btn btn-xs btn-error  text-white font-normal"
+                              className="btn btn-sm btn-error  text-white font-normal"
                             >
                               Cancel
                             </button>
                           </div>
                         </td>
-                        <td className="py-4">
+                        <td className="py-4 border-b">
                           <div className="flex justify-center items-center">
-                            <Link
-                              to={`/dashboard/payment/${item?._id}`}
-                              className="btn btn-xs btn-warning  text-white font-normal"
-                            >
-                              Pay
-                            </Link>
+                            {item?.paid ? (
+                              <button
+                                disabled={true}
+                                className="btn btn-sm btn-success  text-white font-semibold"
+                              >
+                                Paid
+                              </button>
+                            ) : (
+                              <Link
+                                to={`/dashboard/payment/${item?._id}`}
+                                className="btn btn-sm btn-warning  text-white font-semibold"
+                              >
+                                Pay
+                              </Link>
+                            )}
                           </div>
                         </td>
                       </tr>

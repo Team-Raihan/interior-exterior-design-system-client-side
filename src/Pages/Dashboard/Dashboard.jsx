@@ -55,12 +55,7 @@ const Dashboard = () => {
                   Add Review
                 </NavLink>
               </li>
-             {/* ------ */}
-            </>
-          )}
-
-          {/* ----- */}
-           <li>
+              <li>
                 <NavLink
                   to="/dashboard/my-booking"
                   className={({ isActive }) =>
@@ -72,6 +67,8 @@ const Dashboard = () => {
                   My Booking
                 </NavLink>
               </li>
+            </>
+          )}
 
           {admin && (
             <>
