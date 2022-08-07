@@ -1,23 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import "./HomeBanner.css";
 import homeBanner from "../../assets/banner/homeBanner.png";
+// import { useNavigate } from "react-router-dom";
+// import axios from "axios";
+// import { useQuery } from "react-query";
+
 const HomeBanner = () => {
+  /*   const [value, setValue] = useState("");
+
+  const onChange = (event) => {
+    setValue(event.target.value);
+    event.preventDefault();
+  };
+  const getData = async () => {
+    return await axios.get("http://localhost:5000/api/news");
+  };
+
+  const loadSearchData = async (id) => {
+    return await axios.get(`http://localhost:5000/api/news/${id}`);
+  };
+  const onSearch = (searchTerm) => {
+    //here api to fetch the search result
+
+    console.log("search", searchTerm);
+  }; */
+
   return (
     <>
       <div className="container mx-auto px-4 my-16">
         <div className="relative">
           <div className="search-input">
-            <div className="form-control">
+            <form className="form-control">
               <label className="label md:text-5xl  text-center uppercase font-bold text-secondary mx-auto">
                 Modern Contemporary House Idea
               </label>
-              <div className="input-group mt-4">
+              <div className="input-group lg:input-group-lg md:input-group-md input-group-xm mt-4">
                 <input
                   type="text"
+                  // value={value}
+                  // onChange={onChange}
                   placeholder="Search…"
                   className="input input-bordered lg:w-[600px] md:w-[400px]"
                 />
-                <button className="btn btn-square">
+                <button
+                  onClick={() => {
+                    // onSearch(value);
+                  }}
+                  className="btn btn-natural "
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6"
@@ -34,7 +64,7 @@ const HomeBanner = () => {
                   </svg>
                 </button>
               </div>
-            </div>
+            </form>
           </div>
           <div className="banner-wrapper">
             <img

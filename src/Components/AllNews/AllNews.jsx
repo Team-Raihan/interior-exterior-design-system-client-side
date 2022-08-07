@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useQuery } from "react-query";
 
@@ -13,6 +13,7 @@ const AllNews = () => {
   const getData = async () => {
     return await axios.get("http://localhost:5000/api/news");
   };
+
   const {
     data: news,
     isLoading,
@@ -25,7 +26,7 @@ const AllNews = () => {
   if (error) {
     console.log(error);
   }
-  console.log("news:", news);
+  // console.log("news:", news);
 
   return (
     <div className="container mx-auto px-4 my-16">

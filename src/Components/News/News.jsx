@@ -26,7 +26,7 @@ const News = () => {
   if (error) {
     console.log(error);
   }
-  console.log("news:", news);
+  // console.log("news:", news);
 
   return (
     <div className="container mx-auto px-4 my-16">
