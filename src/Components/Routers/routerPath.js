@@ -1,5 +1,6 @@
 const paths = {
   home: "/",
+  search: "/search/:text",
   authentication: "/authentication/user",
   featureWorkDetails: "/featured-item/:id",
   featureWorks: "/feature-works",

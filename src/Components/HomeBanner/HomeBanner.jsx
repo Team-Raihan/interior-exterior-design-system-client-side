@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import "./HomeBanner.css";
 import homeBanner from "../../assets/banner/homeBanner.png";
+import { useNavigate } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
 // import axios from "axios";
 // import { useQuery } from "react-query";
 
 const HomeBanner = () => {
-  /*   const [value, setValue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
+  const navigate = useNavigate();
 
-  const onChange = (event) => {
+  /* const onChange = (event) => {
     setValue(event.target.value);
     event.preventDefault();
   };
@@ -19,11 +21,16 @@ const HomeBanner = () => {
   const loadSearchData = async (id) => {
     return await axios.get(`http://localhost:5000/api/news/${id}`);
   };
-  const onSearch = (searchTerm) => {
+  */
+  const onSearch = () => {
     //here api to fetch the search result
-
-    console.log("search", searchTerm);
-  }; */
+    if (!searchValue) {
+      return;
+    } else {
+      navigate(`/search/${searchValue}`);
+      console.log(searchValue);
+    }
+  };
 
   return (
     <>
@@ -38,13 +45,16 @@ const HomeBanner = () => {
                 <input
                   type="text"
                   // value={value}
-                  // onChange={onChange}
+                  onChange={(e) => {
+                    setSearchValue(e.target.value);
+                  }}
                   placeholder="Search…"
                   className="input input-bordered lg:w-[600px] md:w-[400px]"
                 />
                 <button
+                  type="button"
                   onClick={() => {
-                    // onSearch(value);
+                    onSearch();
                   }}
                   className="btn btn-natural "
                 >

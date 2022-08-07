@@ -22,11 +22,13 @@ import MyBookings from "../Dashboard/MyBooking/MyBookings";
 import ManageNews from "../Dashboard/ManageNews/ManageNews";
 import LiveSupportAdmin from "../Dashboard/LiveSupport/LiveSupportAdmin";
 import Payment from "../payment/Payment";
+import Search from "../Search/Search";
 
 const RoutesPath = () => {
   return (
     <Routes>
       <Route path={paths.home} element={<Home />} />
+      <Route path={paths.search} element={<Search />} />
       <Route path={paths.authentication} element={<Authentication />} />
       <Route path={paths.featureWorkDetails} element={<FeatureWorkDetails />} />
       <Route path={paths.featureWorks} element={<FeatureWorks />} />

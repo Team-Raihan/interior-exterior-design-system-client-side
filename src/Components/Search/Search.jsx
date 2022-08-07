@@ -1,9 +1,14 @@
 import React from "react";
+import FeatureSection from "../FeatureSection/FeatureSection";
 import { useQuery } from "react-query";
 import axios from "axios";
-import FeatureSection from "../FeatureSection/FeatureSection";
+import { Link, useParams } from "react-router-dom";
 
-const FeatureWorks = () => {
+const Search = () => {
+  const { text } = useParams();
+
+  console.log(text);
+
   const getData = async () => {
     return await axios.get("http://localhost:5000/api/featured-item");
   };
@@ -12,7 +17,7 @@ const FeatureWorks = () => {
     isLoading,
     // refetch,
     error,
-  } = useQuery({ queryKey: ["storeAllFeatures", 1], queryFn: getData });
+  } = useQuery({ queryKey: ["storeSearchFeatures", 1], queryFn: getData });
 
   if (isLoading) {
     return <p>Loading........</p>;
@@ -26,21 +31,29 @@ const FeatureWorks = () => {
       <div className="">
         <div className="text-center  mb-16 block">
           <h2 className="text-secondary lg:text-5xl text-2xl font-bold mb-2 uppercase">
-            All Feature Work
+            Featured Works
           </h2>
         </div>
         <div className="  bg-base-100 mb-16">
           <div className="text-center p-0">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3   gap-10">
-              {features?.data?.map((feature) => (
+              {features?.data?.slice(0, 6).map((feature) => (
                 <FeatureSection key={feature?._id} feature={feature} />
               ))}
             </div>
           </div>
+        </div>
+        <div className="mt-16 text-center ">
+          <Link
+            to="/feature-works"
+            className="btn btn-secondary md:w-1/3 w-full  text-white font-bold"
+          >
+            View All Works
+          </Link>
         </div>
       </div>
     </div>
   );
 };
 
-export default FeatureWorks;
+export default Search;

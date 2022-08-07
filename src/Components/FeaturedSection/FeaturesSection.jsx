@@ -16,7 +16,7 @@ const FeaturesSection = () => {
     isLoading,
     // refetch,
     error,
-  } = useQuery({ queryKey: ["storeAllFeatures", 1], queryFn: getData });
+  } = useQuery({ queryKey: ["storeHomeFeatures", 1], queryFn: getData });
 
   if (isLoading) {
     return <p>Loading........</p>;
