@@ -7,8 +7,8 @@ import auth from "../../Firebase/Firebase.init";
 
 const BookingModal = ({ booking, setBooking }) => {
   const [user] = useAuthState(auth);
-  const [buyerAddress,setBuyerAddress]=useState("")
-  const [phoneNubmer,setPhoneNumber]=useState("")
+  const [buyerAddress, setBuyerAddress] = useState("");
+  const [phoneNubmer, setPhoneNumber] = useState("");
   //   console.log(booking);
   const toast = useToast();
   const {
@@ -19,7 +19,7 @@ const BookingModal = ({ booking, setBooking }) => {
     reset,
   } = useForm();
 
-  const onFormSubmit = async (data,e) => {
+  const onFormSubmit = async (data, e) => {
     e.preventDefault();
     const bookingInfo = {
       buyerName: user?.displayName,
@@ -45,6 +45,7 @@ const BookingModal = ({ booking, setBooking }) => {
           isClosable: true,
           position: "bottom",
         });
+        setBooking(null);
       } else {
         toast({
           title: "Something Went Wrong!",
@@ -53,6 +54,7 @@ const BookingModal = ({ booking, setBooking }) => {
           isClosable: true,
           position: "bottom",
         });
+        setBooking(null);
       }
     } catch (error) {
       toast({
@@ -62,8 +64,9 @@ const BookingModal = ({ booking, setBooking }) => {
         isClosable: true,
         position: "bottom",
       });
+      setBooking(null);
     }
-    reset();
+    // reset();
   };
 
   return (
@@ -78,115 +81,108 @@ const BookingModal = ({ booking, setBooking }) => {
           </div>
           <form onSubmit={handleSubmit(onFormSubmit)} autoComplete="off">
             <div className="flex-1  flex flex-col">
-             
-                <div className="mb-8 ">
-                  <div className="flex flex-col lg:flex-row gap-4">
-                    <div className="md:flex-1 mt-2 mb:mt-0 ">
-                      <label className="label font-bold">Your Name</label>
-                      <input
-                        className="input border-2 input-bordered w-full shadow-inner"
-                        name="name"
-                        value={user?.displayName}
-                        readOnly
-                        {...register("name", {
-                          required: true,
-                        })}
-                      />
-                      {errors.name && (
-                        <span className="text-red-500">Name is required</span>
-                      )}
-                    </div>
-                    <div className="md:flex-1 mt-2 mb:mt-0 ">
-                      <label className="label font-bold">Your Email</label>
-                      <input
-                        className="input border-2 input-bordered w-full shadow-inner"
-                        name="name"
-                        value={user?.email}
-                        readOnly
-                        {...register("email", {
-                          required: true,
-                        })}
-                      />
-                      {errors.email && (
-                        <span className="text-red-500">Email is required</span>
-                      )}
-                    </div>
+              <div className="mb-8 ">
+                <div className="flex flex-col lg:flex-row gap-4">
+                  <div className="md:flex-1 mt-2 mb:mt-0 ">
+                    <label className="label font-bold">Your Name</label>
+                    <input
+                      className="input border-2 input-bordered w-full shadow-inner"
+                      name="name"
+                      value={user?.displayName}
+                      readOnly
+                      {...register("name", {
+                        required: true,
+                      })}
+                    />
+                    {errors.name && (
+                      <span className="text-red-500">Name is required</span>
+                    )}
                   </div>
-                  <div className="flex flex-col lg:flex-row gap-4">
-                    <div className="md:flex-1 mt-2 mb:mt-0 ">
-                      <label className="label font-bold">Product Name</label>
-                      <input
-                        className="input border-2 input-bordered w-full shadow-inner"
-                        name="name"
-                        value={booking?.category}
-                        readOnly
-                        {...register("category", {
-                          required: true,
-                        })}
-                      />
-                      {errors.category && (
-                        <span className="text-red-500">
-                          Category is required
-                        </span>
-                      )}
-                    </div>
-                    <div className="md:flex-1 mt-2 mb:mt-0 ">
-                      <label className="label font-bold">Product Price</label>
-                      <input
-                        className="input border-2 input-bordered w-full shadow-inner"
-                        value={booking?.price}
-                        name="price"
-                        readOnly
-                        {...register("price", {
-                          required: true,
-                        })}
-                      />
-                      {errors.price && (
-                        <span className="text-red-500">
-                          Minimum 10 character Review is required
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  <div className="flex flex-col lg:flex-row gap-4">
-                    <div className="md:flex-1 mt-2 mb:mt-0 ">
-                      <label className="label font-bold">Your Address</label>
-                      <input
-                        className="input border-2 input-bordered w-full shadow-inner"
-                        name="name"
-                        placeholder="Your Address"
-                        {...register("address", {
-                          required: true,
-                        })}
-                      />
-                      {errors.address && (
-                        <span className="text-red-500">
-                          Address is required
-                        </span>
-                      )}
-                    </div>
-                    <div className="md:flex-1 mt-2 mb:mt-0 ">
-                      <label className="label font-bold">Your Number</label>
-                      <input
-                        className="input border-2 input-bordered w-full shadow-inner"
-                        placeholder="Your contact number"
-                        name="number"
-                        type="number"
-                        minLength="11"
-                        {...register("number", {
-                          required: true,
-                        })}
-                      />
-                      {errors.number && (
-                        <span className="text-red-500">
-                          Contact number is required
-                        </span>
-                      )}
-        
-                    </div>
+                  <div className="md:flex-1 mt-2 mb:mt-0 ">
+                    <label className="label font-bold">Your Email</label>
+                    <input
+                      className="input border-2 input-bordered w-full shadow-inner"
+                      name="name"
+                      value={user?.email}
+                      readOnly
+                      {...register("email", {
+                        required: true,
+                      })}
+                    />
+                    {errors.email && (
+                      <span className="text-red-500">Email is required</span>
+                    )}
                   </div>
                 </div>
-        
+                <div className="flex flex-col lg:flex-row gap-4">
+                  <div className="md:flex-1 mt-2 mb:mt-0 ">
+                    <label className="label font-bold">Product Name</label>
+                    <input
+                      className="input border-2 input-bordered w-full shadow-inner"
+                      name="name"
+                      value={booking?.category}
+                      readOnly
+                      {...register("category", {
+                        required: true,
+                      })}
+                    />
+                    {errors.category && (
+                      <span className="text-red-500">Category is required</span>
+                    )}
+                  </div>
+                  <div className="md:flex-1 mt-2 mb:mt-0 ">
+                    <label className="label font-bold">Product Price</label>
+                    <input
+                      className="input border-2 input-bordered w-full shadow-inner"
+                      value={booking?.price}
+                      name="price"
+                      readOnly
+                      {...register("price", {
+                        required: true,
+                      })}
+                    />
+                    {errors.price && (
+                      <span className="text-red-500">
+                        Minimum 10 character Review is required
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <div className="flex flex-col lg:flex-row gap-4">
+                  <div className="md:flex-1 mt-2 mb:mt-0 ">
+                    <label className="label font-bold">Your Address</label>
+                    <input
+                      className="input border-2 input-bordered w-full shadow-inner"
+                      name="name"
+                      placeholder="Your Address"
+                      {...register("address", {
+                        required: true,
+                      })}
+                    />
+                    {errors.address && (
+                      <span className="text-red-500">Address is required</span>
+                    )}
+                  </div>
+                  <div className="md:flex-1 mt-2 mb:mt-0 ">
+                    <label className="label font-bold">Your Number</label>
+                    <input
+                      className="input border-2 input-bordered w-full shadow-inner"
+                      placeholder="Your contact number"
+                      name="number"
+                      type="number"
+                      minLength="11"
+                      {...register("number", {
+                        required: true,
+                      })}
+                    />
+                    {errors.number && (
+                      <span className="text-red-500">
+                        Contact number is required
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="divider before:bg-secondary after:bg-secondary">
               <label
