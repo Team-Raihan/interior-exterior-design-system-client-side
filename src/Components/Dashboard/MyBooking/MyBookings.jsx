@@ -127,22 +127,42 @@ const MyBookings = () => {
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                           <div className="flex justify-center items-center">
-                            <button
-                              onClick={() => deleteItem(product?._id)}
-                              className="btn btn-sm btn-error  text-white font-semibold"
-                            >
-                              Cancel
-                            </button>
+                            {product?.orderTotal && !product.paid && (
+                              <button
+                                onClick={() => deleteItem(product?._id)}
+                                className="btn btn-sm btn-error  text-white font-semibold"
+                              >
+                                Cancel
+                              </button>
+                            )}
+                            {product?.orderTotal && product.paid && (
+                              <div>
+                                <button className="btn btn-sm text-white btn-success">
+                                  Paid
+                                </button>
+                              </div>
+                            )}
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                           <div className="flex justify-center items-center">
-                          <Link
-                              to={`/dashboard/payment/${product?._id}`}
-                              className="btn btn-sm btn-warning  text-white font-semibold"
-                            >
-                              Pay
-                            </Link>
+                            {!product.paid && (
+                              <Link to={`/dashboard/payment/${product?._id}`}>
+                                <button className="btn btn-sm btn-warning  text-white font-semibold">
+                                  pay
+                                </button>
+                              </Link>
+                            )}
+                            {product.paid && (
+                              <div className="border border-success p-2 rounded">
+                                <p>
+                                  Transaction id: <br />
+                                  <small className="text-success">
+                                    {product.transactionId}
+                                  </small>
+                                </p>
+                              </div>
+                            )}
                           </div>
                         </td>
                       </tr>
@@ -214,8 +234,9 @@ const MyBookings = () => {
                         <td className="py-4">
                           <div className="flex justify-center items-center">
                             <button
+                              disabled={item?.paid}
                               onClick={() => deleteItem(item?._id)}
-                              className="btn btn-xs btn-error  text-white font-normal"
+                              className="btn btn-sm btn-error  text-white font-normal"
                             >
                               Cancel
                             </button>
@@ -223,12 +244,21 @@ const MyBookings = () => {
                         </td>
                         <td className="py-4">
                           <div className="flex justify-center items-center">
-                          <Link
-                              to={`/dashboard/payment/${item?._id}`}
-                              className="btn btn-sm btn-warning  text-white font-semibold"
-                            >
-                              Pay
-                            </Link>
+                            {item?.paid ? (
+                              <button
+                                disabled={true}
+                                className="btn btn-sm btn-warning  text-white font-semibold"
+                              >
+                                Paid
+                              </button>
+                            ) : (
+                              <Link
+                                to={`/dashboard/payment/${item?._id}`}
+                                className="btn btn-sm btn-warning  text-white font-semibold"
+                              >
+                                Pay
+                              </Link>
+                            )}
                           </div>
                         </td>
                       </tr>

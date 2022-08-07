@@ -1,8 +1,12 @@
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
-import { useState } from "react";
+// import { useState } from "react";
 import { useForm } from "react-hook-form";
-const UpdateProfileModal = ({ openUpdateModal, setOpenUpdateModal }) => {
+const UpdateProfileModal = ({
+  openUpdateModal,
+  setOpenUpdateModal,
+  refetch,
+}) => {
   const { email } = openUpdateModal;
   console.log(email);
   const toast = useToast();
@@ -11,7 +15,7 @@ const UpdateProfileModal = ({ openUpdateModal, setOpenUpdateModal }) => {
     handleSubmit,
 
     formState: { errors },
-    reset,
+    // reset,
   } = useForm();
 
   const onFormSubmit = async (data, e) => {
@@ -39,6 +43,7 @@ const UpdateProfileModal = ({ openUpdateModal, setOpenUpdateModal }) => {
           isClosable: true,
           position: "bottom",
         });
+        refetch();
         setOpenUpdateModal(null);
       } else {
         toast({

@@ -1,10 +1,34 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../Firebase/Firebase.init";
 import UpdateProfileModal from "./UpdateProfileModal";
+import { useQuery } from "react-query";
+
 const MyProfile = () => {
   const [user] = useAuthState(auth);
-  const [openUpdateModal,setOpenUpdateModal]= useState(null)
+  const [openUpdateModal, setOpenUpdateModal] = useState(null);
+
+  const getData = async () => {
+    return await axios.get(`http://localhost:5000/api/user/${user?.email}`);
+  };
+
+  const {
+    data: userInfo,
+    isLoading,
+    refetch,
+    error,
+  } = useQuery({ queryKey: ["storeProfileInfo", 1], queryFn: getData });
+
+  console.log(userInfo);
+
+  if (isLoading) {
+    return <p>Loading........</p>;
+  }
+  if (error) {
+    console.log(error);
+  }
+
   return (
     <>
       <div className="min-h-fit md:m-16 m-4">
@@ -31,14 +55,13 @@ const MyProfile = () => {
                       <strong>Email: </strong> {user?.email}
                     </p>
                     <p>
-                      <strong>Phone: </strong>{" "}
-                      {user?.providerData[0].phoneNumber}
+                      <strong>Phone: </strong> {userInfo?.data?.phoneNumber}
                     </p>
                     <p>
-                      <strong>Profession: </strong> {user?.profession}
+                      <strong>Profession: </strong> {userInfo?.data?.occupation}
                     </p>
                     <p>
-                      <strong>Address:</strong> {user?.address}
+                      <strong>Address:</strong> {userInfo?.data?.billingAddress}
                     </p>
                   </div>
                 </div>
@@ -46,16 +69,20 @@ const MyProfile = () => {
               <div className="divider before:bg-secondary after:bg-secondary">
                 <label
                   htmlFor="update-profile"
-                  onClick={()=>setOpenUpdateModal({email:user?.email})}
+                  onClick={() => setOpenUpdateModal({ email: user?.email })}
                   className="btn modal-button btn-secondary md:px-10 text-white font-bold"
                 >
                   Update Profile
                 </label>
               </div>
             </form>
-          {
-            openUpdateModal &&   <UpdateProfileModal openUpdateModal={openUpdateModal} setOpenUpdateModal={setOpenUpdateModal}/>
-          }
+            {openUpdateModal && (
+              <UpdateProfileModal
+                openUpdateModal={openUpdateModal}
+                setOpenUpdateModal={setOpenUpdateModal}
+                refetch={refetch}
+              />
+            )}
           </div>
         </div>
       </div>
