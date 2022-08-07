@@ -13,12 +13,23 @@ import {
   ModalCloseButton,
   useDisclosure,
   Button,
+  useQuery,
 } from "@chakra-ui/react";
+import axios from "axios";
 const Navbar = () => {
   const [user] = useAuthState(auth);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { pathname } = useLocation();
 
+  const getData = async () => {
+    return await axios.get("http://localhost:5000/api/review");
+  };
+  const {
+    data: support,
+    isLoading,
+    refetch,
+    error,
+  } = useQuery({ queryKey: ["storeUserSupport", 1], queryFn: getData });
   const logout = () => {
     signOut(auth);
   };
@@ -269,20 +280,28 @@ const Navbar = () => {
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
-          <ModalHeader mt={10}>Live Support Available.</ModalHeader>
+          <ModalHeader mt={10}>
+            Live Support {support?.isOpen ? "Available." : "Not Available!"}
+          </ModalHeader>
           <ModalBody pb={6}>
-            <h1>Join now for Live Support with our customer care team.</h1>
+            {support?.isOpen ? (
+              <h1>Join now for Live Support with our customer care team.</h1>
+            ) : (
+              <h1>Please try to contact on live chat. Our customer care team will give you instant reply.</h1>
+            )}
           </ModalBody>
 
           <ModalFooter>
             <Button mr={3} onClick={onClose}>
               Cancel
             </Button>
-            <Button colorScheme="blue">
-              <a href="https://meet.google.com/" target="__blank">
-                Join
-              </a>
-            </Button>
+            {support?.isOpen && (
+              <Button colorScheme="blue">
+                <a href="https://meet.google.com/" target="__blank">
+                  Join
+                </a>
+              </Button>
+            )}
           </ModalFooter>
         </ModalContent>
       </Modal>
