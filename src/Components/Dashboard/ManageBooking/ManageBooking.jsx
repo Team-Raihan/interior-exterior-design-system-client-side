@@ -51,7 +51,7 @@ const ManageBooking = () => {
           <div className="flex flex-col">
             <div className="-mb-2 py-4 flex flex-wrap flex-grow justify-between">
               <div className="flex items-center py-2">
-                <input
+                <span
                   className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                   id="inline-search"
                   type="text"
@@ -221,12 +221,12 @@ const ManageBooking = () => {
                         </td>
                         <td className="py-4">
                           <div className="flex justify-center items-center">
-                            <button
+                            <Link
                               to={`/dashboard/payment/${item?._id}`}
                               className="btn btn-xs btn-warning  text-white font-normal"
                             >
                               Pay
-                            </button>
+                            </Link>
                           </div>
                         </td>
                       </tr>

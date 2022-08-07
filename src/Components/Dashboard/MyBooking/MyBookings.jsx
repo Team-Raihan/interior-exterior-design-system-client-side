@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import auth from "../../../Firebase/Firebase.init";
 import LoadingData from "../../Loading/LoadingData";
 
@@ -137,12 +137,12 @@ const MyBookings = () => {
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                           <div className="flex justify-center items-center">
-                            <button
-                              onClick={() => product?._id}
+                          <Link
+                              to={`/dashboard/payment/${product?._id}`}
                               className="btn btn-sm btn-warning  text-white font-semibold"
                             >
                               Pay
-                            </button>
+                            </Link>
                           </div>
                         </td>
                       </tr>
@@ -223,12 +223,12 @@ const MyBookings = () => {
                         </td>
                         <td className="py-4">
                           <div className="flex justify-center items-center">
-                            <button
-                              onClick={() => item?._id}
-                              className="btn btn-xs btn-warning  text-white font-normal"
+                          <Link
+                              to={`/dashboard/payment/${item?._id}`}
+                              className="btn btn-sm btn-warning  text-white font-semibold"
                             >
                               Pay
-                            </button>
+                            </Link>
                           </div>
                         </td>
                       </tr>

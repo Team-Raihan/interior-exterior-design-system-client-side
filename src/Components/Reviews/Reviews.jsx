@@ -7,7 +7,7 @@ import { useQuery } from "react-query";
 import axios from "axios";
 
 const Reviews = () => {
-  // const [reviews, setReviews] = useState([]);
+
   const getData = async () => {
     return await axios.get("http://localhost:5000/api/review");
   };
@@ -22,18 +22,9 @@ const Reviews = () => {
     return <p>Loading........</p>;
   }
   if (error) {
-    console.log(error);
+    return <p>Loading........</p>;
   }
 
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/api/review")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       const reversedData = data.reverse();
-  //       setReviews(reversedData);
-  //       console.log(data);
-  //     });
-  // }, []);
 
   const settings = {
     dots: true,
@@ -53,8 +44,9 @@ const Reviews = () => {
           </h2>
         </div>
         <div className=" md:p-16">
+        {allReviews?.data&& 
           <Slider {...settings}>
-            {allReviews?.data?.slice(0, 6).map((review) => (
+            {allReviews?.data?.slice(0, 6)?.map((review) => (
               <div
                 className="card bg-base-100 overflow-hidden rounded-xl relative"
                 key={review._id}
@@ -88,6 +80,7 @@ const Reviews = () => {
               </div>
             ))}
           </Slider>
+        }
         </div>
       </div>
     </div>

@@ -76,7 +76,7 @@ const AddReview = () => {
                 <div className="flex flex-col lg:flex-row gap-4">
                   <div className="md:flex-1 mt-2 mb:mt-0 ">
                     <label className="label font-bold">Your Name</label>
-                    <input
+                    <span
                       className="input border-2 input-bordered w-full shadow-inner"
                       name="name"
                       value={user?.displayName}
@@ -84,7 +84,7 @@ const AddReview = () => {
                       {...register("name", {
                         required: true,
                       })}
-                    ></input>
+                    ></span>
                     {errors.name && (
                       <span className="text-red-500">
                         Minimum 10 character Review is required
@@ -93,14 +93,14 @@ const AddReview = () => {
                   </div>
                   <div className="md:flex-1 mt-2 mb:mt-0 ">
                     <label className="label font-bold">Your Profession</label>
-                    <input
+                    <span
                       className="input border-2 input-bordered w-full shadow-inner"
                       placeholder="Enter your profession"
                       name="occupation"
                       {...register("occupation", {
                         required: true,
                       })}
-                    ></input>
+                    ></span>
                     {errors.name && (
                       <span className="text-red-500">
                         Minimum 10 character Review is required

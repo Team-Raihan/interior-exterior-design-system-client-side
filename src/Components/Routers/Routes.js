@@ -125,7 +125,7 @@ const RoutesPath = () => {
           }
         />
         <Route
-          path="/dashboard/payment/:id"
+          path="/dashboard/payment/:orderId"
           element={
             <RequireAuth>
               <Payment />
