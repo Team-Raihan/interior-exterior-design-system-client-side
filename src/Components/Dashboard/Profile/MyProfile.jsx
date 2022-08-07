@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../Firebase/Firebase.init";
 import UpdateProfileModal from "./UpdateProfileModal";
 const MyProfile = () => {
   const [user] = useAuthState(auth);
-  console.log(user);
+  const [openUpdateModal,setOpenUpdateModal]= useState(null)
   return (
     <>
       <div className="min-h-fit md:m-16 m-4">
@@ -46,13 +46,16 @@ const MyProfile = () => {
               <div className="divider before:bg-secondary after:bg-secondary">
                 <label
                   htmlFor="update-profile"
+                  onClick={()=>setOpenUpdateModal({email:user?.email})}
                   className="btn modal-button btn-secondary md:px-10 text-white font-bold"
                 >
                   Update Profile
                 </label>
               </div>
             </form>
-            <UpdateProfileModal />
+          {
+            openUpdateModal &&   <UpdateProfileModal openUpdateModal={openUpdateModal} setOpenUpdateModal={setOpenUpdateModal}/>
+          }
           </div>
         </div>
       </div>

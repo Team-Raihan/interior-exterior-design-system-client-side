@@ -1,15 +1,10 @@
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import auth from "../../../Firebase/Firebase.init";
-
-const UpdateProfileModal = ({ updating, setUpdating }) => {
-  const [user] = useAuthState(auth);
-  const [buyerAddress, setBuyerAddress] = useState("");
-  const [phoneNubmer, setPhoneNumber] = useState("");
-  //   console.log(booking);
+const UpdateProfileModal = ({ openUpdateModal, setOpenUpdateModal }) => {
+  const { email } = openUpdateModal;
+  console.log(email);
   const toast = useToast();
   const {
     register,
@@ -22,18 +17,17 @@ const UpdateProfileModal = ({ updating, setUpdating }) => {
   const onFormSubmit = async (data, e) => {
     e.preventDefault();
     const updateInfo = {
-      buyerName: user?.displayName,
-      buyerEmail: user?.email,
-      productName: updating?.category,
-      productImg: updating?.img,
-      orderTotal: updating?.price,
-      billingInfo: data?.address,
-      buyerPhone: data?.number,
+      occupation: data?.occupation,
+      phoneNumber: data?.number,
+      postCode: data?.post,
+      city: data?.city,
+      billingAddress: data?.billing,
     };
+    console.log(updateInfo);
 
     try {
       const newUpdatedInfo = await axios.patch(
-        "http://localhost:5000/api/user",
+        `http://localhost:5000/api/user/${email}`,
         updateInfo
       );
       console.log("newBooking: ", newUpdatedInfo);
@@ -45,7 +39,7 @@ const UpdateProfileModal = ({ updating, setUpdating }) => {
           isClosable: true,
           position: "bottom",
         });
-        setUpdating(null);
+        setOpenUpdateModal(null);
       } else {
         toast({
           title: "Something Went Wrong!",
@@ -54,7 +48,7 @@ const UpdateProfileModal = ({ updating, setUpdating }) => {
           isClosable: true,
           position: "bottom",
         });
-        setUpdating(null);
+        setOpenUpdateModal(null);
       }
     } catch (error) {
       toast({
@@ -64,8 +58,9 @@ const UpdateProfileModal = ({ updating, setUpdating }) => {
         isClosable: true,
         position: "bottom",
       });
-      setUpdating(null);
+      setOpenUpdateModal(null);
     }
+    setOpenUpdateModal(null);
     // reset();
   };
 
@@ -81,100 +76,106 @@ const UpdateProfileModal = ({ updating, setUpdating }) => {
           </div>
           <form onSubmit={handleSubmit(onFormSubmit)} autoComplete="off">
             <div className="flex-1  flex flex-col">
+              <div className="flex flex-col lg:flex-row lg:first-letter:gap-4">
+                <div className="md:flex-1 mt-2 mb:mt-0 ">
+                  <label className="label font-bold">Your Profession</label>
+                  <input
+                    className="input border-2 input-bordered w-full shadow-inner"
+                    name="occupation"
+                    placeholder="Enter Your Profession"
+                    {...register("occupation", {
+                      required: true,
+                    })}
+                  />
+                  {errors.occupation && (
+                    <span className="text-red-500">
+                      Profession is required.
+                    </span>
+                  )}
+                </div>
+                <div className="md:flex-1 mt-2 mb:mt-0 ">
+                  <label className="label font-bold">Phone Number</label>
+                  <input
+                    className="input border-2 input-bordered w-full shadow-inner"
+                    placeholder="Your contact number"
+                    name="number"
+                    type="tel"
+                    minLength="11"
+                    {...register("number", {
+                      required: true,
+                    })}
+                  />
+                  {errors.number && (
+                    <span className="text-red-500">
+                      Contact number is required
+                    </span>
+                  )}
+                </div>
+              </div>
               <div className="mb-8 ">
-                <div className="flex flex-col lg:flex-row gap-4">
+                <div className="flex flex-col lg:flex-row lg:gap-4">
                   <div className="md:flex-1 mt-2 mb:mt-0 ">
-                    <label className="label font-bold">Your Name</label>
+                    <label className="label font-bold">Postal Code</label>
                     <input
                       className="input border-2 input-bordered w-full shadow-inner"
-                      name="name"
-                      value={user?.displayName}
-                      readOnly
-                      {...register("name", {
+                      name="post"
+                      placeholder="Your postal code"
+                      type="text"
+                      {...register("post", {
                         required: true,
                       })}
                     />
-                    {errors.name && (
-                      <span className="text-red-500">Name is required</span>
-                    )}
-                  </div>
-                  <div className="md:flex-1 mt-2 mb:mt-0 ">
-                    <label className="label font-bold">Your Email</label>
-                    <input
-                      className="input border-2 input-bordered w-full shadow-inner"
-                      name="name"
-                      value={user?.email}
-                      readOnly
-                      {...register("email", {
-                        required: true,
-                      })}
-                    />
-                    {errors.email && (
-                      <span className="text-red-500">Email is required</span>
-                    )}
-                  </div>
-                </div>
-                <div className="flex flex-col lg:flex-row gap-4">
-                  <div className="md:flex-1 mt-2 mb:mt-0 ">
-                    <label className="label font-bold">Your Number</label>
-                    <input
-                      className="input border-2 input-bordered w-full shadow-inner"
-                      placeholder="Your contact number"
-                      name="number"
-                      type="number"
-                      minLength="11"
-                      {...register("number", {
-                        required: true,
-                      })}
-                    />
-                    {errors.number && (
+                    {errors.post && (
                       <span className="text-red-500">
-                        Contact number is required
+                        Postal Code is required
                       </span>
                     )}
                   </div>
                   <div className="md:flex-1 mt-2 mb:mt-0 ">
-                    <label className="label font-bold">Your Profession</label>
+                    <label className="label font-bold">City</label>
                     <input
                       className="input border-2 input-bordered w-full shadow-inner"
-                      name="occupation"
-                      placeholder="Enter Your Profession"
-                      {...register("occupation", {
+                      name="city"
+                      placeholder="Your City"
+                      type="text"
+                      {...register("city", {
                         required: true,
                       })}
                     />
-                    {errors.occupation && (
-                      <span className="text-red-500">
-                        Minimum 10 character Review is required
-                      </span>
+                    {errors.city && (
+                      <span className="text-red-500">City is required</span>
                     )}
                   </div>
                 </div>
+
                 <div className="flex flex-col lg:flex-row gap-4">
                   <div className="md:flex-1 mt-2 mb:mt-0 ">
-                    <label className="label font-bold">Your Address</label>
+                    <label className="label font-bold">Billing Address</label>
                     <input
                       className="input border-2 input-bordered w-full shadow-inner"
-                      name="name"
-                      placeholder="Your Address"
-                      {...register("address", {
+                      name="billing"
+                      placeholder="Your address line"
+                      type="text"
+                      {...register("billing", {
                         required: true,
                       })}
                     />
-                    {errors.address && (
-                      <span className="text-red-500">Address is required</span>
+                    {errors.billing && (
+                      <span className="text-red-500">
+                        Billing Address is required
+                      </span>
                     )}
                   </div>
                 </div>
               </div>
             </div>
             <div className="divider before:bg-secondary after:bg-secondary">
-              <label
-                htmlFor="update-profile"
+              <button
+                onClick={() => setOpenUpdateModal(null)}
                 className=" btn btn-sm  btn-secondary  text-white font-bold"
               >
                 Cancel
-              </label>
+              </button>
               <button
                 type="submit"
                 className=" btn btn-sm  btn-secondary  text-white font-bold"
