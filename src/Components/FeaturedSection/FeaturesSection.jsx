@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import FeatureSection from "../FeatureSection/FeatureSection";
 import "./FeaturesSection.css";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import LoadingData from "../Loading/LoadingData";
 
 const FeaturesSection = () => {
-  // const [features, setFeatures] = useState([]);
+
+  
 
   const getData = async () => {
     return await axios.get("http://localhost:5000/api/featured-item");
@@ -19,7 +21,7 @@ const FeaturesSection = () => {
   } = useQuery({ queryKey: ["storeHomeFeatures", 1], queryFn: getData });
 
   if (isLoading) {
-    return <p>Loading........</p>;
+    return <LoadingData/>;
   }
   if (error) {
     console.log(error);

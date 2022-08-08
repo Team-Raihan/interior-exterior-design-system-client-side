@@ -7,7 +7,10 @@ const FeatureWorkDetails = () => {
   const [booking, setBooking] = useState(null);
   const { id } = useParams();
   const [feature, setFeature] = useState({});
-  // console.log(feature);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
 
   useEffect(() => {
     const url = `http://localhost:5000/api/featured-item/${id}`;

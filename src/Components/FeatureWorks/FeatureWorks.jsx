@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useQuery } from "react-query";
 import axios from "axios";
 import FeatureSection from "../FeatureSection/FeatureSection";
 
 const FeatureWorks = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
   const getData = async () => {
     return await axios.get("http://localhost:5000/api/featured-item");
   };

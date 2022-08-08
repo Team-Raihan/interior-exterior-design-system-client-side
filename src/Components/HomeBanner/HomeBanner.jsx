@@ -21,7 +21,7 @@ const HomeBanner = () => {
       <div className="container mx-auto px-4 lg:my-16 md:my-8 my-4">
         <div className="relative">
           <div className="search-input">
-            <form className="form-control">
+     
               <label className="label lg:text-5xl md:text-2xl text-normal text-center uppercase font-bold text-secondary mx-auto">
                 Modern Contemporary House Idea
               </label>
@@ -57,7 +57,7 @@ const HomeBanner = () => {
                   </svg>
                 </button>
               </div>
-            </form>
+    
           </div>
           <div className="banner-wrapper">
             <img

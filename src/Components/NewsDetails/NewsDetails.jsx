@@ -3,6 +3,9 @@ import "./NewsDetails.css";
 import { useParams } from "react-router-dom";
 
 const NewsDetails = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
   const { id } = useParams();
   const [news, setNews] = useState({});
   // console.log(news);

@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useQuery } from "react-query";
 import axios from "axios";
+import LoadingData from "../Loading/LoadingData";
 
 const Reviews = () => {
   const getData = async () => {
@@ -18,10 +19,11 @@ const Reviews = () => {
   } = useQuery({ queryKey: ["storeAllReviews", 1], queryFn: getData });
 
   if (isLoading) {
-    return <p>Loading........</p>;
+    return <div className="mb-20"><LoadingData/></div>;
+
   }
   if (error) {
-    return <p>Loading........</p>;
+    return <p>Something Went Wrong....</p>;
   }
 
   const settings = {

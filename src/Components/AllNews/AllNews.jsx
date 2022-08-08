@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useQuery } from "react-query";
-
+import LoadingData from "../Loading/LoadingData";
+import { BiFilter } from "react-icons/bi";
+import { useDisclosure } from "@chakra-ui/react";
+import FilterNews from "./FilterNews";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Button
+} from '@chakra-ui/react'
 const AllNews = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const navigate = useNavigate();
 
   const navigateToCarDetail = (id) => {
@@ -21,7 +38,7 @@ const AllNews = () => {
     error,
   } = useQuery({ queryKey: ["storeAllNews", 1], queryFn: getData });
   if (isLoading) {
-    return <p>Loading........</p>;
+    return <LoadingData />;
   }
   if (error) {
     console.log(error);
@@ -30,10 +47,14 @@ const AllNews = () => {
 
   return (
     <div className="container mx-auto px-4 lg:my-16 md:my-8 my-4">
-      <div className="text-center  lg:md-16 md:mb-8 mb-4 ">
+      <div className="text-center flex items-center justify-center  lg:md-16 md:mb-8 mb-4 ">
         <h2 className="text-secondary lg:text-5xl text-2xl font-bold mb-2 uppercase">
           Company News
         </h2>
+        <div  onClick={() =>onOpen()} className="flex cursor-pointer items-center justify-center">
+          <BiFilter className="ml-4 text-secondary w-6 h-6" />
+          <h3 className="text-lg">Filter</h3>
+        </div>
       </div>
       <div className="bg-base-100">
         <div className="text-center p-0">
@@ -83,6 +104,21 @@ const AllNews = () => {
           </div>
         </div>
       </div>
+
+    <  Modal onClose={onClose} size="full" isOpen={isOpen}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader textAlign="center">Filter News</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+          <FilterNews/>
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={onClose}>Close</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+      
     </div>
   );
 };

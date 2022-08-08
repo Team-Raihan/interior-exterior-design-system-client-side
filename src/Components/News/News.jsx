@@ -3,6 +3,7 @@ import "./News.css";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { useQuery } from "react-query";
+import LoadingData from "../Loading/LoadingData";
 
 const News = () => {
   const navigate = useNavigate();
@@ -21,7 +22,8 @@ const News = () => {
     error,
   } = useQuery({ queryKey: ["storeAllNews", 1], queryFn: getData });
   if (isLoading) {
-    return <p>Loading........</p>;
+    return <LoadingData/>;
+
   }
   if (error) {
     console.log(error);

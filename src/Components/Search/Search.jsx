@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import FeatureSection from "../FeatureSection/FeatureSection";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import LoadingData from "../Loading/LoadingData";
 
 const Search = () => {
   const { text } = useParams();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
 
   console.log(text);
 
   const getData = async () => {
-    return await axios.get("http://localhost:5000/api/featured-item");
+    return await axios.get(`http://localhost:5000/api/featured-item/search/${text}`);
   };
   const {
     data: features,
@@ -20,7 +24,8 @@ const Search = () => {
   } = useQuery({ queryKey: ["storeSearchFeatures", 1], queryFn: getData });
 
   if (isLoading) {
-    return <p>Loading........</p>;
+    return <LoadingData/>;
+
   }
   if (error) {
     console.log(error);
@@ -36,11 +41,15 @@ const Search = () => {
         </div>
         <div className="  bg-base-100 lg:md-16 md:mb-8 mb-4">
           <div className="text-center p-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3   lg:gap-10 md:gap-6 gap-4">
+            {!features?.data?.length && <h1 className="mt-14 text-2xl text-warning font-semibold">No Result Found!</h1>}
+          {features?.data?.length && 
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3   lg:gap-10 md:gap-6 gap-4">
               {features?.data?.slice(0, 6).map((feature) => (
                 <FeatureSection key={feature?._id} feature={feature} />
               ))}
             </div>
+        }
           </div>
         </div>
         <div className="lg:mt-16 md:mt-8 mt-4 text-center ">

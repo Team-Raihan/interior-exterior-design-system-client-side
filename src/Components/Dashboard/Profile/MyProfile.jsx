@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../Firebase/Firebase.init";
 import UpdateProfileModal from "./UpdateProfileModal";
 import { useQuery } from "react-query";
+import LoadingData from "../../Loading/LoadingData";
 
 const MyProfile = () => {
   const [user] = useAuthState(auth);
@@ -23,7 +24,8 @@ const MyProfile = () => {
   console.log(userInfo);
 
   if (isLoading) {
-    return <p>Loading........</p>;
+    return <LoadingData/>;
+
   }
   if (error) {
     console.log(error);

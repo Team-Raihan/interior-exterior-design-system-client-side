@@ -9,11 +9,14 @@ import {
   TabPanel,
 } from "@chakra-ui/react";
 // import { secondary } from "daisyui/src/colors";
-import React from "react";
+import React, { useEffect } from "react";
 import Login from "../../Components/Login/Login";
 import SignUp from "../../Components/Signup/SignUp";
 
 const Authentication = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
   return (
     <div className="hero min-h-[85vh]">
       <Container maxW="xl" centerContent>

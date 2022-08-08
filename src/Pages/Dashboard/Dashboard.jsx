@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { NavLink, Outlet } from "react-router-dom";
 import auth from "../../Firebase/Firebase.init";
@@ -6,6 +6,9 @@ import useAdmin from "../../hooks/useAdmin";
 import "./Dashboard.css";
 
 const Dashboard = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
   const [user] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user?.email);
 
