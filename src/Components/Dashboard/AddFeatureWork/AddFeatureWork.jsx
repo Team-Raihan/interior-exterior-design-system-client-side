@@ -4,7 +4,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Button, useToast } from "@chakra-ui/react";
 
-import { secondary } from "daisyui/src/colors";
 
 import auth from "../../../Firebase/Firebase.init";
 
@@ -312,13 +311,13 @@ const AddFeatureWork = () => {
               </div>
 
               <div className="divider before:bg-secondary after:bg-secondary">
-                <button
+                <Button
                   type="submit"
                   isLoading={postLoading}
                   className="btn  md:btn-md btn-sm  btn-secondary md:px-10 text-white font-bold"
                 >
                   Add Work
-                </button>
+                </Button>
               </div>
             </form>
           </section>

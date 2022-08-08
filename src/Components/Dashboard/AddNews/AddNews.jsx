@@ -147,7 +147,7 @@ const AddNews = () => {
 
       if (newItem.status === 201) {
         toast({
-          title: "New Item Added",
+          title: "News Added",
           status: "success",
           duration: 3000,
           isClosable: true,
