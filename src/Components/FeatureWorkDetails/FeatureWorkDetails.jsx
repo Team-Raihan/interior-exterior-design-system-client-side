@@ -2,24 +2,26 @@ import React, { useEffect, useState } from "react";
 import "./FeatureWorkDetails.css";
 import { useParams } from "react-router-dom";
 import BookingModal from "./BookingModal";
+import LoadingData from "../Loading/LoadingData";
 
 const FeatureWorkDetails = () => {
   const [booking, setBooking] = useState(null);
   const { id } = useParams();
   const [feature, setFeature] = useState({});
-
   useEffect(() => {
     window.scrollTo(0, 0);
 }, []);
 
   useEffect(() => {
     const url = `https://teckno-interior.herokuapp.com/api/featured-item/${id}`;
-
     fetch(url)
       .then((res) => res.json())
       .then((data) => setFeature(data));
   }, [id]);
 
+if(!feature.category|| !feature?.price){
+  return <LoadingData/>
+}
   return (
     <div className="container mx-auto px-4">
       <div className=" lg:py-16 md:py-8 py-4">

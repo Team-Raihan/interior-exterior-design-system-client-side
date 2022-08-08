@@ -312,9 +312,13 @@ const AddFeatureWork = () => {
 
               <div className="divider before:bg-secondary after:bg-secondary">
                 <Button
+                backgroundColor="#463AA1"
                   type="submit"
                   isLoading={postLoading}
-                  className="btn  md:btn-md btn-sm  btn-secondary md:px-10 text-white font-bold"
+                  _hover={{
+                    backgroundColor: "#021431",
+                  }}
+                  className="btn  md:btn-md btn-sm  md:px-10 text-white font-bold"
                 >
                   Add Work
                 </Button>

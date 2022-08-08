@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./NewsDetails.css";
 import { useParams } from "react-router-dom";
+import LoadingData from "../Loading/LoadingData";
 
 const NewsDetails = () => {
   useEffect(() => {
@@ -16,6 +17,10 @@ const NewsDetails = () => {
       .then((res) => res.json())
       .then((data) => setNews(data));
   }, [id]);
+  
+if(!news.img){
+  return <LoadingData/>
+}
 
   return (
     <div className="container mx-auto px-4 ">

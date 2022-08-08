@@ -116,7 +116,6 @@ const AllNews = () => {
             <FilterNews />
           </ModalBody>
           <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

@@ -19,7 +19,6 @@ const Search = () => {
   const {
     data: features,
     isLoading,
-    // refetch,
     error,
   } = useQuery({ queryKey: ["storeSearchFeatures", 1], queryFn: getData });
 
