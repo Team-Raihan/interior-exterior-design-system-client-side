@@ -8,7 +8,6 @@ const UpdateProfileModal = ({
   refetch,
 }) => {
   const { email } = openUpdateModal;
-  console.log(email);
   const toast = useToast();
   const {
     register,
@@ -31,10 +30,9 @@ const UpdateProfileModal = ({
 
     try {
       const newUpdatedInfo = await axios.patch(
-        `http://localhost:5000/api/user/${email}`,
+        `https://teckno-interior.herokuapp.com/api/user/${email}`,
         updateInfo
       );
-      console.log("newBooking: ", newUpdatedInfo);
       if (newUpdatedInfo.status === 201) {
         toast({
           title: "Successfully Updated.",

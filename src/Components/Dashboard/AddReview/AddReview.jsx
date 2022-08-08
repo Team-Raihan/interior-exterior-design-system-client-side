@@ -6,7 +6,6 @@ import auth from "../../../Firebase/Firebase.init";
 
 const AddReview = () => {
   const [user] = useAuthState(auth);
-  // console.log(user);
   const toast = useToast();
   const {
     register,
@@ -27,7 +26,7 @@ const AddReview = () => {
 
     try {
       const newReview = await axios.post(
-        "http://localhost:5000/api/review",
+        "https://teckno-interior.herokuapp.com/api/review",
         review
       );
 

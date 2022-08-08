@@ -15,7 +15,7 @@ const Payment = () => {
 
   const getData = async () => {
     return await axios.get(
-      `http://localhost:5000/api/order/details/${orderId}`
+      `https://teckno-interior.herokuapp.com/api/order/details/${orderId}`
     );
   };
   const {

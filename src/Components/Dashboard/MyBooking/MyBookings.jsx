@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import auth from "../../../Firebase/Firebase.init";
 import LoadingData from "../../Loading/LoadingData";
 
 const MyBookings = () => {
   const [user] = useAuthState(auth);
   const getData = async () => {
-    return await axios.get(`http://localhost:5000/api/order/${user?.email}`);
+    return await axios.get(`https://teckno-interior.herokuapp.com/api/order/${user?.email}`);
   };
   const {
     data: myBooking,
@@ -28,7 +28,7 @@ const MyBookings = () => {
   const deleteItem = async (id) => {
     const sure = window.confirm("Are you sure? You want to cancel booking!");
     if (sure) {
-      const url = `http://localhost:5000/api/order/${id}`;
+      const url = `https://teckno-interior.herokuapp.com/api/order/${id}`;
 
       axios
         .delete(url, {

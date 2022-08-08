@@ -142,7 +142,7 @@ const AddFeatureWork = () => {
 
     try {
       const newItem = await axios.post(
-        "http://localhost:5000/api/featured-item",
+        "https://teckno-interior.herokuapp.com/api/featured-item",
         product,
         {
           headers: {
@@ -151,7 +151,7 @@ const AddFeatureWork = () => {
           },
         }
       );
-      // console.log(newItem);
+  
       if (newItem.status === 201) {
         toast({
           title: "New Item Added",

@@ -15,7 +15,7 @@ const FilterNews = () => {
   };
   const [date, setDate] = useState(new Date());
   const formattedDate = date && format(date, "PP");
-  const url = `http://localhost:5000/api/news/filter/${formattedDate}`;
+  const url = `https://teckno-interior.herokuapp.com/api/news/filter/${formattedDate}`;
 
   const getData = async () => {
     return await axios.get(url);
@@ -38,8 +38,6 @@ const FilterNews = () => {
   }
   const errorText = news?.data?.error;
 
-  console.log(news);
-  console.log(formattedDate);
   return (
     <div>
       <div className="flex justify-center items-center ">

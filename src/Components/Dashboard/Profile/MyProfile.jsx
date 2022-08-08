@@ -11,7 +11,7 @@ const MyProfile = () => {
   const [openUpdateModal, setOpenUpdateModal] = useState(null);
 
   const getData = async () => {
-    return await axios.get(`http://localhost:5000/api/user/${user?.email}`);
+    return await axios.get(`https://teckno-interior.herokuapp.com/api/user/${user?.email}`);
   };
 
   const {
@@ -21,7 +21,6 @@ const MyProfile = () => {
     error,
   } = useQuery({ queryKey: ["storeProfileInfo", 1], queryFn: getData });
 
-  console.log(userInfo);
 
   if (isLoading) {
     return <LoadingData/>;

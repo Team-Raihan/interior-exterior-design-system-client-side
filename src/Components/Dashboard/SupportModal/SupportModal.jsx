@@ -3,37 +3,39 @@ import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const SupportModal = () => {
+const SupportModal = ({setOpenSupportModal, refetch}) => {
   const toast = useToast();
+
   const {
     register,
     handleSubmit,
 
     formState: { errors },
-    reset,
+
   } = useForm();
 
   const onFormSubmit = async (data, e) => {
     e.preventDefault();
     const supportLink = {
-      supportLink: data?.supportLink,
+      isOpen:true,
+      link: data?.supportLink,
     };
 
     try {
-      const newSupport = await axios.post(
-        "http://localhost:5000/api/support",
+      const newSupport = await axios.patch(
+        "https://teckno-interior.herokuapp.com/api/live-support",
         supportLink
       );
-      console.log("newSupportLink: ", newSupport);
       if (newSupport.status === 201) {
         toast({
-          title: "Successfully Booked.",
+          title: "Live Support Started.",
           status: "success",
           duration: 3000,
           isClosable: true,
           position: "bottom",
         });
-        // setBooking(null);
+        refetch()
+      setOpenSupportModal(null)
       } else {
         toast({
           title: "Something Went Wrong!",
@@ -42,7 +44,7 @@ const SupportModal = () => {
           isClosable: true,
           position: "bottom",
         });
-        // setBooking(null);
+      setOpenSupportModal(null)
       }
     } catch (error) {
       toast({
@@ -52,9 +54,9 @@ const SupportModal = () => {
         isClosable: true,
         position: "bottom",
       });
-      //   setBooking(null);
+     setOpenSupportModal(null)
     }
-    // reset();
+
   };
 
   return (
@@ -89,12 +91,13 @@ const SupportModal = () => {
               </div>
             </div>
             <div className="divider before:bg-secondary after:bg-secondary">
-              <label
-                htmlFor="support-modal"
+              <button
+              onClick={()=>{setOpenSupportModal(null)}}
+           
                 className=" btn btn-sm  btn-secondary  text-white font-bold"
               >
                 Cancel
-              </label>
+              </button>
               <button
                 type="submit"
                 className=" btn btn-sm  btn-secondary  text-white font-bold"

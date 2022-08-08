@@ -13,7 +13,7 @@ const FeatureWorkDetails = () => {
 }, []);
 
   useEffect(() => {
-    const url = `http://localhost:5000/api/featured-item/${id}`;
+    const url = `https://teckno-interior.herokuapp.com/api/featured-item/${id}`;
 
     fetch(url)
       .then((res) => res.json())

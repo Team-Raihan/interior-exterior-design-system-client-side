@@ -1,18 +1,17 @@
 import axios from "axios";
 import { useQuery } from "react-query";
-import { NavLink } from "react-router-dom";
 import LoadingData from "../../Loading/LoadingData";
 
 const ManageNews = () => {
   const getData = async () => {
-    return await axios.get("http://localhost:5000/api/news");
+    return await axios.get("https://teckno-interior.herokuapp.com/api/news");
   };
   const {
     data: allNews,
     isLoading,
     refetch,
     error,
-  } = useQuery({ queryKey: ["manageAllNews", 1], queryFn: getData });
+  } = useQuery({ queryKey: ["manageNewsByAdmin", 1], queryFn: getData });
   if (isLoading) {
     return (
       <div className=" mt-10">
@@ -25,7 +24,7 @@ const ManageNews = () => {
     const sure = window.confirm("Are you sure? You want to cancel booking!");
     if (sure) {
       try {
-        const url = `http://localhost:5000/api/news/${id}`;
+        const url = `https://teckno-interior.herokuapp.com/api/news/${id}`;
         axios
           .delete(url, {
             headers: {

@@ -9,7 +9,6 @@ const BookingModal = ({ booking, setBooking }) => {
   const [user] = useAuthState(auth);
   const [buyerAddress, setBuyerAddress] = useState("");
   const [phoneNubmer, setPhoneNumber] = useState("");
-  //   console.log(booking);
   const toast = useToast();
   const {
     register,
@@ -33,10 +32,10 @@ const BookingModal = ({ booking, setBooking }) => {
 
     try {
       const newBooking = await axios.post(
-        "http://localhost:5000/api/order",
+        "https://teckno-interior.herokuapp.com/api/order",
         bookingInfo
       );
-      console.log("newBooking: ", newBooking);
+   
       if (newBooking.status === 201) {
         toast({
           title: "Successfully Booked.",

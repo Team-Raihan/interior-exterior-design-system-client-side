@@ -24,7 +24,7 @@ const GetInTouch = () => {
 
     try {
       const newContact = await axios.post(
-        "http://localhost:5000/api/contact",
+        "https://teckno-interior.herokuapp.com/api/contact",
         contactData
       );
 

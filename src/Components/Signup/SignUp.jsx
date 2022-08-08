@@ -171,7 +171,7 @@ const SignUp = () => {
           },
         };
         const { data } = await axios.post(
-          "http://localhost:5000/api/user",
+          "https://teckno-interior.herokuapp.com/api/user",
           { name, email, password, pic },
           config
         );
@@ -208,7 +208,6 @@ const SignUp = () => {
       }
     }
   };
-  console.log(user);
   return (
     <>
       <VStack spacing="5px" color="black">

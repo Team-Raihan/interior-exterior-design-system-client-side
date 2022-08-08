@@ -3,6 +3,7 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import auth from "../../../Firebase/Firebase.init";
+import { useQuery } from "react-query";
 import {
   Modal,
   ModalOverlay,
@@ -13,7 +14,6 @@ import {
   ModalCloseButton,
   useDisclosure,
   Button,
-  useQuery,
 } from "@chakra-ui/react";
 import axios from "axios";
 const Navbar = () => {
@@ -22,7 +22,7 @@ const Navbar = () => {
   const { pathname } = useLocation();
 
   const getData = async () => {
-    return await axios.get("http://localhost:5000/api/review");
+    return await axios.get("https://teckno-interior.herokuapp.com/api/live-support");
   };
   const {
     data: support,
@@ -283,10 +283,11 @@ const Navbar = () => {
         <ModalContent>
           <ModalCloseButton />
           <ModalHeader mt={10}>
-            Live Support {support?.isOpen ? "Available." : "Not Available!"}
+            Live Support{" "}
+            {support?.data?.isOpen ? "Available." : "Not Available!"}
           </ModalHeader>
           <ModalBody pb={6}>
-            {support?.isOpen ? (
+            {support?.data?.isOpen ? (
               <h1>Join now for Live Support with our customer care team.</h1>
             ) : (
               <h1>
@@ -300,9 +301,9 @@ const Navbar = () => {
             <Button mr={3} onClick={onClose}>
               Cancel
             </Button>
-            {support?.isOpen && (
+            {support?.data?.isOpen && (
               <Button colorScheme="blue">
-                <a href="https://meet.google.com/" target="__blank">
+                <a href={support?.data?.link} target="__blank">
                   Join
                 </a>
               </Button>

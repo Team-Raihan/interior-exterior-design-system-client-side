@@ -6,7 +6,7 @@ const useAdmin = (email) => {
 
     const getAdmin = async ()=>{
         if (email) {
-           await fetch(`http://localhost:5000/api/user/admin/${email}`, {
+           await fetch(`https://teckno-interior.herokuapp.com/api/user/admin/${email}`, {
                 method: "GET",
                 headers: {
                     "content-type": "application/json",

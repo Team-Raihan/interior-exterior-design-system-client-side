@@ -14,10 +14,10 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  Button
-} from '@chakra-ui/react'
+  Button,
+} from "@chakra-ui/react";
 const AllNews = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -28,7 +28,7 @@ const AllNews = () => {
   };
 
   const getData = async () => {
-    return await axios.get("http://localhost:5000/api/news");
+    return await axios.get("https://teckno-interior.herokuapp.com/api/news");
   };
 
   const {
@@ -43,7 +43,6 @@ const AllNews = () => {
   if (error) {
     console.log(error);
   }
-  // console.log("news:", news);
 
   return (
     <div className="container mx-auto px-4 lg:my-16 md:my-8 my-4">
@@ -51,7 +50,10 @@ const AllNews = () => {
         <h2 className="text-secondary lg:text-5xl text-2xl font-bold mb-2 uppercase">
           Company News
         </h2>
-        <div  onClick={() =>onOpen()} className="flex cursor-pointer items-center justify-center">
+        <div
+          onClick={() => onOpen()}
+          className="flex cursor-pointer items-center justify-center"
+        >
           <BiFilter className="ml-4 text-secondary w-6 h-6" />
           <h3 className="text-lg">Filter</h3>
         </div>
@@ -105,20 +107,19 @@ const AllNews = () => {
         </div>
       </div>
 
-    <  Modal onClose={onClose} size="full" isOpen={isOpen}>
+      <Modal onClose={onClose} size="full" isOpen={isOpen}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader textAlign="center">Filter News</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-          <FilterNews/>
+            <FilterNews />
           </ModalBody>
           <ModalFooter>
             <Button onClick={onClose}>Close</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
-      
     </div>
   );
 };

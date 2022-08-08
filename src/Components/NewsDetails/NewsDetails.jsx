@@ -5,13 +5,12 @@ import { useParams } from "react-router-dom";
 const NewsDetails = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-}, []);
+  }, []);
   const { id } = useParams();
   const [news, setNews] = useState({});
-  // console.log(news);
 
   useEffect(() => {
-    const url = `http://localhost:5000/api/news/${id}`;
+    const url = `https://teckno-interior.herokuapp.com/api/news/${id}`;
 
     fetch(url)
       .then((res) => res.json())

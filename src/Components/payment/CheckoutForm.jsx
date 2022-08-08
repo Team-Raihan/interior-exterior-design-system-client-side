@@ -26,7 +26,7 @@ const CheckoutForm = ({ order }) => {
   const [transId, setTransId] = useState("");
   const { orderTotal, buyerName, buyerEmail, _id } = order;
   useEffect(() => {
-    fetch("http://localhost:5000/api/payment/create-payment-intent", {
+    fetch("https://teckno-interior.herokuapp.com/api/payment/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -89,7 +89,7 @@ const CheckoutForm = ({ order }) => {
       };
       try {
         const paymentUpdate = await axios.patch(
-          `http://localhost:5000/api/order/${_id}`,
+          `https://teckno-interior.herokuapp.com/api/order/${_id}`,
           {
             headers: {
               authorization: `Bearer ${localStorage.getItem("accessToken")}`,

@@ -8,7 +8,7 @@ const FeatureWorks = () => {
     window.scrollTo(0, 0);
 }, []);
   const getData = async () => {
-    return await axios.get("http://localhost:5000/api/featured-item");
+    return await axios.get("https://teckno-interior.herokuapp.com/api/featured-item");
   };
   const {
     data: features,

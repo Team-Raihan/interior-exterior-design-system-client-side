@@ -12,7 +12,6 @@ const HomeBanner = () => {
       return;
     } else {
       navigate(`/search/${searchValue}`);
-      console.log(searchValue);
     }
   };
 

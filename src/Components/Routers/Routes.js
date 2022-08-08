@@ -34,7 +34,7 @@ const RoutesPath = () => {
       <Route path={paths.featureWorks} element={<FeatureWorks />} />
       <Route path={paths.newsDetails} element={<NewsDetails />} />
       <Route path={paths.allNews} element={<AllNews />} />
-      <Route path={paths.dashboard} element={<Dashboard />}>
+      <Route path={paths.dashboard} element={<RequireAuth><Dashboard /></RequireAuth>}>
         <Route
           index
           element={

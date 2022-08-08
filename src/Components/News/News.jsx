@@ -13,7 +13,7 @@ const News = () => {
   };
 
   const getData = async () => {
-    return await axios.get("http://localhost:5000/api/news");
+    return await axios.get("https://teckno-interior.herokuapp.com/api/news");
   };
   const {
     data: news,
@@ -28,7 +28,7 @@ const News = () => {
   if (error) {
     console.log(error);
   }
-  // console.log("news:", news);
+
 
   return (
     <div className="container mx-auto px-4 lg:my-16 md:my-8 my-4">

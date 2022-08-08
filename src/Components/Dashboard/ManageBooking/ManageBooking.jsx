@@ -6,7 +6,7 @@ import LoadingData from "../../Loading/LoadingData";
 
 const ManageBooking = () => {
   const getData = async () => {
-    return await axios.get("http://localhost:5000/api/order");
+    return await axios.get("https://teckno-interior.herokuapp.com/api/order");
   };
   const {
     data: myBooking,
@@ -21,12 +21,12 @@ const ManageBooking = () => {
       </div>
     );
   }
-  console.log(myBooking);
+
 
   const deleteItem = async (id) => {
     const sure = window.confirm("Are you sure? You want to cancel booking!");
     if (sure) {
-      const url = `http://localhost:5000/api/order/${id}`;
+      const url = `https://teckno-interior.herokuapp.com/api/order/${id}`;
 
       axios
         .delete(url, {
