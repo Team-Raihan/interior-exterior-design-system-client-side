@@ -19,8 +19,16 @@ const Reviews = () => {
   } = useQuery({ queryKey: ["storeAllReviews", 1], queryFn: getData });
 
   if (isLoading) {
-    return <div className="mb-20"><LoadingData/></div>;
-
+    return (
+      <div className="md:my-8 my-4">
+        <div className="text-center block">
+          <h2 className="text-secondary lg:text-5xl text-2xl font-bold mb-2 uppercase">
+            Happy Customers
+          </h2>
+        </div>
+        <LoadingData />
+      </div>
+    );
   }
   if (error) {
     return <p>Something Went Wrong....</p>;

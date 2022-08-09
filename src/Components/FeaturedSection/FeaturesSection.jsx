@@ -7,10 +7,10 @@ import { Link } from "react-router-dom";
 import LoadingData from "../Loading/LoadingData";
 
 const FeaturesSection = () => {
-
-
   const getData = async () => {
-    return await axios.get("https://teckno-interior.herokuapp.com/api/featured-item");
+    return await axios.get(
+      "https://teckno-interior.herokuapp.com/api/featured-item"
+    );
   };
   const {
     data: features,
@@ -20,7 +20,16 @@ const FeaturesSection = () => {
   } = useQuery({ queryKey: ["storeHomeFeatures", 1], queryFn: getData });
 
   if (isLoading) {
-    return <LoadingData/>;
+    return (
+      <>
+        <div className="text-center  lg:md-16 md:mb-8 mb-4 block">
+          <h2 className="text-secondary lg:text-5xl text-2xl font-bold mb-2 uppercase">
+            Featured Works
+          </h2>
+        </div>
+        <LoadingData />
+      </>
+    );
   }
   if (error) {
     console.log(error);

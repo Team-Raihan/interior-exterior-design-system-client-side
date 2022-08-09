@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useQuery } from "react-query";
 import axios from "axios";
 import FeatureSection from "../FeatureSection/FeatureSection";
+import LoadingData from "../Loading/LoadingData";
 
 const FeatureWorks = () => {
   useEffect(() => {
@@ -18,7 +19,7 @@ const FeatureWorks = () => {
   } = useQuery({ queryKey: ["storeAllFeatures", 1], queryFn: getData });
 
   if (isLoading) {
-    return <p>Loading........</p>;
+    return <LoadingData/>;
   }
   if (error) {
     console.log(error);

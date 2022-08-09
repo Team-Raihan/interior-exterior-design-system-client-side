@@ -22,13 +22,21 @@ const News = () => {
     error,
   } = useQuery({ queryKey: ["storeAllNews", 1], queryFn: getData });
   if (isLoading) {
-    return <LoadingData/>;
-
+    return (
+      <div className="lg:my-16 md:my-8 my-4">
+        <div className="text-center  lg:mb-16 md:mb-8 mb-4 block">
+          <h2 className="text-secondary lg:text-5xl text-2xl font-bold mb-2 uppercase">
+            Company News
+          </h2>
+          <LoadingData />
+          );
+        </div>
+      </div>
+    );
   }
   if (error) {
     console.log(error);
   }
-
 
   return (
     <div className="container mx-auto px-4 lg:my-16 md:my-8 my-4">
