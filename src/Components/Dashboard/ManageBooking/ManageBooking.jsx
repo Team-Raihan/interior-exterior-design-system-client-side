@@ -1,7 +1,6 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
-import { NavLink } from "react-router-dom";
 import LoadingData from "../../Loading/LoadingData";
 
 const ManageBooking = () => {
@@ -21,7 +20,6 @@ const ManageBooking = () => {
       </div>
     );
   }
-
 
   const deleteItem = async (id) => {
     const sure = window.confirm("Are you sure? You want to cancel booking!");

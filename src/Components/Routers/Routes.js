@@ -23,6 +23,7 @@ import ManageNews from "../Dashboard/ManageNews/ManageNews";
 import LiveSupportAdmin from "../Dashboard/LiveSupport/LiveSupportAdmin";
 import Payment from "../payment/Payment";
 import Search from "../Search/Search";
+import Report from "../Dashboard/Report/Report";
 
 const RoutesPath = () => {
   return (
@@ -131,6 +132,14 @@ const RoutesPath = () => {
           element={
             <RequireAuth>
               <Payment />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/dashboard/report"
+          element={
+            <RequireAuth>
+              <Report />
             </RequireAuth>
           }
         />
