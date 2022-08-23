@@ -43,7 +43,7 @@ const RoutesPath = () => {
               <Welcome />
             </RequireAuth>
           }
-        ></Route>
+        />
         <Route
           path="my-profile"
           element={
