@@ -26,14 +26,17 @@ const CheckoutForm = ({ order }) => {
   const [transId, setTransId] = useState("");
   const { orderTotal, buyerName, buyerEmail, _id } = order;
   useEffect(() => {
-    fetch("https://teckno-interior.herokuapp.com/api/payment/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify({ orderTotal }),
-    })
+    fetch(
+      "https://teckno-interior.onrender.com/api/payment/create-payment-intent",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify({ orderTotal }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data?.clientSecret) {
@@ -89,7 +92,7 @@ const CheckoutForm = ({ order }) => {
       };
       try {
         const paymentUpdate = await axios.patch(
-          `https://teckno-interior.herokuapp.com/api/order/${_id}`,
+          `https://teckno-interior.onrender.com/api/order/${_id}`,
           {
             headers: {
               authorization: `Bearer ${localStorage.getItem("accessToken")}`,

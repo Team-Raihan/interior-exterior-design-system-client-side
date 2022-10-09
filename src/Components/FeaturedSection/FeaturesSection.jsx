@@ -9,7 +9,7 @@ import LoadingData from "../Loading/LoadingData";
 const FeaturesSection = () => {
   const getData = async () => {
     return await axios.get(
-      "https://teckno-interior.herokuapp.com/api/featured-item"
+      "https://teckno-interior.onrender.com/api/featured-item"
     );
   };
   const {

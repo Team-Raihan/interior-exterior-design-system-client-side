@@ -13,7 +13,7 @@ const News = () => {
   };
 
   const getData = async () => {
-    return await axios.get("https://teckno-interior.herokuapp.com/api/news");
+    return await axios.get("https://teckno-interior.onrender.com/api/news");
   };
   const {
     data: news,
@@ -29,7 +29,6 @@ const News = () => {
             Company News
           </h2>
           <LoadingData />
-          );
         </div>
       </div>
     );
@@ -83,7 +82,7 @@ const News = () => {
                     </strong>
                     <p>{report.news.slice(0, 112)}...</p>
                     <button
-                      className="btn md:btn-md btn-sm  btn-secondary "
+                      className="btn md:btn-md btn-sm  btn-secondary w-full "
                       onClick={() => navigateToCarDetail(report?._id)}
                     >
                       Read More

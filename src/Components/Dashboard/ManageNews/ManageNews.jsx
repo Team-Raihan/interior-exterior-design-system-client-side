@@ -4,7 +4,7 @@ import LoadingData from "../../Loading/LoadingData";
 
 const ManageNews = () => {
   const getData = async () => {
-    return await axios.get("https://teckno-interior.herokuapp.com/api/news");
+    return await axios.get("https://teckno-interior.onrender.com/api/news");
   };
   const {
     data: allNews,
@@ -24,7 +24,7 @@ const ManageNews = () => {
     const sure = window.confirm("Are you sure? You want to cancel booking!");
     if (sure) {
       try {
-        const url = `https://teckno-interior.herokuapp.com/api/news/${id}`;
+        const url = `https://teckno-interior.onrender.com/api/news/${id}`;
         axios
           .delete(url, {
             headers: {

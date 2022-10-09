@@ -52,7 +52,7 @@ const Login = () => {
       };
 
       const { data } = await axios.post(
-        "https://teckno-interior.herokuapp.com/api/user/login",
+        "https://teckno-interior.onrender.com/api/user/login",
         { email, password },
         config
       );

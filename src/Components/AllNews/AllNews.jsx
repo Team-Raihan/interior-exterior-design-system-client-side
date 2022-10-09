@@ -28,7 +28,7 @@ const AllNews = () => {
   };
 
   const getData = async () => {
-    return await axios.get("https://teckno-interior.herokuapp.com/api/news");
+    return await axios.get("https://teckno-interior.onrender.com/api/news");
   };
 
   const {
@@ -115,8 +115,7 @@ const AllNews = () => {
           <ModalBody>
             <FilterNews />
           </ModalBody>
-          <ModalFooter>
-          </ModalFooter>
+          <ModalFooter></ModalFooter>
         </ModalContent>
       </Modal>
     </div>

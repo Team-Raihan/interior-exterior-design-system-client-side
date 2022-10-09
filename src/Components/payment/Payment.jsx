@@ -12,10 +12,9 @@ const stripePromise = loadStripe(
 const Payment = () => {
   const { orderId } = useParams();
 
-
   const getData = async () => {
     return await axios.get(
-      `https://teckno-interior.herokuapp.com/api/order/details/${orderId}`
+      `https://teckno-interior.onrender.com/api/order/details/${orderId}`
     );
   };
   const {
@@ -43,14 +42,10 @@ const Payment = () => {
           <div className="w-full h-auto p-4">
             <div>
               <div className="mb-4 px-3 py-1 bg-white rounded-sm border border-gray-300 focus-within:text-gray-900 focus-within:border-gray-500">
-                <span
-                 
-                  className="text-xs tracking-wide uppercase font-semibold"
-                >
+                <span className="text-xs tracking-wide uppercase font-semibold">
                   Booking Name
                 </span>
                 <input
-             
                   className="w-full h-8 focus:outline-none"
                   readOnly
                   value={order?.data?.productName}
@@ -58,10 +53,7 @@ const Payment = () => {
               </div>
 
               <div className="mb-4 px-3 py-1 bg-white rounded-sm border border-gray-300 focus-within:text-gray-900 focus-within:border-gray-500">
-                <span
-            
-                  className="text-xs tracking-wide uppercase font-semibold"
-                >
+                <span className="text-xs tracking-wide uppercase font-semibold">
                   Buyer Name
                 </span>
                 <input
@@ -73,9 +65,7 @@ const Payment = () => {
 
               <div className=" mb-8 px-3 py-1  bg-white rounded-sm border border-gray-300 focus-within:border-gray-500">
                 <div className="w-full focus-within:text-gray-900">
-                  <span
-                    className="text-xs tracking-wide uppercase font-semibold"
-                  >
+                  <span className="text-xs tracking-wide uppercase font-semibold">
                     Order Total
                   </span>
                   <input
@@ -84,8 +74,6 @@ const Payment = () => {
                     value={order?.data?.orderTotal}
                   />
                 </div>
-
-                
               </div>
 
               {order?.data && (

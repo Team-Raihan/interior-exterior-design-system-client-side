@@ -4,11 +4,13 @@ import { useQuery } from "react-query";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 
-const LiveSupportAdmin =  () => {
+const LiveSupportAdmin = () => {
   const [openSupportModal, setOpenSupportModal] = useState(null);
   const toast = useToast();
   const getData = async () => {
-    return await axios.get("https://teckno-interior.herokuapp.com/api/live-support");
+    return await axios.get(
+      "https://teckno-interior.onrender.com/api/live-support"
+    );
   };
   const {
     data: support,
@@ -16,14 +18,14 @@ const LiveSupportAdmin =  () => {
     refetch,
     error,
   } = useQuery({ queryKey: ["storeAdminLiveSupport", 1], queryFn: getData });
-  const closeLiveSupport= async ()=>{
+  const closeLiveSupport = async () => {
     const supportLink = {
-      isOpen:false,
+      isOpen: false,
     };
 
     try {
       const newSupport = await axios.patch(
-        "https://teckno-interior.herokuapp.com/api/live-support",
+        "https://teckno-interior.onrender.com/api/live-support",
         supportLink
       );
       console.log("newSupportLink: ", newSupport);
@@ -35,8 +37,7 @@ const LiveSupportAdmin =  () => {
           isClosable: true,
           position: "bottom",
         });
-        refetch()
-
+        refetch();
       } else {
         toast({
           title: "Something Went Wrong!",
@@ -45,7 +46,6 @@ const LiveSupportAdmin =  () => {
           isClosable: true,
           position: "bottom",
         });
-    
       }
     } catch (error) {
       toast({
@@ -55,9 +55,8 @@ const LiveSupportAdmin =  () => {
         isClosable: true,
         position: "bottom",
       });
-    
     }
-  }
+  };
 
   return (
     <>
@@ -67,7 +66,7 @@ const LiveSupportAdmin =  () => {
             {support?.data?.isOpen && (
               <button
                 onClick={() => {
-              closeLiveSupport()
+                  closeLiveSupport();
                 }}
                 className="btn md:btn-md btn-sm btn-error  md:px-10 text-white font-bold"
               >

@@ -171,7 +171,7 @@ const SignUp = () => {
           },
         };
         const { data } = await axios.post(
-          "https://teckno-interior.herokuapp.com/api/user",
+          "https://teckno-interior.onrender.com/api/user",
           { name, email, password, pic },
           config
         );

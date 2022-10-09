@@ -4,7 +4,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Button, useToast } from "@chakra-ui/react";
 
-
 import auth from "../../../Firebase/Firebase.init";
 
 const AddFeatureWork = () => {
@@ -141,7 +140,7 @@ const AddFeatureWork = () => {
 
     try {
       const newItem = await axios.post(
-        "https://teckno-interior.herokuapp.com/api/featured-item",
+        "https://teckno-interior.onrender.com/api/featured-item",
         product,
         {
           headers: {
@@ -150,7 +149,7 @@ const AddFeatureWork = () => {
           },
         }
       );
-  
+
       if (newItem.status === 201) {
         toast({
           title: "New Item Added",
@@ -312,7 +311,7 @@ const AddFeatureWork = () => {
 
               <div className="divider before:bg-secondary after:bg-secondary">
                 <Button
-                backgroundColor="#463AA1"
+                  backgroundColor="#463AA1"
                   type="submit"
                   isLoading={postLoading}
                   _hover={{

@@ -22,7 +22,9 @@ const Navbar = () => {
   const { pathname } = useLocation();
 
   const getData = async () => {
-    return await axios.get("https://teckno-interior.herokuapp.com/api/live-support");
+    return await axios.get(
+      "https://teckno-interior.onrender.com/api/live-support"
+    );
   };
   const {
     data: support,
@@ -154,7 +156,7 @@ const Navbar = () => {
             to="/"
             className="btn  btn-ghost normal-case text-2xl font-bold"
           >
-            Logo
+            Interior
           </NavLink>
         </div>
         {/* mobile menu */}

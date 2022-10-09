@@ -33,7 +33,7 @@ const BookingModal = ({ booking, setBooking }) => {
 
     try {
       const newBooking = await axios.post(
-        "https://teckno-interior.herokuapp.com/api/order",
+        "https://teckno-interior.onrender.com/api/order",
         bookingInfo
       );
 

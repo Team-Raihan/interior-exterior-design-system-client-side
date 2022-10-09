@@ -3,7 +3,7 @@ import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const SupportModal = ({setOpenSupportModal, refetch}) => {
+const SupportModal = ({ setOpenSupportModal, refetch }) => {
   const toast = useToast();
 
   const {
@@ -11,19 +11,18 @@ const SupportModal = ({setOpenSupportModal, refetch}) => {
     handleSubmit,
 
     formState: { errors },
-
   } = useForm();
 
   const onFormSubmit = async (data, e) => {
     e.preventDefault();
     const supportLink = {
-      isOpen:true,
+      isOpen: true,
       link: data?.supportLink,
     };
 
     try {
       const newSupport = await axios.patch(
-        "https://teckno-interior.herokuapp.com/api/live-support",
+        "https://teckno-interior.onrender.com/api/live-support",
         supportLink
       );
       if (newSupport.status === 201) {
@@ -34,8 +33,8 @@ const SupportModal = ({setOpenSupportModal, refetch}) => {
           isClosable: true,
           position: "bottom",
         });
-        refetch()
-      setOpenSupportModal(null)
+        refetch();
+        setOpenSupportModal(null);
       } else {
         toast({
           title: "Something Went Wrong!",
@@ -44,7 +43,7 @@ const SupportModal = ({setOpenSupportModal, refetch}) => {
           isClosable: true,
           position: "bottom",
         });
-      setOpenSupportModal(null)
+        setOpenSupportModal(null);
       }
     } catch (error) {
       toast({
@@ -54,9 +53,8 @@ const SupportModal = ({setOpenSupportModal, refetch}) => {
         isClosable: true,
         position: "bottom",
       });
-     setOpenSupportModal(null)
+      setOpenSupportModal(null);
     }
-
   };
 
   return (
@@ -92,8 +90,9 @@ const SupportModal = ({setOpenSupportModal, refetch}) => {
             </div>
             <div className="divider before:bg-secondary after:bg-secondary">
               <button
-              onClick={()=>{setOpenSupportModal(null)}}
-           
+                onClick={() => {
+                  setOpenSupportModal(null);
+                }}
                 className=" btn btn-sm  btn-secondary  text-white font-bold"
               >
                 Cancel

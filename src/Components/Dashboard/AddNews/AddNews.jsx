@@ -138,12 +138,16 @@ const AddNews = () => {
     // send to your database
 
     try {
-      const newItem = await axios.post("https://teckno-interior.herokuapp.com/api/news", News, {
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      });
+      const newItem = await axios.post(
+        "https://teckno-interior.onrender.com/api/news",
+        News,
+        {
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
 
       if (newItem.status === 201) {
         toast({

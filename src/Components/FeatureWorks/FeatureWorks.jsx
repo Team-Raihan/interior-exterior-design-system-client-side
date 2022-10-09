@@ -7,9 +7,11 @@ import LoadingData from "../Loading/LoadingData";
 const FeatureWorks = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-}, []);
+  }, []);
   const getData = async () => {
-    return await axios.get("https://teckno-interior.herokuapp.com/api/featured-item");
+    return await axios.get(
+      "https://teckno-interior.onrender.com/api/featured-item"
+    );
   };
   const {
     data: features,
@@ -19,7 +21,7 @@ const FeatureWorks = () => {
   } = useQuery({ queryKey: ["storeAllFeatures", 1], queryFn: getData });
 
   if (isLoading) {
-    return <LoadingData/>;
+    return <LoadingData />;
   }
   if (error) {
     console.log(error);

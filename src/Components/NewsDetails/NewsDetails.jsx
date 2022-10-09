@@ -11,16 +11,16 @@ const NewsDetails = () => {
   const [news, setNews] = useState({});
 
   useEffect(() => {
-    const url = `https://teckno-interior.herokuapp.com/api/news/${id}`;
+    const url = `https://teckno-interior.onrender.com/api/news/${id}`;
 
     fetch(url)
       .then((res) => res.json())
       .then((data) => setNews(data));
   }, [id]);
-  
-if(!news.img){
-  return <LoadingData/>
-}
+
+  if (!news.img) {
+    return <LoadingData />;
+  }
 
   return (
     <div className="container mx-auto px-4 ">
