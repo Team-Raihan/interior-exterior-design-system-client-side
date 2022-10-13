@@ -24,7 +24,7 @@ const GetInTouch = () => {
 
     try {
       const newContact = await axios.post(
-        "https://teckno-interior.onrender.com/api/contact",
+        "https://tekno-interior-server.onrender.com/api/contact",
         contactData
       );
 

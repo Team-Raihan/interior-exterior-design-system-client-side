@@ -7,7 +7,7 @@ const useAdmin = (email) => {
   const getAdmin = async () => {
     if (email) {
       await fetch(
-        `https://teckno-interior.onrender.com/api/user/admin/${email}`,
+        `https://tekno-interior-server.onrender.com/api/user/admin/${email}`,
         {
           method: "GET",
           headers: {

@@ -22,7 +22,7 @@ const SupportModal = ({ setOpenSupportModal, refetch }) => {
 
     try {
       const newSupport = await axios.patch(
-        "https://teckno-interior.onrender.com/api/live-support",
+        "https://tekno-interior-server.onrender.com/api/live-support",
         supportLink
       );
       if (newSupport.status === 201) {

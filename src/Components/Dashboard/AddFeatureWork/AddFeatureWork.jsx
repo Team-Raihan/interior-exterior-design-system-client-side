@@ -140,7 +140,7 @@ const AddFeatureWork = () => {
 
     try {
       const newItem = await axios.post(
-        "https://teckno-interior.onrender.com/api/featured-item",
+        "https://tekno-interior-server.onrender.com/api/featured-item",
         product,
         {
           headers: {

@@ -10,7 +10,7 @@ const FeatureWorks = () => {
   }, []);
   const getData = async () => {
     return await axios.get(
-      "https://teckno-interior.onrender.com/api/featured-item"
+      "https://tekno-interior-server.onrender.com/api/featured-item"
     );
   };
   const {

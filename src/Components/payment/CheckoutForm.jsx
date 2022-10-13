@@ -27,7 +27,7 @@ const CheckoutForm = ({ order }) => {
   const { orderTotal, buyerName, buyerEmail, _id } = order;
   useEffect(() => {
     fetch(
-      "https://teckno-interior.onrender.com/api/payment/create-payment-intent",
+      "https://tekno-interior-server.onrender.com/api/payment/create-payment-intent",
       {
         method: "POST",
         headers: {
@@ -92,7 +92,7 @@ const CheckoutForm = ({ order }) => {
       };
       try {
         const paymentUpdate = await axios.patch(
-          `https://teckno-interior.onrender.com/api/order/${_id}`,
+          `https://tekno-interior-server.onrender.com/api/order/${_id}`,
           {
             headers: {
               authorization: `Bearer ${localStorage.getItem("accessToken")}`,

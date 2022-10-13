@@ -10,12 +10,12 @@ import { useNavigate } from "react-router-dom";
 const FilterNews = () => {
   const navigate = useNavigate();
 
-  const navigateToCarDetail = (id) => {
+  const navigateToDetail = (id) => {
     navigate(`/news/${id}`);
   };
   const [date, setDate] = useState(new Date());
   const formattedDate = date && format(date, "PP");
-  const url = `https://teckno-interior.onrender.com/api/news/filter/${formattedDate}`;
+  const url = `https://tekno-interior-server.onrender.com/api/news/filter/${formattedDate}`;
 
   const getData = async () => {
     return await axios.get(url);
@@ -91,7 +91,7 @@ const FilterNews = () => {
                 <p>{report.news.slice(0, 112)}...</p>
                 <button
                   className="btn   md:btn-md btn-sm  btn-secondary "
-                  onClick={() => navigateToCarDetail(report?._id)}
+                  onClick={() => navigateToDetail(report?._id)}
                 >
                   Read More
                 </button>

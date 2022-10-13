@@ -9,7 +9,9 @@ import LoadingData from "../Loading/LoadingData";
 
 const Reviews = () => {
   const getData = async () => {
-    return await axios.get("https://teckno-interior.onrender.com/api/review");
+    return await axios.get(
+      "https://tekno-interior-server.onrender.com/api/review"
+    );
   };
   const {
     data: allReviews,

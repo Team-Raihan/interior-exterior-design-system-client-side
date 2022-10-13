@@ -139,7 +139,7 @@ const AddNews = () => {
 
     try {
       const newItem = await axios.post(
-        "https://teckno-interior.onrender.com/api/news",
+        "https://tekno-interior-server.onrender.com/api/news",
         News,
         {
           headers: {

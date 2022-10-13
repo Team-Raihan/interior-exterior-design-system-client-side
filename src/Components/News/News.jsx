@@ -8,12 +8,14 @@ import LoadingData from "../Loading/LoadingData";
 const News = () => {
   const navigate = useNavigate();
 
-  const navigateToCarDetail = (id) => {
+  const navigateToDetail = (id) => {
     navigate(`/news/${id}`);
   };
 
   const getData = async () => {
-    return await axios.get("https://teckno-interior.onrender.com/api/news");
+    return await axios.get(
+      "https://tekno-interior-server.onrender.com/api/news"
+    );
   };
   const {
     data: news,
@@ -83,7 +85,7 @@ const News = () => {
                     <p>{report.news.slice(0, 112)}...</p>
                     <button
                       className="btn md:btn-md btn-sm  btn-secondary w-full "
-                      onClick={() => navigateToCarDetail(report?._id)}
+                      onClick={() => navigateToDetail(report?._id)}
                     >
                       Read More
                     </button>

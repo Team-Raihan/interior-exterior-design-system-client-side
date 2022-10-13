@@ -14,7 +14,7 @@ const Payment = () => {
 
   const getData = async () => {
     return await axios.get(
-      `https://teckno-interior.onrender.com/api/order/details/${orderId}`
+      `https://tekno-interior-server.onrender.com/api/order/details/${orderId}`
     );
   };
   const {

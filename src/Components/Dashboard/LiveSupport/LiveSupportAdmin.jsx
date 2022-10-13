@@ -9,7 +9,7 @@ const LiveSupportAdmin = () => {
   const toast = useToast();
   const getData = async () => {
     return await axios.get(
-      "https://teckno-interior.onrender.com/api/live-support"
+      "https://tekno-interior-server.onrender.com/api/live-support"
     );
   };
   const {
@@ -25,7 +25,7 @@ const LiveSupportAdmin = () => {
 
     try {
       const newSupport = await axios.patch(
-        "https://teckno-interior.onrender.com/api/live-support",
+        "https://tekno-interior-server.onrender.com/api/live-support",
         supportLink
       );
       console.log("newSupportLink: ", newSupport);

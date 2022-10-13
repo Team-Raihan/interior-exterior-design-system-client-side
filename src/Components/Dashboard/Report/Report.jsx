@@ -14,10 +14,14 @@ import {
 import LoadingData from "../../Loading/LoadingData";
 const Report = () => {
   const getData = async (url) => {
-    return await axios.get("https://teckno-interior.onrender.com/api/order");
+    return await axios.get(
+      "https://tekno-interior-server.onrender.com/api/order"
+    );
   };
   const getData2 = async (url) => {
-    return await axios.get("https://teckno-interior.onrender.com/api/user");
+    return await axios.get(
+      "https://tekno-interior-server.onrender.com/api/user"
+    );
   };
 
   const { data: allBooking, isLoading } = useQuery({

@@ -1,30 +1,27 @@
+import React from "react";
 import { useQuery } from "@chakra-ui/react";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LoadingData from "../Loading/LoadingData";
 
 const Service = () => {
-  const [services, setServices] = useState([]);
-
   const navigate = useNavigate();
 
-  const navigateToCarDetail = (id) => {
-    navigate(`/services/${id}`);
+  const navigateToDetail = (id) => {
+    navigate(`/service/${id}`);
   };
 
   const getData = async () => {
     return await axios.get(
-      // "https://teckno-interior.onrender.com/api/service"
-      "do"
+      "https://tekno-interior-server.onrender.com/api/service"
     );
   };
   const {
-    data: news,
+    data: services,
     isLoading,
     // refetch,
     error,
-  } = useQuery({ queryKey: ["storeAllNews", 1], queryFn: getData });
+  } = useQuery({ queryKey: ["storeAllService", 1], queryFn: getData });
   if (isLoading) {
     return (
       <div className="lg:my-16 md:my-8 my-4">
@@ -53,7 +50,7 @@ const Service = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  lg:gap-10 md:gap-6 gap-4">
               {services?.slice(0, 6).map((service) => (
                 <div
-                  className="card bg-base-100 shadow-2xl overflow-hidden rounded-none p-0 m-0"
+                  className="card bg-base-100 shadow-2xl overflow-hidden rounded-2xl p-0 m-0"
                   key={service._id}
                 >
                   <figure className="w-full">
@@ -69,7 +66,7 @@ const Service = () => {
                     <p>{service.description}</p>
                     <button
                       className="btn md:btn-md btn-sm  btn-secondary w-full"
-                      onClick={() => navigateToCarDetail(service?._id)}
+                      onClick={() => navigateToDetail(service?._id)}
                     >
                       service detail
                     </button>

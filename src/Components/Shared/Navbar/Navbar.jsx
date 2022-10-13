@@ -23,7 +23,7 @@ const Navbar = () => {
 
   const getData = async () => {
     return await axios.get(
-      "https://teckno-interior.onrender.com/api/live-support"
+      "https://tekno-interior-server.onrender.com/api/live-support"
     );
   };
   const {

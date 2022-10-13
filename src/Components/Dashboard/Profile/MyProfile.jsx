@@ -12,7 +12,7 @@ const MyProfile = () => {
 
   const getData = async () => {
     return await axios.get(
-      `https://teckno-interior.onrender.com/api/user/${user?.email}`
+      `https://tekno-interior-server.onrender.com/api/user/${user?.email}`
     );
   };
 
