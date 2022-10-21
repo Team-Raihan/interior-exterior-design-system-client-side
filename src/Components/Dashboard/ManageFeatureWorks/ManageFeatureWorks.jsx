@@ -4,7 +4,7 @@ import LoadingData from "../../Loading/LoadingData";
 
 const ManageFeatureWorks = () => {
   const getData = async () => {
-    return await axios.get("https://teckno-interior.herokuapp.com/api/featured-item");
+    return await axios.get("https://tekno-interior-server.onrender.com//api/featured-item");
   };
   const {
     data: products,
@@ -24,7 +24,7 @@ const ManageFeatureWorks = () => {
   const deleteItem = async (id) => {
     const sure = window.confirm("Are you sure? You want to delete!");
     if (sure) {
-      const url = `https://teckno-interior.herokuapp.com/api/featured-item/${id}`;
+      const url = `https://tekno-interior-server.onrender.com//api/featured-item/${id}`;
 
       axios
         .delete(url, {

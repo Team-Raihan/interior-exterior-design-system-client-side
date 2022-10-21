@@ -15,7 +15,7 @@ const FilterNews = () => {
   };
   const [date, setDate] = useState(new Date());
   const formattedDate = date && format(date, "PP");
-  const url = `https://teckno-interior.herokuapp.com/api/news/filter/${formattedDate}`;
+  const url = `https://tekno-interior-server.onrender.com//api/news/filter/${formattedDate}`;
 
   const getData = async () => {
     return await axios.get(url);

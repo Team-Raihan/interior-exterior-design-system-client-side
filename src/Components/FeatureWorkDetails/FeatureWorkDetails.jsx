@@ -13,7 +13,7 @@ const FeatureWorkDetails = () => {
 }, []);
 
   useEffect(() => {
-    const url = `https://teckno-interior.herokuapp.com/api/featured-item/${id}`;
+    const url = `https://tekno-interior-server.onrender.com//api/featured-item/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setFeature(data));

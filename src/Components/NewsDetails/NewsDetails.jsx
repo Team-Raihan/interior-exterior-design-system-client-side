@@ -11,7 +11,7 @@ const NewsDetails = () => {
   const [news, setNews] = useState({});
 
   useEffect(() => {
-    const url = `https://teckno-interior.herokuapp.com/api/news/${id}`;
+    const url = `https://tekno-interior-server.onrender.com//api/news/${id}`;
 
     fetch(url)
       .then((res) => res.json())

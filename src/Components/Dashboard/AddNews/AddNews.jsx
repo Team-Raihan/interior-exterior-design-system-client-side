@@ -138,7 +138,7 @@ const AddNews = () => {
     // send to your database
 
     try {
-      const newItem = await axios.post("https://teckno-interior.herokuapp.com/api/news", News, {
+      const newItem = await axios.post("https://tekno-interior-server.onrender.com//api/news", News, {
         headers: {
           "content-type": "application/json",
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,

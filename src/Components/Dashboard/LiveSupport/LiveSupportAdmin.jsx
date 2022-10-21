@@ -8,7 +8,7 @@ const LiveSupportAdmin =  () => {
   const [openSupportModal, setOpenSupportModal] = useState(null);
   const toast = useToast();
   const getData = async () => {
-    return await axios.get("https://teckno-interior.herokuapp.com/api/live-support");
+    return await axios.get("https://tekno-interior-server.onrender.com//api/live-support");
   };
   const {
     data: support,
@@ -23,7 +23,7 @@ const LiveSupportAdmin =  () => {
 
     try {
       const newSupport = await axios.patch(
-        "https://teckno-interior.herokuapp.com/api/live-support",
+        "https://tekno-interior-server.onrender.com//api/live-support",
         supportLink
       );
       console.log("newSupportLink: ", newSupport);

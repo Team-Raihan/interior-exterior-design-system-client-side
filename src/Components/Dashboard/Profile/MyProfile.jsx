@@ -11,7 +11,7 @@ const MyProfile = () => {
   const [openUpdateModal, setOpenUpdateModal] = useState(null);
 
   const getData = async () => {
-    return await axios.get(`https://teckno-interior.herokuapp.com/api/user/${user?.email}`);
+    return await axios.get(`https://tekno-interior-server.onrender.com//api/user/${user?.email}`);
   };
 
   const {

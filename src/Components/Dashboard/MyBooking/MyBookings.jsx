@@ -8,7 +8,7 @@ import LoadingData from "../../Loading/LoadingData";
 const MyBookings = () => {
   const [user] = useAuthState(auth);
   const getData = async () => {
-    return await axios.get(`https://teckno-interior.herokuapp.com/api/order/${user?.email}`);
+    return await axios.get(`https://tekno-interior-server.onrender.com//api/order/${user?.email}`);
   };
   const {
     data: myBooking,
@@ -28,7 +28,7 @@ const MyBookings = () => {
   const deleteItem = async (id) => {
     const sure = window.confirm("Are you sure? You want to cancel booking!");
     if (sure) {
-      const url = `https://teckno-interior.herokuapp.com/api/order/${id}`;
+      const url = `https://tekno-interior-server.onrender.com//api/order/${id}`;
 
       axios
         .delete(url, {

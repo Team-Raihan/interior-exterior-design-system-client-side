@@ -26,7 +26,7 @@ const AddReview = () => {
 
     try {
       const newReview = await axios.post(
-        "https://teckno-interior.herokuapp.com/api/review",
+        "https://tekno-interior-server.onrender.com//api/review",
         review
       );
 

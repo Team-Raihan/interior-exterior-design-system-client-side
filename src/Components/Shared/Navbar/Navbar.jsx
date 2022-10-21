@@ -22,7 +22,7 @@ const Navbar = () => {
   const { pathname } = useLocation();
 
   const getData = async () => {
-    return await axios.get("https://teckno-interior.herokuapp.com/api/live-support");
+    return await axios.get("https://tekno-interior-server.onrender.com//api/live-support");
   };
   const {
     data: support,
