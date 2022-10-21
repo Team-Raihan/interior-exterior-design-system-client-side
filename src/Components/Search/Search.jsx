@@ -30,14 +30,14 @@ const Search = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 lg:my-16 md:my-8 my-4">
+    <div className="container mx-auto px-4 xl:my-32 lg:my-16 md:my-8 my-4">
       <div className="">
-        <div className="text-center  lg:md-16 md:mb-8 mb-4 block">
+        <div className="text-center  lg:mb-16 md:mb-8 mb-4 block">
           <h2 className="text-secondary lg:text-5xl text-2xl font-bold mb-2 uppercase">
             Featured Works
           </h2>
         </div>
-        <div className="  bg-base-100 lg:md-16 md:mb-8 mb-4">
+        <div className="  bg-base-100 lg:mb-16 md:mb-8 mb-4">
           <div className="text-center p-0">
             {!features?.data?.length && (
               <h1 className="mt-14 text-2xl text-warning font-semibold">

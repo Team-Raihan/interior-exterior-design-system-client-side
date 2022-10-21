@@ -25,7 +25,7 @@ const Service = () => {
   console.log(services);
   if (isLoading) {
     return (
-      <div className="lg:my-16 md:my-8 my-4">
+      <div className="xl:my-32 lg:my-16 md:my-8 my-4">
         <div className="text-center  lg:mb-16 md:mb-8 mb-4 block">
           <h2 className="text-secondary lg:text-5xl text-2xl font-bold mb-2 uppercase">
             Company News
@@ -40,19 +40,19 @@ const Service = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 lg:my-16 md:my-8 my-4">
+    <div className="container mx-auto px-4 xl:my-32 lg:my-16 md:my-8 my-4">
       <div className="">
-        <div className="text-center  lg:md-16 md:mb-8 mb-4 block">
+        <div className="text-center  lg:mb-16 md:mb-8 mb-4 block">
           <h2 className="text-secondary lg:text-5xl text-2xl font-bold mb-2 uppercase">
             Our Services
           </h2>
         </div>
-        <div className="  bg-base-100 lg:md-16 md:mb-8 mb-4">
+        <div className="  bg-base-100 lg:mb-16 md:mb-8 mb-4">
           <div className="text-center p-0">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  lg:gap-10 md:gap-6 gap-4">
               {services?.data?.slice(0, 3).map((service) => (
                 <div
-                  className="card bg-base-100 shadow-2xl overflow-hidden rounded-none p-0 m-0"
+                  className="card bg-base-100 shadow-2xl overflow-hidden rounded-[16px] p-0 m-0"
                   key={service._id}
                 >
                   <figure className="w-full">
