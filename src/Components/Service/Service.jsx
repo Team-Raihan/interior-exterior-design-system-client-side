@@ -1,7 +1,7 @@
 import React from "react";
-import { useQuery } from "@chakra-ui/react";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useQuery } from "react-query";
 import LoadingData from "../Loading/LoadingData";
 
 const Service = () => {
@@ -22,6 +22,7 @@ const Service = () => {
     // refetch,
     error,
   } = useQuery({ queryKey: ["storeAllService", 1], queryFn: getData });
+  console.log(services);
   if (isLoading) {
     return (
       <div className="lg:my-16 md:my-8 my-4">
@@ -37,20 +38,21 @@ const Service = () => {
   if (error) {
     console.log(error);
   }
+
   return (
-    <div className="container mx-auto lg:px-20 px-4">
-      <div className="lg:min-h-fit">
-        <div className="text-center  lg:my-16 md:my-8 my-4 block">
+    <div className="container mx-auto px-4 lg:my-16 md:my-8 my-4">
+      <div className="">
+        <div className="text-center  lg:md-16 md:mb-8 mb-4 block">
           <h2 className="text-secondary lg:text-5xl text-2xl font-bold mb-2 uppercase">
-            What We Do
+            Our Services
           </h2>
         </div>
         <div className="  bg-base-100 lg:md-16 md:mb-8 mb-4">
           <div className="text-center p-0">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  lg:gap-10 md:gap-6 gap-4">
-              {services?.slice(0, 6).map((service) => (
+              {services?.data?.slice(0, 3).map((service) => (
                 <div
-                  className="card bg-base-100 shadow-2xl overflow-hidden rounded-2xl p-0 m-0"
+                  className="card bg-base-100 shadow-2xl overflow-hidden rounded-none p-0 m-0"
                   key={service._id}
                 >
                   <figure className="w-full">
@@ -63,18 +65,27 @@ const Service = () => {
 
                   <div className="card-body items-center p-4">
                     <h2 className="card-title font-bold">{service.category}</h2>
-                    <p>{service.description}</p>
+
+                    <p>{service.description.slice(0, 112)}...</p>
                     <button
-                      className="btn md:btn-md btn-sm  btn-secondary w-full"
+                      className="btn md:btn-md btn-sm  btn-secondary w-full "
                       onClick={() => navigateToDetail(service?._id)}
                     >
-                      service detail
+                      Read More
                     </button>
                   </div>
                 </div>
               ))}
             </div>
           </div>
+        </div>
+        <div className="lg:mt-16 md:mt-8 mt-4 text-center">
+          <Link
+            to="/all-news"
+            className="btn md:btn-md btn-sm  btn-secondary md:w-1/3 w-full  mx-auto  text-white font-bold"
+          >
+            View All News
+          </Link>
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ const ServiceDetails = () => {
   const [services, setServices] = useState({});
 
   useEffect(() => {
-    const url = `/do.json/${id}`;
+    const url = `https://tekno-interior-server.onrender.com/api/service/${id}`;
 
     fetch(url)
       .then((res) => res.json())
