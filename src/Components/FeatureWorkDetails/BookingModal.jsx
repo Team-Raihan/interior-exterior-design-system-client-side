@@ -33,7 +33,7 @@ const BookingModal = ({ booking, setBooking }) => {
 
     try {
       const newBooking = await axios.post(
-        "https://tekno-interior-server.onrender.com//api/order",
+        "https://tekno-interior-server.onrender.com/api/order",
         bookingInfo
       );
 

@@ -10,18 +10,18 @@ const FeatureWorkDetails = () => {
   const [feature, setFeature] = useState({});
   useEffect(() => {
     window.scrollTo(0, 0);
-}, []);
+  }, []);
 
   useEffect(() => {
-    const url = `https://tekno-interior-server.onrender.com//api/featured-item/${id}`;
+    const url = `https://tekno-interior-server.onrender.com/api/featured-item/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setFeature(data));
   }, [id]);
 
-if(!feature.category|| !feature?.price){
-  return <LoadingData/>
-}
+  if (!feature.category || !feature?.price) {
+    return <LoadingData />;
+  }
   return (
     <div className="container mx-auto px-4">
       <div className=" lg:py-16 md:py-8 py-4">

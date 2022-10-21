@@ -1,15 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
-
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Button, useToast } from "@chakra-ui/react";
 
-import { format } from "date-fns";
+import auth from "../../../Firebase/Firebase.init";
 
-const AddNews = () => {
-  const date = new Date();
-
-  const formattedDate = date && format(date, "PP");
+const AddService = () => {
+  const [user] = useAuthState(auth);
   const [postLoading, setPostLoading] = useState(false);
   const [pic, setPic] = useState();
   const toast = useToast();
@@ -120,27 +118,30 @@ const AddNews = () => {
   };
 
   const onFormSubmit = async (data) => {
-    if (!data.title || !data.news || !pic) {
+    if (!data.name || !data.description || !pic) {
       return toast({
         title: "Fill out all field!",
         status: "warning",
         duration: 3000,
         isClosable: true,
-        position: formattedDate,
+        position: "bottom",
       });
     }
-    const News = {
-      title: data.title,
+    const service = {
+      category: data.name,
+      price: data.price,
       img: pic,
-      news: data.news,
-      date: formattedDate,
+      description: data.description,
+      // admin info
+      adminName: user.displayName,
+      adminEmail: user.email,
     };
     // send to your database
 
     try {
       const newItem = await axios.post(
-        "https://tekno-interior-server.onrender.com/api/news",
-        News,
+        "https://tekno-interior-server.onrender.com/api/service",
+        service,
         {
           headers: {
             "content-type": "application/json",
@@ -151,7 +152,7 @@ const AddNews = () => {
 
       if (newItem.status === 201) {
         toast({
-          title: "News Added",
+          title: "New Item Added",
           status: "success",
           duration: 3000,
           isClosable: true,
@@ -167,7 +168,6 @@ const AddNews = () => {
         });
       }
     } catch (error) {
-      console.log(error);
       toast({
         title: "Something Went Wrong!",
         status: "error",
@@ -182,12 +182,12 @@ const AddNews = () => {
 
   return (
     <>
-      <div className="min-h-fit md:m-16 m-4">
+      <div className=" min-h-fit md:m-16 m-4">
         <div className="flex-1 md:p-0 lg:pt-8 lg:pb-8  mx-auto flex flex-col">
           <section className="p-6 rounded-2xl  shadow">
             <div className="divider before:bg-secondary after:bg-secondary">
-              <h2 className=" uppercase md:text-4xl text-secondary font-bold ">
-                Add a news
+              <h2 className=" uppercase md:text-4xl text-secondary font-bold">
+                Add a new Service
               </h2>
             </div>
             <form onSubmit={handleSubmit(onFormSubmit)} autoComplete="off">
@@ -196,21 +196,40 @@ const AddNews = () => {
                   <div className="md:flex mb-4">
                     <div className="md:flex-1 md:pr-3 mb-4 md:mb-0">
                       <label className="label block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
-                        News Title
+                        Service Name
                       </label>
 
                       <input
                         className="input border-2 input-bordered w-full shadow-inner"
                         type="text"
-                        name="title"
-                        placeholder="Enter A News Title"
-                        {...register("title", {
+                        name="name"
+                        placeholder="Your service name"
+                        {...register("name", {
                           required: true,
                         })}
                       />
-                      {errors.title && (
+                      {errors.name && (
                         <span className="text-red-500">
-                          News title is required
+                          Service Name is required
+                        </span>
+                      )}
+                    </div>
+                    <div className="md:flex-1 md:pr-3">
+                      <label className="label block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
+                        Service Price
+                      </label>
+                      <input
+                        className="input border-2 input-bordered w-full shadow-inner"
+                        type="number"
+                        name="price"
+                        placeholder="000"
+                        {...register("price", {
+                          required: true,
+                        })}
+                      />
+                      {errors.price && (
+                        <span className="text-red-500">
+                          Price value is required
                         </span>
                       )}
                     </div>
@@ -219,7 +238,7 @@ const AddNews = () => {
                   <div className="md:flex mb-4">
                     <div className="md:flex-1 md:pr-3">
                       <label className="label block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
-                        News Image
+                        Service Image
                         <span className="text-xs lowercase text-gray-600">
                           {" "}
                           (good quality*)
@@ -237,38 +256,70 @@ const AddNews = () => {
                   </div>
                   <div className="md:flex-1 mt-2 mb:mt-0">
                     <label className="label block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
-                      News Description
+                      Service Description
                     </label>
                     <textarea
                       className="input  border-2 input-bordered w-full shadow-inner lg:h-[180px] h-[90px] pt-3"
-                      placeholder="Enter News Description here............."
+                      placeholder="Enter Service Description here............."
                       rows="6"
-                      name="news"
-                      {...register("news", {
+                      name="description"
+                      {...register("description", {
                         minLength: 50,
                         required: true,
                       })}
-                    />
-                    {errors.news && (
+                    ></textarea>
+                    {errors.description && (
                       <span className="text-red-500">
-                        Minimum 50 character is required
+                        Minimum 50 character Description is required
                       </span>
                     )}
                   </div>
                 </div>
               </div>
+
+              <div className="md:flex mb-8">
+                <div className="md:flex-1 mt-2 mb:mt-0 md:px-3">
+                  <div className="mb-4">
+                    <label className="label block uppercase tracking-wide text-xs font-bold">
+                      Admin Name
+                    </label>
+                    <input
+                      className="input border-2 input-bordered w-full shadow-inner"
+                      type="text"
+                      name="adminName"
+                      disabled
+                      readOnly
+                      value={user.displayName}
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="label block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
+                      Admin Email
+                    </label>
+                    <input
+                      readOnly
+                      disabled
+                      className="input border-2 input-bordered w-full shadow-inner"
+                      type="email"
+                      name="adminEmail"
+                      value={user.email}
+                    />
+                  </div>
+                </div>
+              </div>
+
               <div className="divider before:bg-secondary after:bg-secondary">
                 <Button
                   backgroundColor="#463AA1"
-                  color="white"
-                  isLoading={postLoading}
                   type="submit"
+                  isLoading={postLoading}
                   _hover={{
                     backgroundColor: "#021431",
                   }}
-                  className="btn md:btn-md btn-sm "
+                  className="btn  md:btn-md btn-sm  md:px-10 text-white font-bold"
                 >
-                  Add News
+                  Add Service
                 </Button>
               </div>
             </form>
@@ -279,4 +330,4 @@ const AddNews = () => {
   );
 };
 
-export default AddNews;
+export default AddService;

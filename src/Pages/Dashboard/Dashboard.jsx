@@ -8,7 +8,7 @@ import "./Dashboard.css";
 const Dashboard = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-}, []);
+  }, []);
   const [user] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user?.email);
 
@@ -146,6 +146,31 @@ const Dashboard = () => {
                   }
                 >
                   Manage News
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
+                      isActive ? " bg-primary" : undefined
+                    }`
+                  }
+                  to="/dashboard/add-service"
+                >
+                  Add Service
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  to="/dashboard/manage-service"
+                  className={({ isActive }) =>
+                    `p-2  text-white rounded hover:bg-gray-200 hover:text-gray-500 ${
+                      isActive ? " bg-primary" : undefined
+                    }`
+                  }
+                >
+                  Manage Service
                 </NavLink>
               </li>
               <li>

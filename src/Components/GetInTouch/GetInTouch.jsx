@@ -24,7 +24,7 @@ const GetInTouch = () => {
 
     try {
       const newContact = await axios.post(
-        "https://tekno-interior-server.onrender.com//api/contact",
+        "https://tekno-interior-server.onrender.com/api/contact",
         contactData
       );
 
@@ -58,14 +58,14 @@ const GetInTouch = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 lg:md-16 md:mb-8 mb-4">
+    <div className="container mx-auto px-4 xl:mb-32 lg:mb-16 md:mb-8 mb-4">
       <div className="">
-        <div className="text-center  lg:lg:md-16 md:mb-8 mb-4 my-5 block">
+        <div className="text-center  lg:lg:mb-16 md:mb-8 mb-4 my-5 block">
           <h2 className="text-secondary lg:text-5xl text-2xl font-bold mb-2 uppercase">
             Get In Touch
           </h2>
         </div>
-        <div className="lg:p-10 p-5  w-full bg-base-100 shadow rounded-2xl">
+        <div className="lg:p-10 p-5  w-full bg-base-100 shadow-2xl rounded-2xl">
           <form onSubmit={handleSubmit(onFormSubmit)} autoComplete="off">
             <div className="flex lg:flex-row flex-col  gap-5">
               <div className="form-control lg:mt-3 w-full">

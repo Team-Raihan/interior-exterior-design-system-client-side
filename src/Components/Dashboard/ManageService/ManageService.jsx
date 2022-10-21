@@ -2,18 +2,18 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import LoadingData from "../../Loading/LoadingData";
 
-const ManageFeatureWorks = () => {
+const ManageService = () => {
   const getData = async () => {
     return await axios.get(
-      "https://tekno-interior-server.onrender.com/api/featured-item"
+      "https://tekno-interior-server.onrender.com/api/service"
     );
   };
   const {
-    data: products,
+    data: services,
     isLoading,
     refetch,
     error,
-  } = useQuery({ queryKey: ["manageAllProducts", 1], queryFn: getData });
+  } = useQuery({ queryKey: ["manageAllServices", 1], queryFn: getData });
   if (isLoading) {
     return (
       <div className=" mt-10">
@@ -21,12 +21,11 @@ const ManageFeatureWorks = () => {
       </div>
     );
   }
-  console.log(products);
 
   const deleteItem = async (id) => {
     const sure = window.confirm("Are you sure? You want to delete!");
     if (sure) {
-      const url = `https://tekno-interior-server.onrender.com/api/featured-item/${id}`;
+      const url = `https://tekno-interior-server.onrender.com/api/service/${id}`;
 
       axios
         .delete(url, {
@@ -55,15 +54,15 @@ const ManageFeatureWorks = () => {
                   <thead>
                     <tr className="border-b border-gray-200 font-thin bg-white leading-4 tracking-wider text-base text-gray-500">
                       <th className="px-6 py-5 text-left" colSpan="100%">
-                        <p>Manage Product</p>
+                        <p>Manage Service</p>
                       </th>
                     </tr>
                     <tr className="bg-gray-50 border-b border-gray-200 text-xs leading-4 text-gray-500 uppercase tracking-wider">
                       <th className="px-6 py-3 text-left font-medium">
-                        Product Image
+                        Service Image
                       </th>
                       <th className="px-6 py-3 text-center font-medium">
-                        Product Name
+                        Service Name
                       </th>
                       <th className="px-6 py-3  font-medium text-center">
                         Price
@@ -76,32 +75,32 @@ const ManageFeatureWorks = () => {
                   </thead>
 
                   <tbody className="bg-white">
-                    {products?.data?.map((product) => (
-                      <tr key={product._id}>
+                    {services?.data?.map((service) => (
+                      <tr key={service._id}>
                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                           <img
                             className="h-10 w-10 rounded-full"
-                            src={product.img}
-                            alt="product"
+                            src={service.img}
+                            alt="service"
                           />
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                           <div className="text-sm leading-5 text-gray-900">
                             <div className="flex flex-col items-center  justify-center">
-                              <div>{product.category}</div>
+                              <div>{service.category}</div>
                             </div>
                           </div>
                         </td>
 
                         <td className="px-6 text-center py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
                           <div className="flex flex-col items-center">
-                            <p>$ {product.price} USD</p>
+                            <p>$ {service.price} USD</p>
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                           <div className="flex justify-center items-center">
                             <button
-                              onClick={() => deleteItem(product._id)}
+                              onClick={() => deleteItem(service._id)}
                               className="block  bg-teal-500 hover:bg-teal-600 text-white border-2 border-teal-500 hover:border-teal-600 px-3 py-2 rounded uppercase font-poppins font-medium"
                             >
                               Delete
@@ -126,12 +125,12 @@ const ManageFeatureWorks = () => {
                   <thead>
                     <tr className="border-b border-gray-200 font-thin bg-white leading-4 tracking-wider text-base text-gray-500">
                       <th className="px-6 py-5 text-left" colSpan="100%">
-                        <p>Manage Product</p>
+                        <p>Manage service</p>
                       </th>
                     </tr>
                     <tr className="bg-gray-50 border-b border-gray-200 text-xs leading-4 text-gray-500 uppercase tracking-wider">
                       <th className="px-6 py-3 text-center font-medium">
-                        Product Info
+                        service Info
                       </th>
 
                       <th className="px-6 py-3 text-center font-medium">
@@ -141,7 +140,7 @@ const ManageFeatureWorks = () => {
                   </thead>
 
                   <tbody className="bg-white">
-                    {products?.data?.map((item) => (
+                    {services?.data?.map((item) => (
                       <tr key={item._id}>
                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                           <div className="text-sm leading-5 text-gray-900">
@@ -150,7 +149,7 @@ const ManageFeatureWorks = () => {
                                 <img
                                   className="h-10 w-10 rounded-full"
                                   src={item.img}
-                                  alt="product"
+                                  alt="service"
                                 />
                               </div>
                               <div>
@@ -180,7 +179,7 @@ const ManageFeatureWorks = () => {
             </div>
           </div>
         </div>
-        {products?.data?.length === 0 ? (
+        {services?.data?.length === 0 ? (
           <h2 className="text-center mt-10 text-blue-500 text-xl font-semibold">
             No Item Found
           </h2>
@@ -192,4 +191,4 @@ const ManageFeatureWorks = () => {
   );
 };
 
-export default ManageFeatureWorks;
+export default ManageService;

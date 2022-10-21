@@ -9,7 +9,9 @@ import LoadingData from "../Loading/LoadingData";
 
 const Reviews = () => {
   const getData = async () => {
-    return await axios.get("https://tekno-interior-server.onrender.com//api/review");
+    return await axios.get(
+      "https://tekno-interior-server.onrender.com/api/review"
+    );
   };
   const {
     data: allReviews,
@@ -44,7 +46,7 @@ const Reviews = () => {
     pauseOnHover: true,
   };
   return (
-    <div className="container mx-auto px-4 lg:my-16 md:my-8 my-4">
+    <div className="container mx-auto px-4 xl:my-32 lg:my-16 md:my-8 my-4">
       <div className="">
         <div className="text-center block">
           <h2 className="text-secondary lg:text-5xl text-2xl font-bold mb-2 uppercase">

@@ -10,12 +10,12 @@ import { useNavigate } from "react-router-dom";
 const FilterNews = () => {
   const navigate = useNavigate();
 
-  const navigateToCarDetail = (id) => {
+  const navigateToDetail = (id) => {
     navigate(`/news/${id}`);
   };
   const [date, setDate] = useState(new Date());
   const formattedDate = date && format(date, "PP");
-  const url = `https://tekno-interior-server.onrender.com//api/news/filter/${formattedDate}`;
+  const url = `https://tekno-interior-server.onrender.com/api/news/filter/${formattedDate}`;
 
   const getData = async () => {
     return await axios.get(url);
@@ -55,48 +55,49 @@ const FilterNews = () => {
       )}
 
       <div className="my-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  lg:gap-10 md:gap-6 gap-4">
-        {!news?.data?.error && news?.data?.map((report) => (
-          <div
-            className="card bg-base-100 shadow-2xl overflow-hidden rounded-none p-0 m-0"
-            key={report._id}
-          >
-            <figure className="w-full">
-              <img
-                src={report?.img}
-                alt="feature"
-                className="rounded-none w-full"
-              />
-            </figure>
+        {!news?.data?.error &&
+          news?.data?.map((report) => (
+            <div
+              className="card bg-base-100 shadow-2xl overflow-hidden rounded-none p-0 m-0"
+              key={report._id}
+            >
+              <figure className="w-full">
+                <img
+                  src={report?.img}
+                  alt="feature"
+                  className="rounded-none w-full"
+                />
+              </figure>
 
-            <div className="card-body items-center p-4">
-              <h2 className="card-title font-bold">{report.title}</h2>
-              <strong className="flex items-center gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
+              <div className="card-body items-center p-4">
+                <h2 className="card-title font-bold">{report.title}</h2>
+                <strong className="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
+                  </svg>
+                  {report.date}
+                </strong>
+                <p>{report.news.slice(0, 112)}...</p>
+                <button
+                  className="btn   md:btn-md btn-sm  btn-secondary "
+                  onClick={() => navigateToDetail(report?._id)}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-                {report.date}
-              </strong>
-              <p>{report.news.slice(0, 112)}...</p>
-              <button
-                className="btn   md:btn-md btn-sm  btn-secondary "
-                onClick={() => navigateToCarDetail(report?._id)}
-              >
-                Read More
-              </button>
+                  Read More
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
 
       {errorText && (

@@ -30,7 +30,7 @@ const UpdateProfileModal = ({
 
     try {
       const newUpdatedInfo = await axios.patch(
-        `https://tekno-interior-server.onrender.com//api/user/${email}`,
+        `https://tekno-interior-server.onrender.com/api/user/${email}`,
         updateInfo
       );
       if (newUpdatedInfo.status === 201) {

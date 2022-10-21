@@ -11,7 +11,9 @@ const MyProfile = () => {
   const [openUpdateModal, setOpenUpdateModal] = useState(null);
 
   const getData = async () => {
-    return await axios.get(`https://tekno-interior-server.onrender.com//api/user/${user?.email}`);
+    return await axios.get(
+      `https://tekno-interior-server.onrender.com/api/user/${user?.email}`
+    );
   };
 
   const {
@@ -21,10 +23,8 @@ const MyProfile = () => {
     error,
   } = useQuery({ queryKey: ["storeProfileInfo", 1], queryFn: getData });
 
-
   if (isLoading) {
-    return <LoadingData/>;
-
+    return <LoadingData />;
   }
   if (error) {
     console.log(error);
@@ -41,7 +41,7 @@ const MyProfile = () => {
               </h2>
             </div>
             <form autoComplete="off">
-              <div className="lg:my-16 md:my-8 my-4 ">
+              <div className="xl:my-32 lg:my-16 md:my-8 my-4 ">
                 <div className="flex lg:flex-row flex-col  items-center justify-center lg:gap-10 md:gap-6 gap-4">
                   <div className="avatar">
                     <div className="lg:w-80 md:w-56 w-32 ring-2 ring-secondary ring-offset-base-100 ring-offset-2 rounded">

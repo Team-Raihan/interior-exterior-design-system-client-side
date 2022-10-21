@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const FeatureSection = ({ feature }) => {
   const navigate = useNavigate();
 
-  const navigateToCarDetail = (id) => {
+  const navigateToDetail = (id) => {
     navigate(`/featured-item/${id}`);
   };
 
@@ -21,7 +21,7 @@ const FeatureSection = ({ feature }) => {
 
       <div
         className="card-body items-center bg-secondary text-white p-4 cursor-pointer"
-        onClick={() => navigateToCarDetail(feature?._id)}
+        onClick={() => navigateToDetail(feature?._id)}
       >
         <h2 className="card-title font-bold">{feature.category}</h2>
       </div>

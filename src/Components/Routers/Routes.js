@@ -24,6 +24,9 @@ import LiveSupportAdmin from "../Dashboard/LiveSupport/LiveSupportAdmin";
 import Payment from "../payment/Payment";
 import Search from "../Search/Search";
 import Report from "../Dashboard/Report/Report";
+import ServiceDetails from "../Service/ServiceDetails";
+import AddService from "../Dashboard/AddService/AddService";
+import ManageService from "../Dashboard/ManageService/ManageService";
 
 const RoutesPath = () => {
   return (
@@ -33,9 +36,17 @@ const RoutesPath = () => {
       <Route path={paths.authentication} element={<Authentication />} />
       <Route path={paths.featureWorkDetails} element={<FeatureWorkDetails />} />
       <Route path={paths.featureWorks} element={<FeatureWorks />} />
+      <Route path={paths.serviceDetails} element={<ServiceDetails />} />
       <Route path={paths.newsDetails} element={<NewsDetails />} />
       <Route path={paths.allNews} element={<AllNews />} />
-      <Route path={paths.dashboard} element={<RequireAuth><Dashboard /></RequireAuth>}>
+      <Route
+        path={paths.dashboard}
+        element={
+          <RequireAuth>
+            <Dashboard />
+          </RequireAuth>
+        }
+      >
         <Route
           index
           element={
@@ -116,6 +127,23 @@ const RoutesPath = () => {
           element={
             <RequireAuth>
               <ManageNews />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="add-service"
+          element={
+            <RequireAuth>
+              <AddService />
+            </RequireAuth>
+          }
+        />
+
+        <Route
+          path="manage-service"
+          element={
+            <RequireAuth>
+              <ManageService />
             </RequireAuth>
           }
         />

@@ -5,7 +5,9 @@ import LoadingData from "../../Loading/LoadingData";
 
 const Users = () => {
   const getData = async () => {
-    return await axios.get("https://tekno-interior-server.onrender.com//api/user");
+    return await axios.get(
+      "https://tekno-interior-server.onrender.com/api/user"
+    );
   };
   const {
     data: allUser,
@@ -25,7 +27,7 @@ const Users = () => {
   const deleteItem = async (id) => {
     const sure = window.confirm("Are you sure? You want to remove this user!");
     if (sure) {
-      const url = `https://tekno-interior-server.onrender.com//api/user/${id}`;
+      const url = `https://tekno-interior-server.onrender.com/api/user/${id}`;
 
       axios
         .delete(url, {
