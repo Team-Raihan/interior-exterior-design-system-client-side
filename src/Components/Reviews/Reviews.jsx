@@ -46,7 +46,7 @@ const Reviews = () => {
     pauseOnHover: true,
   };
   return (
-    <div className="container mx-auto px-4 xl:my-32 lg:my-16 md:my-8 my-4">
+    <div className="container mx-auto px-4 md:px-8  xl:my-32 lg:my-16 md:my-8 my-4">
       <div className="">
         <div className="text-center block">
           <h2 className="text-secondary lg:text-5xl text-2xl font-bold mb-2 uppercase">
@@ -61,7 +61,7 @@ const Reviews = () => {
                   className="card bg-base-100 overflow-hidden rounded-xl relative"
                   key={review._id}
                 >
-                  <div className=" items-center py-16 border rounded-xl">
+                  <div className="items-center xl:p-20 lg:p-16 md:p-8 p-4 border rounded-xl">
                     <div className="review-slider ">
                       <figure className="gap-5">
                         <div className="avatar">

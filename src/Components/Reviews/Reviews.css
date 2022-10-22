@@ -8,10 +8,12 @@
 .review-slider:before {
   content: url(../../assets/banner/quoteLeft.png);
   left: 20px;
+  top: 20%;
 }
 .review-slider:after {
   content: url(../../assets/banner/quoteRight.png);
   right: 20px;
+  bottom: 20%;
 }
 @media only screen and (max-width: 600px) {
   .review-slider:before,

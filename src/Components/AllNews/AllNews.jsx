@@ -47,7 +47,7 @@ const AllNews = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 xl:my-32 lg:my-16 md:my-8 my-4">
+    <div className="container mx-auto px-4 md:px-8  xl:my-32 lg:my-16 md:my-8 my-4">
       <div className="text-center flex items-center justify-center  lg:mb-16 md:mb-8 mb-4 ">
         <h2 className="text-secondary lg:text-5xl text-2xl font-bold mb-2 uppercase">
           Company News
@@ -97,7 +97,7 @@ const AllNews = () => {
                   </strong>
                   <p>{report.news.slice(0, 112)}...</p>
                   <button
-                    className="btn   md:btn-md btn-sm  btn-secondary "
+                    className="btn md:btn-md btn-sm btn-secondary w-full text-white"
                     onClick={() => navigateToDetail(report?._id)}
                   >
                     Read More
