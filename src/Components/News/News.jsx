@@ -40,7 +40,7 @@ const News = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 xl:my-32 lg:my-16 md:my-8 my-4">
+    <div className="container mx-auto px-4 md:px-8  xl:my-32 lg:my-16 md:my-8 my-4">
       <div className="">
         <div className="text-center  lg:mb-16 md:mb-8 mb-4 block">
           <h2 className="text-secondary lg:text-5xl text-2xl font-bold mb-2 uppercase">
@@ -84,7 +84,7 @@ const News = () => {
                     </strong>
                     <p>{report.news.slice(0, 112)}...</p>
                     <button
-                      className="btn md:btn-md btn-sm  btn-secondary w-full "
+                      className="btn md:btn-md btn-sm  btn-secondary w-full text-white"
                       onClick={() => navigateToDetail(report?._id)}
                     >
                       Read More
