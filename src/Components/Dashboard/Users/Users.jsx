@@ -2,6 +2,7 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import { NavLink } from "react-router-dom";
 import LoadingData from "../../Loading/LoadingData";
+import { useToast } from "@chakra-ui/react";
 
 const Users = () => {
   const getData = async () => {
@@ -9,6 +10,7 @@ const Users = () => {
       "https://tekno-interior-server.onrender.com/api/user"
     );
   };
+  const toast = useToast();
   const {
     data: allUser,
     isLoading,
@@ -45,6 +47,43 @@ const Users = () => {
     }
   };
 
+  const updateAdmin = async (url, status) => {
+    const updateInfo = {
+      isAdmin: status,
+    };
+    console.log(updateInfo);
+
+    try {
+      const newUpdatedInfo = await axios.patch(url, updateInfo);
+      if (newUpdatedInfo.status === 201) {
+        toast({
+          title: "Successfully Updated.",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+          position: "bottom",
+        });
+        refetch();
+      } else {
+        toast({
+          title: "Something Went Wrong!",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+          position: "bottom",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Something Went Wrong!",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "bottom",
+      });
+    }
+  };
+
   return (
     <>
       <div className="w-full min-h-screen px-1 bg-gray-100 py-5 md:py-10">
@@ -56,25 +95,25 @@ const Users = () => {
                   <thead>
                     <tr className="border-b border-gray-200 font-thin bg-white leading-4 tracking-wider text-base text-gray-500">
                       <th className="px-6 py-5 text-left" colSpan="100%">
-                        <p>Manage Product</p>
+                        <p>Manage Users</p>
                       </th>
                     </tr>
                     <tr className="bg-gray-50 border-b border-gray-200 text-xs leading-4 text-gray-500 uppercase tracking-wider">
                       <th className="px-6 py-3 text-center font-medium">
-                        Product Image
+                        User Image
                       </th>
                       <th className="px-6 py-3 text-center font-medium">
-                        Product Name
+                        User Name
                       </th>
                       <th className="px-6 py-3  font-medium text-center">
-                        Price
+                        User Email
                       </th>
 
                       <th className="px-6 py-3 text-center font-medium">
-                        Cancel Booking
+                        Remove User
                       </th>
                       <th className="px-6 py-3 text-center font-medium">
-                        Payment
+                        Make/Remove Admin
                       </th>
                     </tr>
                   </thead>
@@ -118,12 +157,31 @@ const Users = () => {
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                           <div className="flex justify-center items-center">
-                            <button
-                              onClick={() => user?._id}
-                              className="btn md:btn-md btn-sm  btn-warning  text-white font-semibold"
-                            >
-                              Make Admin
-                            </button>
+                            {user?.isAdmin ? (
+                              <button
+                                onClick={() =>
+                                  updateAdmin(
+                                    `https://tekno-interior-server.onrender.com/api/user/remove-admin/${user?.email}`,
+                                    false
+                                  )
+                                }
+                                className="btn md:btn-md btn-sm  btn-accent  text-white font-semibold"
+                              >
+                                Remove Admin
+                              </button>
+                            ) : (
+                              <button
+                                onClick={() =>
+                                  updateAdmin(
+                                    `https://tekno-interior-server.onrender.com/api/user/make-admin/${user?.email}`,
+                                    true
+                                  )
+                                }
+                                className="btn md:btn-md btn-sm  btn-natural  text-white font-semibold"
+                              >
+                                Make Admin
+                              </button>
+                            )}
                           </div>
                         </td>
                       </tr>
