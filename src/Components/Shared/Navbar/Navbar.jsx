@@ -126,7 +126,7 @@ const Navbar = () => {
   );
   return (
     <div className="sticky top-0 bg-secondary text-white font-bold  z-40 drop-shadow-xl ">
-      <div className="container navbar md:min-h-[96px] justify-between mx-auto px-4">
+      <div className="container navbar md:min-h-[96px] justify-between mx-auto px-4 md:px-8 lg:px-16">
         {pathname?.includes("dashboard") && (
           <div className="lg:navbar-start lg:hidden">
             <label
