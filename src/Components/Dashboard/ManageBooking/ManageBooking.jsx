@@ -120,18 +120,15 @@ const ManageBooking = () => {
                           <div className="flex justify-center items-center">
                             {product?.paid ? (
                               <button
-                                disabled={true}
+                                // disabled={true}
                                 className="btn md:btn-md btn-sm btn-success  text-white font-semibold"
                               >
                                 Paid
                               </button>
                             ) : (
-                              <Link
-                                to={`/dashboard/payment/${product?._id}`}
-                                className="btn md:btn-md btn-sm btn-warning  text-white font-semibold"
-                              >
-                                Pay
-                              </Link>
+                              <button className="btn md:btn-md btn-sm btn-warning  text-white font-semibold">
+                                Unpaid
+                              </button>
                             )}
                           </div>
                         </td>

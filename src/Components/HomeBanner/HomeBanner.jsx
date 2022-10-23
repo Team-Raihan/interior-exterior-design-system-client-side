@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./HomeBanner.css";
-import homeBanner from "../../assets/banner/homeBanner.png";
+import homeBanner from "../../assets/banner/banner.jpg";
 import { useNavigate } from "react-router-dom";
 
 const HomeBanner = () => {
@@ -17,7 +17,7 @@ const HomeBanner = () => {
 
   return (
     <>
-      <div className="container mx-auto px-4 xl:mb-32 xl:mt-16 lg:my-16 md:my-8 my-4">
+      <div className="container mx-auto px-4 md:px-8 lg:px-16   xl:mb-32 xl:mt-16 lg:my-16 md:my-8 my-4">
         <div className="relative">
           <div className="search-input">
             <label className="label lg:text-5xl md:text-2xl text-normal text-center uppercase font-bold text-secondary mx-auto">

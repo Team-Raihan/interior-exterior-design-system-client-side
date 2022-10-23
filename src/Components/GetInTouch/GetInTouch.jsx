@@ -58,7 +58,7 @@ const GetInTouch = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 xl:mb-32 lg:mb-16 md:mb-8 mb-4">
+    <div className="container mx-auto px-4 md:px-8 lg:px-16  xl:mb-32 lg:mb-16 md:mb-8 mb-4">
       <div className="">
         <div className="text-center  lg:lg:mb-16 md:mb-8 mb-4 my-5 block">
           <h2 className="text-secondary lg:text-5xl text-2xl font-bold mb-2 uppercase">
