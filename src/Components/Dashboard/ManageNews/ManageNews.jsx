@@ -68,7 +68,7 @@ const ManageNews = () => {
                         News Title
                       </th>
                       <th className="px-6 py-3  font-medium text-center">
-                        Price
+                        Date
                       </th>
 
                       <th className="px-6 py-3 text-center font-medium">

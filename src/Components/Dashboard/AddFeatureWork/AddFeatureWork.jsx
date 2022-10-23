@@ -216,7 +216,7 @@ const AddFeatureWork = () => {
                     </div>
                     <div className="md:flex-1 md:pr-3">
                       <label className="label block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
-                        Product Price
+                        Product Price ($)
                       </label>
                       <input
                         className="input border-2 input-bordered w-full shadow-inner"

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./HomeBanner.css";
-import homeBanner from "../../assets/banner/homeBanner.png";
+import homeBanner from "../../assets/banner/banner.jpg";
 import { useNavigate } from "react-router-dom";
 
 const HomeBanner = () => {
