@@ -4,7 +4,7 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import LoadingData from "../Loading/LoadingData";
 
-const Service = () => {
+const AllService = () => {
   const navigate = useNavigate();
 
   const navigateToDetail = (id) => {
@@ -50,7 +50,7 @@ const Service = () => {
         <div className="  bg-base-100 lg:mb-16 md:mb-8 mb-4">
           <div className="text-center p-0">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  lg:gap-10 md:gap-6 gap-4">
-              {services?.data?.slice(0, 3).map((service) => (
+              {services?.data?.map((service) => (
                 <div
                   className="card bg-base-100 shadow-2xl overflow-hidden rounded-[16px] p-0 m-0"
                   key={service._id}
@@ -79,17 +79,9 @@ const Service = () => {
             </div>
           </div>
         </div>
-        <div className="lg:mt-16 md:mt-8 mt-4 text-center">
-          <Link
-            to="/all-service"
-            className="btn md:btn-md btn-sm  btn-secondary md:w-1/3 w-full  mx-auto  text-white font-bold"
-          >
-            View All Service
-          </Link>
-        </div>
       </div>
     </div>
   );
 };
 
-export default Service;
+export default AllService;

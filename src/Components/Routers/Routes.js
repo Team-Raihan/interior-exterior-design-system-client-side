@@ -27,6 +27,7 @@ import Report from "../Dashboard/Report/Report";
 import ServiceDetails from "../Service/ServiceDetails";
 import AddService from "../Dashboard/AddService/AddService";
 import ManageService from "../Dashboard/ManageService/ManageService";
+import AllService from "../Service/AllService";
 
 const RoutesPath = () => {
   return (
@@ -37,6 +38,7 @@ const RoutesPath = () => {
       <Route path={paths.featureWorkDetails} element={<FeatureWorkDetails />} />
       <Route path={paths.featureWorks} element={<FeatureWorks />} />
       <Route path={paths.serviceDetails} element={<ServiceDetails />} />
+      <Route path={paths.allService} element={<AllService />} />
       <Route path={paths.newsDetails} element={<NewsDetails />} />
       <Route path={paths.allNews} element={<AllNews />} />
       <Route
